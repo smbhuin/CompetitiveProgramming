@@ -1,0 +1,95 @@
+
+public extension Solution {
+    
+    /// LeetCode: 238. Product of Array Except Self
+    ///
+    /// Solved by iteration using two pointers.
+    ///
+    /// nums = [1, 2, 3, 4]
+    ///
+    /// prefix products = [1, 1, 2, 6]
+    ///
+    /// suffix products = [24,12, 4, 1]
+    ///
+    /// result = pefix * suffix i.e. [24, 12, 8, 6]
+    ///
+    /// - Complexity: Time complexity is O(*n*), where n is the count of the `nums`. Space complexity is O(1), only constant extra space is used.
+    func productExceptSelf(_ nums: [Int]) -> [Int] {
+        let n = nums.count
+        var result = Array(repeating: 1, count: n)
+        var tmp = 1
+        for i in stride(from: 1, to: n, by: 1) {
+            tmp *= nums[i-1]
+            result[i] = tmp
+        }
+        tmp = 1
+        for i in stride(from: n - 2 , through: 0, by: -1) {
+            tmp *= nums[i+1]
+            result[i] *= tmp
+        }
+        return result
+    }
+    
+    /// LeetCode: 334. Increasing Triplet Subsequence
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(1), where n is the size of the array `nums`.
+    func increasingTriplet(_ nums: [Int]) -> Bool {
+        var firstMin = Int.max
+        var secondMin = Int.max
+        for num in nums {
+            if num <= firstMin {
+                firstMin = num
+            }
+            else if num <= secondMin {
+                secondMin = num
+            }
+            else {
+                return true
+            }
+        }
+        return false
+    }
+    
+    /// LeetCode: 443. String Compression
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Parameter chars: array of `Character`.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(1), where n is the size of the array `chars`.
+    func compress(_ chars: inout [Character]) -> Int {
+        var lastChar = chars[0]
+        var len = 0, count = 1
+        for i in 1..<chars.count {
+            if chars[i] == lastChar {
+                count += 1
+            }
+            else {
+                chars[len] = lastChar
+                len += 1
+                lastChar = chars[i]
+                if count > 1 {
+                    let str = String(count)
+                    for digit in str {
+                        chars[len] = digit
+                        len += 1
+                    }
+                }
+                count = 1
+            }
+        }
+        chars[len] = lastChar
+        len += 1
+        if count > 1 {
+            let str = String(count)
+            for digit in str {
+                chars[len] = digit
+                len += 1
+            }
+        }
+        return len
+    }
+
+}
