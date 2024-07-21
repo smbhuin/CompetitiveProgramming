@@ -6,4 +6,4 @@ Every solution is documented with platform name and problem number.
 
 ## LICENSE
 
-This library is licensed under MIT. Full license text is available in [LICENSE](https://github.com/smbhuin/CompetitiveProgramming/blob/master/LICENSE).
+This library is licensed under MIT. Full license text is available in [LICENSE](https://github.com/smbhuin/CompetitiveProgramming/blob/master/LICENSE.md).
