@@ -1,3 +1,46 @@
+// Two Pointers Pattern
+/*
+ // one input, opposite ends
+ func fn(_ arr: [Int]) -> Int {
+     var left = 0;
+     var right = arr.count - 1;
+     var ans = 0;
+     while left < right {
+         // do some logic here with left and right
+         if CONDITION {
+             left += 1;
+         } else {
+             right -= 1;
+         }
+     }
+     return ans;
+ }
+ // two inputs, exhaust both
+ func fn(_ arr1: [Int], _ arr2: [Int]) -> Int {
+     var i = 0, j = 0, ans = 0;
+
+     while i < arr1.length && j < arr2.length {
+         // do some logic here
+         if CONDITION {
+             i += 1;
+         } else {
+             j += 1;
+         }
+     }
+
+     while i < arr1.length {
+         // do logic
+         i += 1;
+     }
+
+     while j < arr2.length {
+         // do logic
+         j += 1;
+     }
+
+     return ans;
+ }
+*/
 
 public extension Solution {
     
