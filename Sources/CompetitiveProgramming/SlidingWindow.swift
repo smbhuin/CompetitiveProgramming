@@ -1,4 +1,21 @@
 
+// Sliding Window Pattern
+/*func fn(_ arr: [Int]) -> Int {
+    var left = 0, ans = 0, curr = 0
+
+    for right in 0..<arr.count {
+        // do logic here to add arr[right] to curr
+
+        while WINDOW_CONDITION_BROKEN {
+            // remove arr[left] from curr
+            left += 1
+        }
+        
+        // update ans
+    }
+    return ans
+}*/
+
 public extension Solution {
     
     /// LeetCode: 643. Maximum Average Subarray I.
