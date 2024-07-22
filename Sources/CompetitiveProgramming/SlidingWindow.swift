@@ -38,4 +38,28 @@ public extension Solution {
         }
         return avg
     }
+    
+    /// LeetCode: 1456. Maximum Number of Vowels in a Substring of Given Length.
+    ///
+    /// Solved by iteration using sliding window.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where n is the length of the string `s`.  Space complexity is O(1), only constant space is used.
+    func maxVowels(_ s: String, _ k: Int) -> Int {
+        let str = Array(s)
+        var left = 0, curr = 0, ans = 0
+        let vowels: Set<Character> = ["a","e","i","o","u"]
+        for right in 0..<str.count {
+            if vowels.contains(str[right]) {
+                curr += 1
+            }
+            while right - left + 1 > k { // if window size is greater that k
+                if vowels.contains(str[left]) {
+                    curr -= 1
+                }
+                left += 1
+            }
+            ans = max(ans, curr)
+        }
+        return ans
+    }
 }
