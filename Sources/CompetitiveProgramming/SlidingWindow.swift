@@ -62,4 +62,26 @@ public extension Solution {
         }
         return ans
     }
+    
+    /// LeetCode: 1004. Max Consecutive Ones III.
+    ///
+    /// Solved by iteration using sliding window.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where n is the size of the array `nums`.  Space complexity is O(1), only constant space is used.
+    func longestOnes(_ nums: [Int], _ k: Int) -> Int {
+        var left = 0, right = 0, k = k
+        while right < nums.count {
+            if nums[right] == 0 {
+                k -= 1
+            }
+            if k < 0 {
+                if nums[left] == 0 {
+                    k += 1
+                }
+                left += 1
+            }
+            right += 1
+        }
+        return right-left
+    }
 }
