@@ -116,12 +116,6 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.findMaxAverage([5], 1) == 5.0)
     }
     
-    func testMaxVowels() throws {
-        try testMaxVowels1()
-        try testMaxVowels2()
-        try testMaxVowels3()
-    }
-    
     func testMaxVowels1() throws {
         XCTAssert(sol.maxVowels("abciiidef", 3) == 3)
     }
@@ -133,6 +127,16 @@ final class CompetitiveProgrammingTests: XCTestCase {
     func testMaxVowels3() throws {
         XCTAssert(sol.maxVowels("leetcode", 3) == 2)
     }
+    
+    func testLongestOnes1() throws {
+        XCTAssert(sol.longestOnes([1,1,1,0,0,0,1,1,1,1,0], 2) == 6)
+    }
+    
+    func testLongestOnes2() throws {
+        XCTAssert(sol.longestOnes([0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], 3) == 10)
+    }
+    
+    
 }
 
 
