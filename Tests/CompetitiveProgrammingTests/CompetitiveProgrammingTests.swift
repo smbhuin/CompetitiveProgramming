@@ -136,6 +136,13 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.longestOnes([0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], 3) == 10)
     }
     
+    func testLongestOnesOpt1() throws {
+        XCTAssert(sol.longestOnesII([1,1,1,0,0,0,1,1,1,1,0], 2) == 6)
+    }
+    
+    func testLongestOnesOpt2() throws {
+        XCTAssert(sol.longestOnesII([0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], 3) == 10)
+    }
     
 }
 
