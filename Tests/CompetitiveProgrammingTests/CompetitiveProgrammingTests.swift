@@ -156,6 +156,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.longestSubarray([1,1,1]) == 2)
     }
     
+    func testLargestAltitude1() throws {
+        XCTAssert(sol.largestAltitude([-5,1,5,0,-7]) == 1)
+    }
+    
+    func testLargestAltitude2() throws {
+        XCTAssert(sol.largestAltitude([-4,-3,-2,-1,4,3,2]) == 0)
+    }
+    
 }
 
 
