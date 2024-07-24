@@ -106,4 +106,26 @@ public extension Solution {
         }
         return right-left
     }
+    
+    /// LeetCode: 1493. Longest Subarray of 1's After Deleting One Element.
+    ///
+    /// Solved by iteration using sliding window.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where n is the size of the array `nums`.  Space complexity is O(1), only constant space is used.
+    func longestSubarray(_ nums: [Int]) -> Int {
+        var left = 0, maxWin = 0, zeros = 0
+        for right in 0..<nums.count {
+            if nums[right] == 0 {
+                zeros += 1
+            }
+            while zeros > 1 {
+                if nums[left] == 0  {
+                    zeros -= 1
+                }
+                left += 1
+            }
+            maxWin = max(maxWin, right - left) // size is (right - left + 1), but since you must delete one element, its (right - left).
+        }
+        return maxWin
+    }
 }
