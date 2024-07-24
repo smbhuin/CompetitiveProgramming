@@ -144,6 +144,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.longestOnesII([0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], 3) == 10)
     }
     
+    func testLongestSubarray1() throws {
+        XCTAssert(sol.longestSubarray([1,1,0,1]) == 3)
+    }
+    
+    func testLongestSubarray2() throws {
+        XCTAssert(sol.longestSubarray([0,1,1,1,0,1,1,0,1]) == 5)
+    }
+    
+    func testLongestSubarray3() throws {
+        XCTAssert(sol.longestSubarray([1,1,1]) == 2)
+    }
+    
 }
 
 
