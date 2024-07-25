@@ -3,7 +3,7 @@
 func fn(_ arr: [Int]) -> [Int] {
     var prefix = Array(repeating: 0, count: arr.count)
     prefix[0] = arr[0]
-    for i in 0..<arr.count {
+    for i in 1..<arr.count {
         prefix[i] = prefix[i - 1] + arr[i]
     }
     return prefix
