@@ -37,5 +37,50 @@ public extension Solution {
         return map.count == Set(map.values).count
     }
     
+    /// LeetCode: 1657. Determine if Two Strings Are Close.
+    ///
+    /// Solved using frequency HashMap.
+    ///
+    /// - Complexity: Time complexity is O(*nlogn+ mlogm*) and space complexity is O(*n+m*), where m is the length of the string `word1` and n is the length of the string `word2`.
+    func closeStrings(_ word1: String, _ word2: String) -> Bool {
+        var map1: [Character:Int] = [:] // frequency map
+        var map2: [Character:Int] = [:] // frequency map
+        for ch in word1 {
+            map1[ch] = map1[ch, default:0] + 1
+        }
+        for ch in word2 {
+            map2[ch] = map2[ch, default:0] + 1
+        }
+        if map1.count != map2.count {
+            return false
+        }
+        return Set(map1.keys) == Set(map2.keys) && map1.values.sorted() == map2.values.sorted()
+    }
+    
+    /// LeetCode: 1657. Determine if Two Strings Are Close.
+    ///
+    /// Solved using frequency Array. Faster solution.
+    ///
+    /// - Complexity: Time complexity is O(*nlogn+ mlogm*), where m is the length of the string `word1` and n is the length of the string `word2`. Space complexity is O(1), only constant space is used.
+    func closeStringsII(_ word1: String, _ word2: String) -> Bool {
+        var freq1 = Array(repeating: 0, count: 26)
+        var freq2 = Array(repeating: 0, count: 26)
+        let a = "a".first!.asciiValue!
+        for ch in word1 {
+            freq1[Int(ch.asciiValue! - a)] += 1
+        }
+        for ch in word2 {
+            freq2[Int(ch.asciiValue! - a)] += 1
+        }
+        for i in 0..<26 {
+            if (freq1[i] == 0 && freq2[i] != 0) || (freq1[i] != 0 && freq2[i] == 0) {
+                return false
+            }
+        }
+        freq1.sort()
+        freq2.sort()
+        return freq1 == freq2
+    }
+    
 }
 
