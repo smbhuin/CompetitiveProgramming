@@ -24,5 +24,18 @@ public extension Solution {
         return [ans1, ans2]
     }
     
+    /// LeetCode: 1207. Unique Number of Occurrences.
+    ///
+    /// Solved using frequency HashMap.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where n is the size of the array `arr`.
+    func uniqueOccurrences(_ arr: [Int]) -> Bool {
+        var map: [Int:Int] = [:] // frequency map
+        for num in arr {
+            map[num] = map[num, default:0] + 1
+        }
+        return map.count == Set(map.values).count
+    }
+    
 }
 
