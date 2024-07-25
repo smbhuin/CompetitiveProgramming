@@ -192,6 +192,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(Set(result[1]) == Set([]))
     }
     
+    func testUniqueOccurrences1() throws {
+        XCTAssert(sol.uniqueOccurrences([1,2,2,1,1,3]) == true)
+    }
+    
+    func testUniqueOccurrences2() throws {
+        XCTAssert(sol.uniqueOccurrences([1,2]) == false)
+    }
+    
+    func testUniqueOccurrences3() throws {
+        XCTAssert(sol.uniqueOccurrences([-3,0,1,-3,1,1,1,-3,10,0]) == true)
+    }
+    
 }
 
 
