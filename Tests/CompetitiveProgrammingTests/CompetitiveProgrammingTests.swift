@@ -178,6 +178,19 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.pivotIndex([2,1,-1]) == 0)
     }
     
+    // MARK: HashMap & HashSet
+    
+    func testFindDifference1() throws {
+        let result = sol.findDifference([1,2,3],[2,4,6])
+        XCTAssert(Set(result[0]) == Set([1,3]))
+        XCTAssert(Set(result[1]) == Set([4,6]))
+    }
+    
+    func testFindDifference2() throws {
+        let result = sol.findDifference([1,2,3,3],[1,1,2,2])
+        XCTAssert(Set(result[0]) == Set([3]))
+        XCTAssert(Set(result[1]) == Set([]))
+    }
     
 }
 
