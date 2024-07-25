@@ -82,5 +82,34 @@ public extension Solution {
         return freq1 == freq2
     }
     
+    /// LeetCode: 2352. Equal Row and Column Pairs.
+    ///
+    /// Solved using frequency HashMap of rows and columns.
+    ///
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(*n^2*), where n is the number of rows/columns of the `grid`.
+    func equalPairs(_ grid: [[Int]]) -> Int {
+        let n = grid.count
+        var map1: [Int:Int] = [:]
+        var map2: [Int:Int] = [:]
+        for i in 0..<n {
+            var r: [Int] = [], c: [Int] = []
+            for j in 0..<n {
+                r.append(grid[i][j])
+                c.append(grid[j][i])
+            }
+            let rHash = r.hashValue
+            let cHash = c.hashValue
+            map1[rHash] = map1[rHash, default:0] + 1
+            map2[cHash] = map2[cHash, default:0] + 1
+        }
+        var count = 0
+        for (k1, v1) in map1 {
+            if let v2 = map2[k1] {
+                count += v1 * v2
+            }
+        }
+        return count
+    }
+    
 }
 
