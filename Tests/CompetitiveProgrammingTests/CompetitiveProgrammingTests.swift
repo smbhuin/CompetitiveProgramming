@@ -156,6 +156,8 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.longestSubarray([1,1,1]) == 2)
     }
     
+    // MARK: Prefix Sum
+    
     func testLargestAltitude1() throws {
         XCTAssert(sol.largestAltitude([-5,1,5,0,-7]) == 1)
     }
@@ -163,6 +165,19 @@ final class CompetitiveProgrammingTests: XCTestCase {
     func testLargestAltitude2() throws {
         XCTAssert(sol.largestAltitude([-4,-3,-2,-1,4,3,2]) == 0)
     }
+    
+    func testPivotIndex1() throws {
+        XCTAssert(sol.pivotIndex([1,7,3,6,5,6]) == 3)
+    }
+    
+    func testPivotIndex2() throws {
+        XCTAssert(sol.pivotIndex([1,2,3]) == -1)
+    }
+    
+    func testPivotIndex3() throws {
+        XCTAssert(sol.pivotIndex([2,1,-1]) == 0)
+    }
+    
     
 }
 
