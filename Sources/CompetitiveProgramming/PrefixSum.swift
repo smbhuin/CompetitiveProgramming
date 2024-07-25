@@ -25,5 +25,27 @@ public extension Solution {
         }
         return alt
     }
+    
+    /// LeetCode: 724. Find Pivot Index.
+    ///
+    /// Solved by iteration following prefix sum pattern.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where n is the size of the array `nums`.  Space complexity is O(1), only constant space is used.
+    func pivotIndex(_ nums: [Int]) -> Int {
+        var prefixSum = Array(repeating: 0, count: nums.count)
+        var suffixSum = Array(repeating: 0, count: nums.count)
+        for i in stride(from: 1, to: nums.count, by: 1) {
+            prefixSum[i] = prefixSum[i - 1] + nums[i - 1]
+        }
+        for i in stride(from: nums.count - 2, through: 0, by: -1) {
+            suffixSum[i] = suffixSum[i + 1] + nums[i + 1]
+        }
+        for i in stride(from: 0, to: nums.count, by: 1) {
+            if prefixSum[i] == suffixSum[i] {
+                return i
+            }
+        }
+        return -1
+    }
 }
 
