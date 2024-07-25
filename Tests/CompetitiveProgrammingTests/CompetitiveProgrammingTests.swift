@@ -224,6 +224,22 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.closeStrings("aaabbbbccddeeeeefffff", "aaaaabbcccdddeeeeffff") == false)
     }
     
+    func testEqualPairs1() throws {
+        XCTAssert(sol.equalPairs([[3,2,1],[1,7,6],[2,7,7]]) == 1)
+    }
+    
+    func testEqualPairs2() throws {
+        XCTAssert(sol.equalPairs([[3,1,2,2],[1,4,4,5],[2,4,2,2],[2,4,2,2]]) == 3)
+    }
+    
+    func testEqualPairs3() throws {
+        XCTAssert(sol.equalPairs([[3,1,2,2],[1,4,4,4],[2,4,2,2],[2,5,2,2]]) == 3)
+    }
+    
+    func testEqualPairs4() throws {
+        XCTAssert(sol.equalPairs([[11,1],[1,11]]) == 2)
+    }
+    
 }
 
 
