@@ -204,6 +204,26 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.uniqueOccurrences([-3,0,1,-3,1,1,1,-3,10,0]) == true)
     }
     
+    func testCloseStrings1() throws {
+        XCTAssert(sol.closeStrings("abc", "bca") == true)
+    }
+    
+    func testCloseStrings2() throws {
+        XCTAssert(sol.closeStrings("a", "aa") == false)
+    }
+    
+    func testCloseStrings3() throws {
+        XCTAssert(sol.closeStrings("cabbba", "abbccc") == true)
+    }
+    
+    func testCloseStrings4() throws {
+        XCTAssert(sol.closeStrings("uau", "ssx") == false)
+    }
+    
+    func testCloseStrings5() throws {
+        XCTAssert(sol.closeStrings("aaabbbbccddeeeeefffff", "aaaaabbcccdddeeeeffff") == false)
+    }
+    
 }
 
 
