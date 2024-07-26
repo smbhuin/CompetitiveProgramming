@@ -240,6 +240,16 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.equalPairs([[11,1],[1,11]]) == 2)
     }
     
+    // MARK: Stack
+    
+    func testRemoveStars1() throws {
+        XCTAssert(sol.removeStars("leet**cod*e") == "lecoe")
+    }
+    
+    func testRemoveStars2() throws {
+        XCTAssert(sol.removeStars("erase*****") == "")
+    }
+    
 }
 
 
