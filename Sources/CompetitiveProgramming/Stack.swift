@@ -18,5 +18,33 @@ public extension Solution {
         return String(ans)
     }
     
+    /// LeetCode: 735. Asteroid Collision.
+    ///
+    /// Solved using stack.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the size of the array `asteroids`.
+    func asteroidCollision(_ asteroids: [Int]) -> [Int] {
+        var stack: [Int] = []
+        for curr in asteroids {
+            var right = curr
+            while let left = stack.last, left > 0, right < 0 { // collide possible
+                if left == -right {
+                    stack.removeLast()
+                    right = 0
+                }
+                else if left < -right {
+                    stack.removeLast()
+                }
+                else {
+                    right = 0
+                }
+            }
+            if right != 0 {
+                stack.append(right)
+            }
+        }
+        return stack
+    }
+    
 }
 
