@@ -250,6 +250,30 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.removeStars("erase*****") == "")
     }
     
+    func testAsteroidCollision1() throws {
+        XCTAssert(sol.asteroidCollision([5,10,-5]) == [5,10])
+    }
+    
+    func testAsteroidCollision2() throws {
+        XCTAssert(sol.asteroidCollision([8,-8]) == [])
+    }
+    
+    func testAsteroidCollision3() throws {
+        XCTAssert(sol.asteroidCollision([10,2,-5]) == [10])
+    }
+    
+    func testAsteroidCollision4() throws {
+        XCTAssert(sol.asteroidCollision([5,8,-4]) == [5,8])
+    }
+    
+    func testAsteroidCollision5() throws {
+        XCTAssert(sol.asteroidCollision([-2,-2,1,-1]) == [-2,-2])
+    }
+    
+    func testAsteroidCollision6() throws {
+        XCTAssert(sol.asteroidCollision([1,-2,-2,-2]) == [-2,-2,-2])
+    }
+    
 }
 
 
