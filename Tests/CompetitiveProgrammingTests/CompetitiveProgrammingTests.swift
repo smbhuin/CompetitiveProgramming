@@ -274,6 +274,22 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.asteroidCollision([1,-2,-2,-2]) == [-2,-2,-2])
     }
     
+    func testDecodeString1() throws {
+        XCTAssert(sol.decodeString("3[a]2[bc]") == "aaabcbc")
+    }
+    
+    func testDecodeString2() throws {
+        XCTAssert(sol.decodeString("3[a2[c]]") == "accaccacc")
+    }
+    
+    func testDecodeString3() throws {
+        XCTAssert(sol.decodeString("2[abc]3[cd]ef") == "abcabccdcdcdef")
+    }
+    
+    func testDecodeString4() throws {
+        XCTAssert(sol.decodeString("3[z]2[2[y]pq4[2[jk]e1[f]]]ef") == "zzzyypqjkjkefjkjkefjkjkefjkjkefyypqjkjkefjkjkefjkjkefjkjkefef")
+    }
+    
 }
 
 
