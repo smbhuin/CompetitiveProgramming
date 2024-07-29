@@ -46,5 +46,37 @@ public extension Solution {
         return stack
     }
     
+    /// LeetCode: 394. Decode String.
+    ///
+    /// Solved using stack.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the length of the string `s`.
+    func decodeString(_ s: String) -> String {
+        var result = [Character]()
+        for c in s {
+            if c == "]" {
+                let lastIndex = result.count - 1
+                let index = result.lastIndex(of: "[")!
+                let targetStr = result[index + 1...lastIndex]
+                result.removeSubrange(index...lastIndex)
+
+                var nums = [Int]()
+                
+                while result.last?.isNumber == true {
+                    nums.insert(result.removeLast().wholeNumberValue!, at: 0)
+                }
+
+                let num = nums.reduce(0, { $0 * 10 + $1 })
+
+                for _ in 0..<num {
+                    result.append(contentsOf: targetStr)
+                }
+            } else {
+                result.append(c)
+            }
+        }
+        return String(result)
+    }
+    
 }
 
