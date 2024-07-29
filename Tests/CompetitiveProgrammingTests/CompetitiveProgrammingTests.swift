@@ -290,6 +290,16 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.decodeString("3[z]2[2[y]pq4[2[jk]e1[f]]]ef") == "zzzyypqjkjkefjkjkefjkjkefjkjkefyypqjkjkefjkjkefjkjkefjkjkefef")
     }
     
+    // MARK: - Queue
+    
+    func testRecentCounter1() throws {
+        let counter = RecentCounter()
+        XCTAssert(counter.ping(1) == 1)
+        XCTAssert(counter.ping(100) == 2)
+        XCTAssert(counter.ping(3001) == 3)
+        XCTAssert(counter.ping(3002) == 3)
+    }
+    
 }
 
 
