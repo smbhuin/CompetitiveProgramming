@@ -316,6 +316,26 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.predictPartyVictory("RDR") == "Radiant")
     }
     
+    // MARK: - Linked List
+    
+    func testDeleteMiddle1() throws {
+        let head = ListNode.buildLinkedList([1,3,4,7,1,2,6])
+        let result = sol.deleteMiddle(head)?.allElements()
+        XCTAssert(result == [1,3,4,1,2,6])
+    }
+    
+    func testDeleteMiddle2() throws {
+        let head = ListNode.buildLinkedList([1,2,3,4])
+        let result = sol.deleteMiddle(head)?.allElements()
+        XCTAssert(result == [1,2,4])
+    }
+    
+    func testDeleteMiddle3() throws {
+        let head = ListNode.buildLinkedList([2,1])
+        let result = sol.deleteMiddle(head)?.allElements()
+        XCTAssert(result == [2])
+    }
+    
 }
 
 
