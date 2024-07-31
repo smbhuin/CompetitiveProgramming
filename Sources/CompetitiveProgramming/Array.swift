@@ -91,5 +91,30 @@ public extension Solution {
         }
         return len
     }
+    
+    /// LeetCode: 649. Dota2 Senate.
+    ///
+    /// Solved using array. Bruteforce approach.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of members in senate.
+    func predictPartyVictoryII(_ senate: String) -> String {
+        var arr = Array(senate)
+        while arr.count > 1 {
+            let f = arr.removeFirst()
+            if let indx = arr.firstIndex(of: f == "R" ? "D" : "R") {
+                arr.remove(at: indx)
+            }
+            else {
+                break
+            }
+            arr.append(f)
+        }
+        if arr.first == "R" {
+            return "Radiant"
+        }
+        else {
+            return "Dire"
+        }
+    }
 
 }
