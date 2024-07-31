@@ -300,6 +300,22 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(counter.ping(3002) == 3)
     }
     
+    func testPredictPartyVictory1() throws {
+        XCTAssert(sol.predictPartyVictory("RD") == "Radiant")
+    }
+    
+    func testPredictPartyVictory2() throws {
+        XCTAssert(sol.predictPartyVictory("RDD") == "Dire")
+    }
+    
+    func testPredictPartyVictory3() throws {
+        XCTAssert(sol.predictPartyVictory("RRR") == "Radiant")
+    }
+    
+    func testPredictPartyVictory4() throws {
+        XCTAssert(sol.predictPartyVictory("RDR") == "Radiant")
+    }
+    
 }
 
 
