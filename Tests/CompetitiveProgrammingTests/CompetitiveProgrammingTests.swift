@@ -336,6 +336,17 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result == [2])
     }
     
+    func testOddEvenList1() throws {
+        let head = ListNode.buildLinkedList([1,2,3,4,5])
+        let result = sol.oddEvenList(head)?.allElements()
+        XCTAssert(result == [1,3,5,2,4])
+    }
+    
+    func testOddEvenList2() throws {
+        let head = ListNode.buildLinkedList([2,1,3,5,6,4,7])
+        let result = sol.oddEvenList(head)?.allElements()
+        XCTAssert(result == [2,3,6,7,1,5,4])
+    }
 }
 
 
