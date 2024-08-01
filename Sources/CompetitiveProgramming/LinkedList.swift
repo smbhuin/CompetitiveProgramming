@@ -55,4 +55,31 @@ public extension Solution {
         slow.next = slow.next?.next
         return dummyHead.next
     }
+    
+    /// LeetCode: 328. Odd Even Linked List.
+    ///
+    /// Solved by keeping a referance of the tail of odd list.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the linked list. Space complexity is O(1), only constant space is used.
+    func oddEvenList(_ head: ListNode?) -> ListNode? {
+        var oddTail = head
+        var prev = head
+        var curr = head?.next
+        var currIdx = 2 // here index starts from 1
+        while let c = curr {
+            if currIdx % 2 != 0 { // even
+                let tn = oddTail?.next
+                oddTail?.next = c
+                prev?.next = c.next
+                c.next = tn
+                oddTail = c
+            }
+            else {
+                prev = c
+            }
+            curr = prev?.next
+            currIdx += 1
+        }
+        return head
+    }
 }
