@@ -99,4 +99,41 @@ public extension Solution {
         }
         return newHead
     }
+    
+    /// LeetCode: 2130. Maximum Twin Sum of a Linked List.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the linked list. Space complexity is O(1), only constant space is used.
+    func pairSum(_ head: ListNode?) -> Int {
+        // Find mid
+        var slow = head
+        var fast = head
+        var prev: ListNode?
+        while fast?.next != nil {
+            fast = fast?.next?.next
+            prev = slow
+            slow = slow?.next
+        }
+        prev?.next = nil // break the linked list into two
+        // Reverse mid to end (second part)
+        var mid: ListNode? = nil
+        var curr = slow
+        while let c = curr {
+            let next = c.next
+            c.next = mid
+            mid = c
+            curr = next
+        }
+        // Iterate both part of the linked list
+        var start = head
+        var maxSum = 0
+        while start != nil && mid != nil {
+            maxSum = max(maxSum, start!.val + mid!.val)
+            start = start!.next
+            mid = mid!.next
+        }
+        return maxSum
+    }
+    
 }
