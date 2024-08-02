@@ -82,4 +82,21 @@ public extension Solution {
         }
         return head
     }
+    
+    /// LeetCode: 206. Reverse Linked List.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the linked list. Space complexity is O(1), only constant space is used.
+    func reverseList(_ head: ListNode?) -> ListNode? {
+        var newHead: ListNode? = nil
+        var curr = head
+        while let c = curr {
+            let next = c.next
+            c.next = newHead
+            newHead = c
+            curr = next
+        }
+        return newHead
+    }
 }
