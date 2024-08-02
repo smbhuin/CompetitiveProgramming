@@ -364,6 +364,25 @@ final class CompetitiveProgrammingTests: XCTestCase {
         let result = sol.reverseList(nil)
         XCTAssert(result == nil)
     }
+    
+    func testPairSum1() throws {
+        let head = ListNode.buildLinkedList([5,4,2,1])
+        let result = sol.pairSum(head)
+        XCTAssert(result == 6)
+    }
+    
+    func testPairSum2() throws {
+        let head = ListNode.buildLinkedList([4,2,2,3])
+        let result = sol.pairSum(head)
+        XCTAssert(result == 7)
+    }
+    
+    func testPairSum3() throws {
+        let head = ListNode.buildLinkedList([1,100000])
+        let result = sol.pairSum(head)
+        XCTAssert(result == 100001)
+    }
+    
 }
 
 
