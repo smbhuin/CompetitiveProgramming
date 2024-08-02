@@ -347,6 +347,23 @@ final class CompetitiveProgrammingTests: XCTestCase {
         let result = sol.oddEvenList(head)?.allElements()
         XCTAssert(result == [2,3,6,7,1,5,4])
     }
+    
+    func testReverseList1() throws {
+        let head = ListNode.buildLinkedList([1,2,3,4,5])
+        let result = sol.reverseList(head)?.allElements()
+        XCTAssert(result == [5,4,3,2,1])
+    }
+    
+    func testReverseList2() throws {
+        let head = ListNode.buildLinkedList([1,2])
+        let result = sol.reverseList(head)?.allElements()
+        XCTAssert(result == [2,1])
+    }
+    
+    func testReverseList3() throws {
+        let result = sol.reverseList(nil)
+        XCTAssert(result == nil)
+    }
 }
 
 
