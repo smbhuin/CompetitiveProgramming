@@ -47,7 +47,7 @@ public extension Solution {
     ///
     /// Solved using tree DFS.
     ///
-    /// - Complexity: Time complexity is O(*n*), where *n* is the number of nodes in the tree. Space complexity is O(1), only constant space is used.
+    /// - Complexity: Time complexity is O(*V+E*), where *V* is the number of vertices and *E* is the number of edges in the tree. Space complexity is O(*V*), where *V* is the number of vertices.
     func maxDepth(_ root: TreeNode?) -> Int {
         guard let root = root else {
             return 0
