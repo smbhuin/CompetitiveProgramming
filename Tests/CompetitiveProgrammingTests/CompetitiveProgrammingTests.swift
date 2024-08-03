@@ -383,6 +383,26 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result == 100001)
     }
     
+    // MARK: - Binary Tree
+    
+    func testMaxDepth1() throws {
+        let root = TreeNode.buildTree([3,9,20,nil,nil,15,7])
+        let result = sol.maxDepth(root)
+        XCTAssert(result == 3)
+    }
+    
+    func testMaxDepth2() throws {
+        let root = TreeNode.buildTree([1,nil,2])
+        let result = sol.maxDepth(root)
+        XCTAssert(result == 2)
+    }
+    
+    func testMaxDepth3() throws {
+        let root = TreeNode.buildTree([])
+        let result = sol.maxDepth(root)
+        XCTAssert(result == 0)
+    }
+    
 }
 
 
