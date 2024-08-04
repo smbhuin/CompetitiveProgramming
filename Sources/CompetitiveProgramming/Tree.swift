@@ -81,4 +81,29 @@ public extension Solution {
         return leafVals1 == leafVals2
     }
     
+    /// LeetCode: 1448. Count Good Nodes in Binary Tree.
+    ///
+    /// Solved using tree DFS.
+    ///
+    /// - Complexity: Time & Space complexity is O(*n*), where *n* is the number of nodes in the tree `root`.
+    func goodNodes(_ root: TreeNode?) -> Int {
+        guard let root = root else { return 0 }
+        var stack: [(node: TreeNode, maxVal: Int)] = []
+        var count = 0
+        stack.append((root,root.val))
+        while !stack.isEmpty {
+            let current = stack.removeLast()
+            if current.maxVal <= current.node.val {
+                count += 1
+            }
+            if let right = current.node.right {
+                stack.append((right, max(current.maxVal, right.val)))
+            }
+            if let left = current.node.left {
+                stack.append((left, max(current.maxVal, left.val)))
+            }
+        }
+        return count
+    }
+    
 }
