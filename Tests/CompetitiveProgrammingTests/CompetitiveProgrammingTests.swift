@@ -403,6 +403,20 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result == 0)
     }
     
+    func testLeafSimilar1() throws {
+        let root1 = TreeNode.buildTree([3,5,1,6,2,9,8,nil,nil,7,4])
+        let root2 = TreeNode.buildTree([3,5,1,6,7,4,2,nil,nil,nil,nil,nil,nil,9,8])
+        let result = sol.leafSimilar(root1,root2)
+        XCTAssert(result == true)
+    }
+    
+    func testLeafSimilar2() throws {
+        let root1 = TreeNode.buildTree([1,2,3])
+        let root2 = TreeNode.buildTree([1,3,2])
+        let result = sol.leafSimilar(root1,root2)
+        XCTAssert(result == false)
+    }
+    
 }
 
 
