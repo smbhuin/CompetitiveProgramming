@@ -57,4 +57,28 @@ public extension Solution {
         return 1 + max(lmd, rmd)
     }
     
+    /// LeetCode: 872. Leaf-Similar Trees.
+    ///
+    /// Solved using tree DFS.
+    ///
+    /// - Complexity: Time & Space complexity is O(*m+n*), where *m* is the number of nodes in the tree `root1` and *n* is the number of nodes in the tree `root2`.
+    func leafSimilar(_ root1: TreeNode?, _ root2: TreeNode?) -> Bool {
+        var leafVals1: [Int] = []
+        var leafVals2: [Int] = []
+        func traverse(_ root: TreeNode?, _ leafVals: inout [Int]) {
+            guard let r = root else { return }
+            if r.left == nil && r.right == nil {
+                leafVals.append(r.val)
+            }
+            traverse(r.left, &leafVals)
+            traverse(r.right, &leafVals)
+        }
+        traverse(root1, &leafVals1)
+        traverse(root2, &leafVals2)
+        if leafVals1.count != leafVals2.count {
+            return false
+        }
+        return leafVals1 == leafVals2
+    }
+    
 }
