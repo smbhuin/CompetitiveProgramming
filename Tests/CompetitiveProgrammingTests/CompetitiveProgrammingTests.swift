@@ -417,6 +417,24 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result == false)
     }
     
+    func testGoodNodes1() throws {
+        let root = TreeNode.buildTree([3,1,4,3,nil,1,5])
+        let result = sol.goodNodes(root)
+        XCTAssert(result == 4)
+    }
+    
+    func testGoodNodes2() throws {
+        let root = TreeNode.buildTree([3,3,nil,4,2])
+        let result = sol.goodNodes(root)
+        XCTAssert(result == 3)
+    }
+    
+    func testGoodNodes3() throws {
+        let root = TreeNode.buildTree([1])
+        let result = sol.goodNodes(root)
+        XCTAssert(result == 1)
+    }
+    
 }
 
 
