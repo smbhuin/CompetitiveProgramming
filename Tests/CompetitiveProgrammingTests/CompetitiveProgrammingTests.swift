@@ -435,6 +435,24 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result == 1)
     }
     
+    func testPathSum1() throws {
+        let root = TreeNode.buildTree([10,5,-3,3,2,nil,11,3,-2,nil,1])
+        let result = sol.pathSum(root, 8)
+        XCTAssert(result == 3)
+    }
+    
+    func testPathSum2() throws {
+        let root = TreeNode.buildTree([5,4,8,11,nil,13,4,7,2,nil,nil,5,1])
+        let result = sol.pathSum(root, 22)
+        XCTAssert(result == 3)
+    }
+    
+    func testPathSum3() throws {
+        let root = TreeNode.buildTree([0,1,1])
+        let result = sol.pathSum(root, 1)
+        XCTAssert(result == 4)
+    }
+    
 }
 
 
