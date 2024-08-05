@@ -106,4 +106,34 @@ public extension Solution {
         return count
     }
     
+    /// LeetCode: 437. Path Sum III.
+    ///
+    /// Solved using tree DFS with prefix sum.
+    ///
+    /// - Complexity: Time complexity is O(*nlogn*) and space complexity is O(*n*), where *n* is the number of nodes in the tree `root`.
+    func pathSum(_ root: TreeNode?, _ targetSum: Int) -> Int {
+        var count = 0
+        func dfs(_ root: TreeNode?, _ prefixSums: inout [Int]) {
+            guard let root = root else { return }
+            let currSum = prefixSums.last! + root.val
+            for sum in prefixSums {
+                if currSum - sum == targetSum {
+                    count += 1
+                }
+            }
+            prefixSums.append(currSum)
+            if let left = root.left {
+                dfs(left, &prefixSums)
+                prefixSums.removeLast()
+            }
+            if let right = root.right {
+                dfs(right, &prefixSums)
+                prefixSums.removeLast()
+            }
+        }
+        var sums: [Int] = [0]
+        dfs(root, &sums)
+        return count
+    }
+    
 }
