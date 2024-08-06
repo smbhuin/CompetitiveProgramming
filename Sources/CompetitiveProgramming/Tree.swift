@@ -136,4 +136,30 @@ public extension Solution {
         return count
     }
     
+    /// LeetCode: 1372. Longest ZigZag Path in a Binary Tree.
+    ///
+    /// Solved using tree DFS.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of nodes in the tree `root`.
+    func longestZigZag(_ root: TreeNode?) -> Int {
+        var maxLength = 0
+        func dfs(_ node: TreeNode?, _ left: Bool, _ count: Int) {
+            guard let node = node else {
+                maxLength = max(maxLength, count - 1)
+                return
+            }
+            if left {
+                dfs(node.left, true, 1)
+                dfs(node.right, false, count + 1)
+            }
+            else {
+                dfs(node.left, true, count + 1)
+                dfs(node.right, false, 1)
+            }
+        }
+        dfs(root, true, 0)
+        dfs(root, false, 0)
+        return maxLength
+    }
+    
 }
