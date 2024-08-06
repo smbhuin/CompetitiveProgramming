@@ -453,6 +453,24 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result == 4)
     }
     
+    func testLongestZigZag1() throws {
+        let root = TreeNode.buildTree([1,nil,1,1,1,nil,nil,1,1,nil,1,nil,nil,nil,1])
+        let result = sol.longestZigZag(root)
+        XCTAssert(result == 3)
+    }
+    
+    func testLongestZigZag2() throws {
+        let root = TreeNode.buildTree([1,1,1,nil,1,nil,nil,1,1,nil,1])
+        let result = sol.longestZigZag(root)
+        XCTAssert(result == 4)
+    }
+    
+    func testLongestZigZag3() throws {
+        let root = TreeNode.buildTree([1])
+        let result = sol.longestZigZag(root)
+        XCTAssert(result == 0)
+    }
+    
 }
 
 
