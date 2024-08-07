@@ -162,4 +162,25 @@ public extension Solution {
         return maxLength
     }
     
+    /// LeetCode: 236. Lowest Common Ancestor of a Binary Tree.
+    ///
+    /// Solved using tree DFS.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of nodes in the tree `root`.
+    func lowestCommonAncestor(_ root: TreeNode?, _ p: TreeNode?, _ q: TreeNode?) -> TreeNode? {
+        guard let root = root else { return nil }
+        if root === p || root === q {
+            return root
+        }
+        let leftNode = lowestCommonAncestor(root.left, p, q)
+        let rightNode = lowestCommonAncestor(root.right, p, q)
+        if leftNode != nil && rightNode != nil {
+            return root
+        }
+        if leftNode != nil {
+            return leftNode
+        }
+        return rightNode
+    }
+    
 }
