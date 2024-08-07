@@ -471,6 +471,33 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result == 0)
     }
     
+    func testLowestCommonAncestor1() throws {
+        let root = TreeNode.buildTree([3,5,1,6,2,0,8,nil,nil,7,4])
+        let p = root?.left
+        let q = root?.right
+        let r = root
+        let result = sol.lowestCommonAncestor(root, p, q)
+        XCTAssert(result?.val == r?.val)
+    }
+    
+    func testLowestCommonAncestor2() throws {
+        let root = TreeNode.buildTree([3,5,1,6,2,0,8,nil,nil,7,4])
+        let p = root?.left
+        let q = root?.left?.right?.right
+        let r = root?.left
+        let result = sol.lowestCommonAncestor(root, p, q)
+        XCTAssert(result?.val == r?.val)
+    }
+    
+    func testLowestCommonAncestor3() throws {
+        let root = TreeNode.buildTree([1,2])
+        let p = root
+        let q = root?.left
+        let r = root
+        let result = sol.lowestCommonAncestor(root, p, q)
+        XCTAssert(result?.val == r?.val)
+    }
+    
 }
 
 
