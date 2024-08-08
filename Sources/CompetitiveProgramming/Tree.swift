@@ -239,4 +239,40 @@ public extension Solution {
         return maxSumLevel
     }
     
+    /// LeetCode: 700. Search in a Binary Search Tree.
+    ///
+    /// Solved using BST search algo.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of nodes in the tree `root`.
+    func searchBST(_ root: TreeNode?, _ val: Int) -> TreeNode? {
+        guard let root = root else { return nil }
+        if root.val == val {
+            return root
+        }
+        if val < root.val {
+            return searchBST(root.left, val)
+        }
+        else {
+            return searchBST(root.right, val)
+        }
+    }
+    
+    /// LeetCode: 700. Search in a Binary Search Tree.
+    ///
+    /// Solved using BST search non-recursive algo.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the number of nodes in the tree `root`. Space complexity is O(1), only constant space is used.
+    func searchBSTII(_ root: TreeNode?, _ val: Int) -> TreeNode? {
+        var node = root
+        while let n = node, n.val != val {
+            if val < n.val {
+                node = n.left
+            }
+            else {
+                node = n.right
+            }
+        }
+        return node
+    }
+    
 }
