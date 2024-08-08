@@ -207,4 +207,36 @@ public extension Solution {
         return result
     }
     
+    /// LeetCode: 1161. Maximum Level Sum of a Binary Tree.
+    ///
+    /// Solved using tree BFS.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of nodes in the tree `root`.
+    func maxLevelSum(_ root: TreeNode?) -> Int {
+        guard let root = root else { return 0 }
+        var queue: [TreeNode] = [root]
+        var maxSum = Int.min
+        var maxSumLevel = 0
+        var currLevel = 1
+        while !queue.isEmpty {
+            var currSum = 0
+            for _ in 0..<queue.count {
+                let curr = queue.removeFirst()
+                currSum += curr.val
+                if let left = curr.left {
+                    queue.append(left)
+                }
+                if let right = curr.right {
+                    queue.append(right)
+                }
+            }
+            if currSum > maxSum {
+                maxSum = currSum
+                maxSumLevel = currLevel
+            }
+            currLevel += 1
+        }
+        return maxSumLevel
+    }
+    
 }
