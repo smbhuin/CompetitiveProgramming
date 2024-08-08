@@ -516,6 +516,24 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result == [])
     }
     
+    func testMaxLevelSum1() throws {
+        let root = TreeNode.buildTree([1,7,0,7,-8,nil,nil])
+        let result = sol.maxLevelSum(root)
+        XCTAssert(result == 2)
+    }
+    
+    func testMaxLevelSum2() throws {
+        let root = TreeNode.buildTree([989,nil,10250,98693,-89388,nil,nil,nil,-32127])
+        let result = sol.maxLevelSum(root)
+        XCTAssert(result == 2)
+    }
+    
+    func testMaxLevelSum3() throws {
+        let root = TreeNode.buildTree([-100,-200,-300,-20,-5,-10,nil])
+        let result = sol.maxLevelSum(root)
+        XCTAssert(result == 3)
+    }
+
 }
 
 
