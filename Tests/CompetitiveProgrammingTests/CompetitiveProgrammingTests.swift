@@ -533,6 +533,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         let result = sol.maxLevelSum(root)
         XCTAssert(result == 3)
     }
+    
+    func testSearchBST1() throws {
+        let root = TreeNode.buildTree([4,2,7,1,3])
+        let result = sol.searchBST(root, 2)
+        XCTAssert(result?.val == 2)
+    }
+    
+    func testSearchBST2() throws {
+        let root = TreeNode.buildTree([4,2,7,1,3])
+        let result = sol.searchBST(root, 5)
+        XCTAssert(result == nil)
+    }
 
 }
 
