@@ -498,6 +498,24 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result?.val == r?.val)
     }
     
+    func testRightSideView1() throws {
+        let root = TreeNode.buildTree([1,2,3,nil,5,nil,4])
+        let result = sol.rightSideView(root)
+        XCTAssert(result == [1,3,4])
+    }
+    
+    func testRightSideView2() throws {
+        let root = TreeNode.buildTree([1,nil,3])
+        let result = sol.rightSideView(root)
+        XCTAssert(result == [1,3])
+    }
+    
+    func testRightSideView3() throws {
+        let root = TreeNode.buildTree([])
+        let result = sol.rightSideView(root)
+        XCTAssert(result == [])
+    }
+    
 }
 
 
