@@ -183,4 +183,28 @@ public extension Solution {
         return rightNode
     }
     
+    /// LeetCode: 199. Binary Tree Right Side View.
+    ///
+    /// Solved using tree BFS.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of nodes in the tree `root`.
+    func rightSideView(_ root: TreeNode?) -> [Int] {
+        guard let root = root else { return [] }
+        var queue: [TreeNode] = [root]
+        var result: [Int] = []
+        while !queue.isEmpty {
+            result.append(queue.last!.val)
+            for _ in 0..<queue.count {
+                let curr = queue.removeFirst()
+                if let left = curr.left {
+                    queue.append(left)
+                }
+                if let right = curr.right {
+                    queue.append(right)
+                }
+            }
+        }
+        return result
+    }
+    
 }
