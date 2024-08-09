@@ -275,4 +275,39 @@ public extension Solution {
         return node
     }
     
+    /// LeetCode: 450. Delete Node in a BST.
+    ///
+    /// Solved using BST search & delete non-recursive algo.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the number of nodes in the tree `root`. Space complexity is O(1), only constant space is used.
+    func deleteNode(_ root: TreeNode?, _ key: Int) -> TreeNode? {
+        func findMinNode(_ root: TreeNode?) -> TreeNode? {
+            var node = root
+            while let left = node?.left {
+                node = left
+            }
+            return node
+        }
+        guard let root = root else { return nil }
+        if key < root.val {
+            root.left = deleteNode(root.left, key)
+        }
+        else if key > root.val {
+            root.right = deleteNode(root.right, key)
+        }
+        else {
+            if root.left == nil { // has right child only
+                return root.right
+            }
+            else if root.right == nil { // has left child only
+                return root.left
+            }
+            else { // has both child
+                root.val = findMinNode(root.right)!.val
+                root.right = deleteNode(root.right, root.val)
+            }
+        }
+        return root
+    }
+    
 }
