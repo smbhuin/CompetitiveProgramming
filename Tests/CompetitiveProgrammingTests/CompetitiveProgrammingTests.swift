@@ -545,6 +545,34 @@ final class CompetitiveProgrammingTests: XCTestCase {
         let result = sol.searchBST(root, 5)
         XCTAssert(result == nil)
     }
+    
+    func testDeleteNode1() throws {
+        let root = TreeNode.buildTree([5,3,6,2,4,nil,7])
+        let expected = TreeNode.buildTree([5,4,6,2,nil,nil,7])
+        let result = sol.deleteNode(root, 3)
+        XCTAssert(TreeNode.isEqual(result, expected))
+    }
+    
+    func testDeleteNode2() throws {
+        let root = TreeNode.buildTree([5,3,6,2,4,nil,7])
+        let expected = TreeNode.buildTree([5,3,6,2,4,nil,7])
+        let result = sol.deleteNode(root, 0)
+        XCTAssert(TreeNode.isEqual(result, expected))
+    }
+    
+    func testDeleteNode3() throws {
+        let root = TreeNode.buildTree([])
+        let expected = TreeNode.buildTree([])
+        let result = sol.deleteNode(root, 0)
+        XCTAssert(TreeNode.isEqual(result, expected))
+    }
+    
+    func testDeleteNode4() throws {
+        let root = TreeNode.buildTree([50,30,70,nil,40,60,80])
+        let expected = TreeNode.buildTree([60,30,70,nil,40,nil,80])
+        let result = sol.deleteNode(root, 50)
+        XCTAssert(TreeNode.isEqual(result, expected))
+    }
 
 }
 
