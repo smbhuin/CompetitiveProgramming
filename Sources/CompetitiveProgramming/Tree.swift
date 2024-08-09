@@ -39,6 +39,23 @@ public extension TreeNode {
         return root
     }
     
+    /// Checks equality of two binary tree.
+    class func isEqual(_ root1: TreeNode?, _ root2: TreeNode?) -> Bool {
+        if root1 == nil && root2 == nil {
+            return true
+        }
+        if root1?.val != root2?.val {
+            return false
+        }
+        if !isEqual(root1?.left, root2?.left) {
+            return false
+        }
+        if !isEqual(root1?.right, root2?.right) {
+            return false
+        }
+        return true
+    }
+    
 }
 
 public extension Solution {
