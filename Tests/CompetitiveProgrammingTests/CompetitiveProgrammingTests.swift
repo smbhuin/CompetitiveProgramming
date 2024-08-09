@@ -573,6 +573,16 @@ final class CompetitiveProgrammingTests: XCTestCase {
         let result = sol.deleteNode(root, 50)
         XCTAssert(TreeNode.isEqual(result, expected))
     }
+    
+    // MARK: - Graph
+    
+    func testCanVisitAllRooms1() throws {
+        XCTAssert(sol.canVisitAllRooms([[1],[2],[3],[]]) == true)
+    }
+    
+    func testCanVisitAllRooms2() throws {
+        XCTAssert(sol.canVisitAllRooms([[1,3],[3,0,1],[2],[0]]) == false)
+    }
 
 }
 
