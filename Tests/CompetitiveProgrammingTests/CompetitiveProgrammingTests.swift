@@ -583,6 +583,20 @@ final class CompetitiveProgrammingTests: XCTestCase {
     func testCanVisitAllRooms2() throws {
         XCTAssert(sol.canVisitAllRooms([[1,3],[3,0,1],[2],[0]]) == false)
     }
+    
+    func testFindCircleNum1() throws {
+        XCTAssert(sol.findCircleNum([[1,1,0],[1,1,0],[0,0,1]]) == 2)
+    }
+    
+    func testFindCircleNum2() throws {
+        XCTAssert(sol.findCircleNum([[1,0,0],[0,1,0],[0,0,1]]) == 3)
+    }
+    
+    func testFindCircleNum3() throws {
+        XCTAssert(sol.findCircleNum([[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]]) == 1)
+    }
+    
+    
 
 }
 
