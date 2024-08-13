@@ -49,4 +49,33 @@ public extension Solution {
         return privinces
     }
     
+    /// LeetCode: 1466. Reorder Routes to Make All Paths Lead to the City Zero.
+    ///
+    /// Solved using graph DFS algo.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*) , where *n* is the number of `cities`.
+    func minReorder(_ n: Int, _ connections: [[Int]]) -> Int {
+        var changedEdges = 0
+        var map: [Int:[Int]] = [:]
+        for connection in connections {
+            map[connection[0], default: []].append(connection[1])
+            map[connection[1], default: []].append(-connection[0])
+        }
+        func dfs(_ city: Int, _ visited: inout Set<Int>) {
+            visited.insert(city)
+            if let neighbors = map[city] {
+                for neighbor in neighbors {
+                    let nextCity = abs(neighbor)
+                    if !visited.contains(nextCity) {
+                        dfs(nextCity, &visited)
+                        if neighbor > 0 { changedEdges += 1 }
+                    }
+                }
+            }
+        }
+        var visited: Set<Int> = []
+        dfs(0, &visited)
+        return changedEdges
+    }
+    
 }
