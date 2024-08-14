@@ -608,6 +608,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.minReorder(3, [[1,0],[2,0]]) == 0)
     }
     
+    func testCalcEquation1() throws {
+        XCTAssert(sol.calcEquation([["a","b"],["b","c"]], [2.0,3.0],[["a","c"], ["b","a"],["a","e"],["a","a"],["x","x"]]) == [6.00000,0.50000,-1.00000,1.00000,-1.00000])
+    }
+    
+    func testCalcEquation2() throws {
+        XCTAssert(sol.calcEquation([["a","b"],["b","c"],["bc","cd"]], [1.5,2.5,5.0], [["a","c"],["c","b"],["bc","cd"],["cd","bc"]]) == [3.75000,0.40000,5.00000,0.20000])
+    }
+    
+    func testCalcEquation3() throws {
+        XCTAssert(sol.calcEquation([["a","b"]], [0.5], [["a","b"],["b","a"],["a","c"],["x","y"]]) == [0.50000,2.00000,-1.00000,-1.00000])
+    }
+    
 
 }
 
