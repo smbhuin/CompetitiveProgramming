@@ -78,4 +78,44 @@ public extension Solution {
         return changedEdges
     }
     
+    /// LeetCode: 399. Evaluate Division.
+    ///
+    /// Solved using graph DFS algo.
+    ///
+    /// - Complexity: Time complexity is O(*Q*(V+E)*) and space complexity is O(*V*) , where *V* is the number of nodes in `equations` graph, *E* is the number of edges in `equations` graph and *Q* is the number of queries..
+    func calcEquation(_ equations: [[String]], _ values: [Double], _ queries: [[String]]) -> [Double] {
+        typealias Node = (var: String, val: Double)
+        var graph: [String:[Node]] = [:]
+        for (eq, val) in zip(equations, values) {
+            graph[eq[0], default: []].append((eq[1], val))
+            graph[eq[1], default: []].append((eq[0], 1.0/val))
+        }
+        func dfs(_ curr: String, _ target: String, _ product: Double, _ visited: inout Set<String>) -> Double {
+            visited.insert(curr)
+            if curr == target {
+                return product
+            }
+            if let nodes = graph[curr] {
+                for node in nodes where !visited.contains(node.var) {
+                    let v = dfs(node.var, target, product * node.val, &visited)
+                    if v != -1.0 {
+                        return v
+                    }
+                }
+            }
+            return -1.0
+        }
+        var result: [Double] = []
+        for query in queries {
+            if let _ = graph[query[0]] {
+                var visited: Set<String> = []
+                result.append(dfs(query[0], query[1], 1.0, &visited))
+            }
+            else {
+                result.append(-1.0)
+            }
+        }
+        return result
+    }
+    
 }
