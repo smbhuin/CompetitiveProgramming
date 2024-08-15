@@ -118,4 +118,36 @@ public extension Solution {
         return result
     }
     
+    /// LeetCode: 1926. Nearest Exit from Entrance in Maze.
+    ///
+    /// Solved using graph BFS algo.
+    ///
+    /// - Complexity: Time complexity is O(*m*n*) and space complexity is O(*m*n*) , where *m* is the number of rows in `maze`, *n* is the number of columns in `maze`.
+    func nearestExit(_ maze: [[Character]], _ entrance: [Int]) -> Int {
+        let row = maze.count
+        let col = maze[0].count
+        let dirs: [[Int]] = [[0,-1],[-1,0],[0,1],[1,0]]
+        var queue: [[Int]] = [[entrance[0],entrance[1],0]] // [row, column, step]
+        var maze = maze
+        maze[entrance[0]][entrance[1]] = "+"
+        while !queue.isEmpty {
+            let curr = queue.removeFirst()
+            for dir in dirs {
+                let r = curr[0] + dir[0]
+                let c = curr[1] + dir[1]
+                let s = curr[2]
+                if r >= 0 && r < row && c >= 0 && c < col && maze[r][c] == "." {
+                    if r == 0 || r == row - 1 || c == 0 || c == col - 1 { // if on the edge
+                        return s + 1
+                    }
+                    else {
+                        maze[r][c] = "+"
+                        queue.append([r,c,s + 1])
+                    }
+                }
+            }
+        }
+        return -1
+    }
+    
 }
