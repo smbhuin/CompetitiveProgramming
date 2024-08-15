@@ -620,7 +620,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.calcEquation([["a","b"]], [0.5], [["a","b"],["b","a"],["a","c"],["x","y"]]) == [0.50000,2.00000,-1.00000,-1.00000])
     }
     
-
+    func testNearestExit1() throws {
+        XCTAssert(sol.nearestExit([["+","+",".","+"],[".",".",".","+"],["+","+","+","."]], [1,2]) == 1)
+    }
+    
+    func testNearestExit2() throws {
+        XCTAssert(sol.nearestExit([["+","+","+"],[".",".","."],["+","+","+"]], [1,0]) == 2)
+    }
+    
+    func testNearestExit3() throws {
+        XCTAssert(sol.nearestExit([[".","+"]], [0,0]) == -1)
+    }
+    
 }
 
 
