@@ -150,4 +150,50 @@ public extension Solution {
         return -1
     }
     
+    /// LeetCode: 994. Rotting Oranges.
+    ///
+    /// Solved using graph BFS algo.
+    ///
+    /// - Complexity: Time complexity is O(*m*n*) and space complexity is O(*m*n*) , where *m* is the number of rows in `grid`, *n* is the number of columns in `grid`.
+    func orangesRotting(_ grid: [[Int]]) -> Int {
+        var grid = grid
+        let m = grid.count
+        let n = grid[0].count
+        let dirs: [[Int]] = [[0,-1],[-1,0],[0,1],[1,0]]
+        var queue: [[Int]] = []
+        var fresh = 0
+        for i in 0..<m {
+            for j in 0..<n {
+                if grid[i][j] == 2 {
+                    queue.append([i,j])
+                }
+                else if grid[i][j] == 1 {
+                    fresh += 1
+                }
+            }
+        }
+        var minutes = 0
+        while !queue.isEmpty {
+            for _ in 0..<queue.count {
+                let curr = queue.removeFirst()
+                for dir in dirs {
+                    let r = curr[0] + dir[0]
+                    let c = curr[1] + dir[1]
+                    if r >= 0 && r < m && c >= 0 && c < n && grid[r][c] == 1 {
+                        grid[r][c] = 2
+                        queue.append([r,c])
+                    }
+                }
+            }
+            if !queue.isEmpty {
+                fresh -= queue.count
+                minutes += 1
+            }
+        }
+        if fresh == 0 { // is all the oranges are rotten?
+            return minutes
+        }
+        return -1
+    }
+    
 }
