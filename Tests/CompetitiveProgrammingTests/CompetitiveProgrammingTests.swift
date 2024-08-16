@@ -632,6 +632,26 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.nearestExit([[".","+"]], [0,0]) == -1)
     }
     
+    func testOrangesRotting1() throws {
+        XCTAssert(sol.orangesRotting([[2,1,1],[1,1,0],[0,1,1]]) == 4)
+    }
+    
+    func testOrangesRotting2() throws {
+        XCTAssert(sol.orangesRotting([[2,1,1],[0,1,1],[1,0,1]]) == -1)
+    }
+    
+    func testOrangesRotting3() throws {
+        XCTAssert(sol.orangesRotting([[0,2]]) == 0)
+    }
+    
+    func testOrangesRotting4() throws {
+        XCTAssert(sol.orangesRotting([[0]]) == 0)
+    }
+    
+    func testOrangesRotting5() throws {
+        XCTAssert(sol.orangesRotting([[2,1,1],[1,1,1],[0,1,2]]) == 2)
+    }
+    
 }
 
 
