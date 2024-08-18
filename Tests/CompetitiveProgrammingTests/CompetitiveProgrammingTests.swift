@@ -652,6 +652,20 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.orangesRotting([[2,1,1],[1,1,1],[0,1,2]]) == 2)
     }
     
+    // MARK: - Heap
+    
+    func testFindKthLargest1() throws {
+        XCTAssert(sol.findKthLargest([3,2,1,5,6,4], 2) == 5)
+    }
+    
+    func testFindKthLargest2() throws {
+        XCTAssert(sol.findKthLargest([3,2,3,1,2,4,5,5,6], 4) == 4)
+    }
+    
+    func testFindKthLargest3() throws {
+        XCTAssert(sol.findKthLargest([-1,2,0], 3) == -1)
+    }
+    
 }
 
 
