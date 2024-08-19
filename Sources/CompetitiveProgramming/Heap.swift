@@ -2,7 +2,7 @@
 public extension Solution {
     
     /// Utility function to balance heap after removing an element.
-    func maxHeapShiftDown(_ nums: inout [Int]) {
+    func heapShiftDown(_ nums: inout [Int], _ condition: (Int, Int) -> Bool) {
         let len = nums.count
         guard len > 0 else { return }
         var currentIndex = 0
@@ -11,13 +11,13 @@ public extension Solution {
             let rightIndex = 2 * currentIndex + 2
             if rightIndex < len {
                 var maxNumIndex = 0
-                if nums[leftIndex] > nums[rightIndex] {
+                if condition(nums[leftIndex], nums[rightIndex]) {
                     maxNumIndex = leftIndex
                 }
                 else {
                     maxNumIndex = rightIndex
                 }
-                if nums[maxNumIndex] > nums[currentIndex] {
+                if condition(nums[maxNumIndex], nums[currentIndex]) {
                     nums.swapAt(currentIndex, maxNumIndex)
                     currentIndex = maxNumIndex
                 }
@@ -26,7 +26,7 @@ public extension Solution {
                 }
             }
             else if leftIndex < len {
-                if nums[leftIndex] > nums[currentIndex] {
+                if condition(nums[leftIndex], nums[currentIndex]) {
                     nums.swapAt(currentIndex, leftIndex)
                     currentIndex = leftIndex
                 }
@@ -41,12 +41,12 @@ public extension Solution {
     }
     
     /// Utility function to balance heap after inserting an element.
-    func maxHeapShiftUp(_ nums: inout [Int]) {
+    func heapShiftUp(_ nums: inout [Int], _ condition: (Int, Int) -> Bool) {
         var currentIndex = nums.count - 1
         while true {
             let parentIndex = (currentIndex - 1) / 2
             if parentIndex >= 0 {
-                if nums[currentIndex] > nums[parentIndex] {
+                if condition(nums[currentIndex], nums[parentIndex]) {
                     nums.swapAt(currentIndex, parentIndex)
                     currentIndex = parentIndex
                 }
@@ -74,13 +74,13 @@ public extension Solution {
         }
         for num in nums {
             arr.append(num)
-            maxHeapShiftUp(&arr)
+            heapShiftUp(&arr, >)
         }
         while k > 0 {
             result = arr[0]
             arr.swapAt(0, arr.count-1)
             arr.removeLast()
-            maxHeapShiftDown(&arr)
+            heapShiftDown(&arr, >)
             k -= 1
         }
         return result
