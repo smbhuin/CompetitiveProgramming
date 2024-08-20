@@ -666,6 +666,17 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.findKthLargest([-1,2,0], 3) == -1)
     }
     
+    func testSmallestInfiniteSet1() throws {
+        let sis = SmallestInfiniteSet()
+        sis.addBack(2)
+        XCTAssert(sis.popSmallest() == 1)
+        XCTAssert(sis.popSmallest() == 2)
+        XCTAssert(sis.popSmallest() == 3)
+        sis.addBack(1)
+        XCTAssert(sis.popSmallest() == 1)
+        XCTAssert(sis.popSmallest() == 4)
+        XCTAssert(sis.popSmallest() == 5)
+    }
 }
 
 
