@@ -1,9 +1,28 @@
 
-public extension Solution {
+public class Heap<Element : Comparable> : CustomStringConvertible, Equatable  {
+    
+    private var elements: [Element]
+    private var condition: (Element, Element) -> Bool
+    
+    /// If condition is greater than (>) then it's a Max Heap other wise it's a Min Heap
+    public init(_ condition: @escaping (Element, Element) -> Bool = { $0 > $1 }) {
+        self.elements = []
+        self.condition = condition
+    }
+    
+    public var peek: Element? {
+        elements.first
+    }
+    
+    var count: Int { elements.count }
+    
+    public var isEmpty: Bool {
+        elements.isEmpty
+    }
     
     /// Utility function to balance heap after removing an element.
-    func heapShiftDown(_ nums: inout [Int], _ condition: (Int, Int) -> Bool) {
-        let len = nums.count
+    func shiftDown() {
+        let len = elements.count
         guard len > 0 else { return }
         var currentIndex = 0
         while true {
@@ -11,14 +30,14 @@ public extension Solution {
             let rightIndex = 2 * currentIndex + 2
             if rightIndex < len {
                 var maxNumIndex = 0
-                if condition(nums[leftIndex], nums[rightIndex]) {
+                if condition(elements[leftIndex], elements[rightIndex]) {
                     maxNumIndex = leftIndex
                 }
                 else {
                     maxNumIndex = rightIndex
                 }
-                if condition(nums[maxNumIndex], nums[currentIndex]) {
-                    nums.swapAt(currentIndex, maxNumIndex)
+                if condition(elements[maxNumIndex], elements[currentIndex]) {
+                    elements.swapAt(currentIndex, maxNumIndex)
                     currentIndex = maxNumIndex
                 }
                 else {
@@ -26,8 +45,8 @@ public extension Solution {
                 }
             }
             else if leftIndex < len {
-                if condition(nums[leftIndex], nums[currentIndex]) {
-                    nums.swapAt(currentIndex, leftIndex)
+                if condition(elements[leftIndex], elements[currentIndex]) {
+                    elements.swapAt(currentIndex, leftIndex)
                     currentIndex = leftIndex
                 }
                 else {
@@ -41,13 +60,13 @@ public extension Solution {
     }
     
     /// Utility function to balance heap after inserting an element.
-    func heapShiftUp(_ nums: inout [Int], _ condition: (Int, Int) -> Bool) {
-        var currentIndex = nums.count - 1
+    func shiftUp() {
+        var currentIndex = elements.count - 1
         while true {
             let parentIndex = (currentIndex - 1) / 2
             if parentIndex >= 0 {
-                if condition(nums[currentIndex], nums[parentIndex]) {
-                    nums.swapAt(currentIndex, parentIndex)
+                if condition(elements[currentIndex], elements[parentIndex]) {
+                    elements.swapAt(currentIndex, parentIndex)
                     currentIndex = parentIndex
                 }
                 else {
@@ -59,6 +78,43 @@ public extension Solution {
             }
         }
     }
+    
+    /// - Complexity: Time complexity is  O(logn), where n is the number of elements in array. Space complexity is O(1), only constant space is used.
+    public func insert(_ item: Element) {
+        self.elements.append(item)
+        self.shiftUp()
+    }
+    
+    /// Removes minimum element in case of min heap or maximum element in case of max heap.
+    /// - Complexity: Time complexity is O(logn), where n is the number of elements in array. Space complexity is O(1), only constant space is used.
+    @discardableResult
+    public func remove() -> Element? {
+        if let first = elements.first {
+            let lastIndex = elements.count - 1
+            elements[0] = elements[lastIndex]
+            elements.removeLast()
+            shiftDown()
+            return first
+        }
+        return nil
+    }
+    
+    public static func == (lhs: Heap<Element>, rhs: Heap<Element>) -> Bool {
+        return lhs.elements == rhs.elements
+    }
+    
+    public static func != (lhs: Heap<Element>, rhs: Heap<Element>) -> Bool {
+        !(lhs == rhs)
+    }
+    
+    public var description: String {
+        return "[" + elements.map({String(describing: $0)}).joined(separator: ", ") + "]"
+    }
+}
+
+public extension Solution {
+    
+    
     
     /// LeetCode: 215. Kth Largest Element in an Array.
     ///
