@@ -139,3 +139,37 @@ public extension Solution {
     }
     
 }
+
+/// LeetCode: 2336. Smallest Number in Infinite Set.
+///
+/// Solved using heap.
+class SmallestInfiniteSet {
+    var addedNums: Set<Int>
+    let heap: Heap<Int> // Min heap
+    var currentSmallest = 1
+    
+    init() {
+        addedNums = []
+        heap = Heap(<) // Min heap
+    }
+    
+    /// - Complexity: Time complexity is O(*logn*) and space complexity is O(n), where n is the number of the numbers that is added back.
+    func popSmallest() -> Int {
+        if let top = heap.remove() {
+            addedNums.remove(top)
+            return top
+        }
+        defer { currentSmallest += 1 }
+        return currentSmallest
+    }
+    
+    /// - Complexity: Time complexity is O(*logn*) and space complexity is O(n), where n is the number of the numbers that is added back.
+    func addBack(_ num: Int) {
+        if num < currentSmallest {
+            if !addedNums.contains(num) {
+                addedNums.insert(num)
+                heap.insert(num)
+            }
+        }
+    }
+}
