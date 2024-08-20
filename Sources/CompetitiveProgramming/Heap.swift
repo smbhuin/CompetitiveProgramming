@@ -122,21 +122,17 @@ public extension Solution {
     ///
     /// - Complexity: Time complexity is O(*nlogn*), where n is the size of the array `nums`. Space complexity is O(1), only constant space is used.
     func findKthLargest(_ nums: [Int], _ k: Int) -> Int {
-        var arr: [Int] = []
+        let heap: Heap<Int> = Heap(>) // Max Heap
         var k = k
         var result = 0
         guard nums.count >= k else {
             return -1
         }
         for num in nums {
-            arr.append(num)
-            heapShiftUp(&arr, >)
+            heap.insert(num)
         }
         while k > 0 {
-            result = arr[0]
-            arr.swapAt(0, arr.count-1)
-            arr.removeLast()
-            heapShiftDown(&arr, >)
+            result = heap.remove() ?? 0
             k -= 1
         }
         return result
