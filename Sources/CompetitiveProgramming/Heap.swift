@@ -114,13 +114,11 @@ public class Heap<Element : Comparable> : CustomStringConvertible, Equatable  {
 
 public extension Solution {
     
-    
-    
     /// LeetCode: 215. Kth Largest Element in an Array.
     ///
     /// Solved using heap.
     ///
-    /// - Complexity: Time complexity is O(*nlogn*), where n is the size of the array `nums`. Space complexity is O(1), only constant space is used.
+    /// - Complexity: Time complexity is O(*nlogn*) and space complexity is O(*n*), where n is the size of the array `nums`.
     func findKthLargest(_ nums: [Int], _ k: Int) -> Int {
         let heap: Heap<Int> = Heap(>) // Max Heap
         var k = k
