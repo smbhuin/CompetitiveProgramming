@@ -136,6 +136,40 @@ public extension Solution {
         return result
     }
     
+    /// LeetCode: 2542. Maximum Subsequence Score
+    ///
+    /// Solved using min heap.
+    ///
+    /// - Complexity: Time complexity is O(*nlogn*) and space complexity is O(*n*), where n is the size of the array `nums1`.
+    func maxScore(_ nums1: [Int], _ nums2: [Int], _ k: Int) -> Int {
+        struct Pair: Comparable {
+            var first: Int
+            var second: Int
+            static func <(lhs: Pair, rhs: Pair) -> Bool {
+                return lhs.second < rhs.second
+            }
+        }
+        let n = nums1.count
+        var pairs: [Pair] = []
+        for i in 0..<n {
+            pairs.append(Pair(first: nums1[i], second: nums2[i]))
+        }
+        pairs.sort(by: >)
+        let heap = Heap<Int>(<) // Min Heap
+        var sum = 0
+        for i in 0..<k {
+            sum += pairs[i].first
+            heap.insert(pairs[i].first)
+        }
+        var result = sum * pairs[k-1].second
+        for i in k..<n {
+            sum += pairs[i].first - heap.remove()!
+            heap.insert(pairs[i].first)
+            result = max(result, sum * pairs[i].second)
+        }
+        return result
+    }
+    
 }
 
 /// LeetCode: 2336. Smallest Number in Infinite Set.
