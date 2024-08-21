@@ -677,6 +677,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sis.popSmallest() == 4)
         XCTAssert(sis.popSmallest() == 5)
     }
+    
+    func testMaxScore1() throws {
+        XCTAssert(sol.maxScore([1,3,3,2], [2,1,3,4], 3) == 12)
+    }
+    
+    func testMaxScore2() throws {
+        XCTAssert(sol.maxScore([4,2,3,1,1], [7,5,10,9,6], 1) == 30)
+    }
+    
+    func testMaxScore3() throws {
+        XCTAssert(sol.maxScore([2,1,14,12], [11,7,13,6], 3) == 168)
+    }
 }
 
 
