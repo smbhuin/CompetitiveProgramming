@@ -689,6 +689,15 @@ final class CompetitiveProgrammingTests: XCTestCase {
     func testMaxScore3() throws {
         XCTAssert(sol.maxScore([2,1,14,12], [11,7,13,6], 3) == 168)
     }
+    
+    func testTotalCost1() throws {
+        XCTAssert(sol.totalCost([17,12,10,2,7,2,11,20,8], 3, 4) == 11)
+    }
+    
+    func testTotalCost2() throws {
+        XCTAssert(sol.totalCost([1,2,4,1], 3, 3) == 4)
+    }
+    
 }
 
 
