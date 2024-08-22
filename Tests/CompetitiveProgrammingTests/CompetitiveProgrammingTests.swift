@@ -698,6 +698,20 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.totalCost([1,2,4,1], 3, 3) == 4)
     }
     
+    // MARK: - Binary Search
+    
+    func testSuccessfulPairs1() throws {
+        XCTAssert(sol.successfulPairs([5,1,3], [1,2,3,4,5], 7) == [4,0,3])
+    }
+    
+    func testSuccessfulPairs2() throws {
+        XCTAssert(sol.successfulPairs([3,1,2], [8,5,8], 16) == [2,0,2])
+    }
+    
+    func testSuccessfulPairs3() throws {
+        XCTAssert(sol.successfulPairs([15,8,19], [38,36,23], 328) == [3,0,3])
+    }
+    
 }
 
 
