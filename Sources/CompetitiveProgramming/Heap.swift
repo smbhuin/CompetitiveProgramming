@@ -170,6 +170,40 @@ public extension Solution {
         return result
     }
     
+    /// LeetCode: 2462. Total Cost to Hire K Workers.
+    ///
+    /// Solved using two min heap.
+    ///
+    /// - Complexity: Time complexity is O(*nlogn*) and space complexity is O(*n*), where *n* is the size of the array `costs`.
+    func totalCost(_ costs: [Int], _ k: Int, _ candidates: Int) -> Int {
+        var i = 0, j = costs.count - 1, cost = 0
+        var k = k
+        let heap1 = Heap<Int>(<)
+        let heap2 = Heap<Int>(<)
+        while k > 0 {
+            while heap1.count < candidates && i <= j {
+                heap1.insert(costs[i])
+                i += 1
+            }
+            while heap2.count < candidates && j >= i {
+                heap2.insert(costs[j])
+                j -= 1
+            }
+            let heap1Min = heap1.peek ?? Int.max
+            let heap2Min = heap2.peek ?? Int.max
+            if heap1Min <= heap2Min {
+                cost += heap1Min
+                heap1.remove()
+            }
+            else {
+                cost += heap2Min
+                heap2.remove()
+            }
+            k -= 1
+        }
+        return cost
+    }
+    
 }
 
 /// LeetCode: 2336. Smallest Number in Infinite Set.
