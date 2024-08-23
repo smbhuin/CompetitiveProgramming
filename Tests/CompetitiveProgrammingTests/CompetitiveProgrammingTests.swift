@@ -712,6 +712,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.successfulPairs([15,8,19], [38,36,23], 328) == [3,0,3])
     }
     
+    func testFindPeakElement1() throws {
+        XCTAssert(sol.findPeakElement([1,2,3,1]) == 2)
+    }
+    
+    func testFindPeakElement2() throws {
+        XCTAssert([2, 5].contains(sol.findPeakElement([1,2,1,3,5,6,4])))
+    }
+    
+    func testFindPeakElement3() throws {
+        XCTAssert([1, 3, 5].contains(sol.findPeakElement([1,2,1,2,1,2,1])))
+    }
+    
 }
 
 
