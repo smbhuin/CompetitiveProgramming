@@ -27,4 +27,25 @@ public extension Solution {
         }
         return pairs
     }
+    
+    /// LeetCode: 162. Find Peak Element
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*logn*), where *n* is the length of `nums` array. Space complexity is O(1), only constant space is used.
+    func findPeakElement(_ nums: [Int]) -> Int {
+        let len = nums.count
+        var start = 0
+        var end = len - 1
+        while start < end  {
+            let mid = (start + end) / 2
+            if nums[mid] < nums[mid+1] {
+                start = mid + 1
+            }
+            else {
+                end = mid
+            }
+        }
+        return start
+    }
 }
