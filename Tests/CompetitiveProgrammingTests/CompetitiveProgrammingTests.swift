@@ -736,6 +736,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.minEatingSpeed([30,11,23,4,20], 6) == 23)
     }
     
+    func testLetterCombinations1() throws {
+        XCTAssert(sol.letterCombinations("23") == ["ad","ae","af","bd","be","bf","cd","ce","cf"])
+    }
+    
+    func testLetterCombinations2() throws {
+        XCTAssert(sol.letterCombinations("") == [])
+    }
+    
+    func testLetterCombinations3() throws {
+        XCTAssert(sol.letterCombinations("2") == ["a","b","c"])
+    }
+    
 }
 
 
