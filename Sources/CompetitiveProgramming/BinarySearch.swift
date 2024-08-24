@@ -48,4 +48,29 @@ public extension Solution {
         }
         return start
     }
+    
+    /// LeetCode: 875. Koko Eating Bananas.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*nlogn*), where *n* is the length of the `piles` array. Space complexity is O(1), only constant space is used.
+    func minEatingSpeed(_ piles: [Int], _ h: Int) -> Int {
+        let maxPile = piles.max()! // O(n)
+        var start = 1
+        var end = maxPile
+        var speed = maxPile
+        while start <= end { // O(n * log(maxPile))
+            let k = (start + end) / 2
+            let x = Int(piles.reduce(0.0, { $0 + ceil(Double($1)/Double(k)) })) // O(n)
+            if x <= h {
+                speed = min(speed, k)
+                end = k - 1
+            }
+            else {
+                start = k + 1
+            }
+        }
+        return speed
+    }
+    
 }
