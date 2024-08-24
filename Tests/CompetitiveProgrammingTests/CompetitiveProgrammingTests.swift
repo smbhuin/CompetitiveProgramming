@@ -724,6 +724,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert([1, 3, 5].contains(sol.findPeakElement([1,2,1,2,1,2,1])))
     }
     
+    func testMinEatingSpeed1() throws {
+        XCTAssert(sol.minEatingSpeed([3,6,7,11], 8) == 4)
+    }
+    
+    func testMinEatingSpeed2() throws {
+        XCTAssert(sol.minEatingSpeed([30,11,23,4,20], 5) == 30)
+    }
+    
+    func testMinEatingSpeed3() throws {
+        XCTAssert(sol.minEatingSpeed([30,11,23,4,20], 6) == 23)
+    }
+    
 }
 
 
