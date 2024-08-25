@@ -748,6 +748,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.letterCombinations("2") == ["a","b","c"])
     }
     
+    func testCombinationSum31() throws {
+        XCTAssert(sol.combinationSum3(3, 7) == [[1,2,4]])
+    }
+    
+    func testCombinationSum32() throws {
+        XCTAssert(sol.combinationSum3(3, 9) == [[1,2,6],[1,3,5],[2,3,4]])
+    }
+    
+    func testCombinationSum33() throws {
+        XCTAssert(sol.combinationSum3(4, 1) == [])
+    }
+    
 }
 
 
