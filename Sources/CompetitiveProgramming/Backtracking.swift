@@ -37,19 +37,23 @@ public extension Solution {
             "8":["t","u","v"],
             "9":["w","x","y","z"],
         ]
-        func dfs(_ index: Int, _ letter: String) -> [String] { // SC: O(n) for the recursion stack
-            guard index < len else { return [letter] }
+        var result: [String] = []
+        func backtrack(_ index: Int, _ combination: inout String) { // SC: O(n) for the recursion stack
+            guard index < len else {
+                result.append(String(combination))
+                return
+            }
             let digit = digits[index]
             let letters = dict[digit]!
-            var res: [String] = []
             for l in letters {
-                for r in dfs(index + 1, l) {
-                    res.append(letter + r)
-                }
+                combination.append(l)
+                backtrack(index + 1, &combination)
+                combination.removeLast()
             }
-            return res
         }
-        return dfs(0, "")
+        var combination = ""
+        backtrack(0, &combination)
+        return result
     }
 
 }
