@@ -1,3 +1,20 @@
+// Backtracking Template
+/*
+    var result = []
+    func backtrack(STATE) {
+        if isValidState(STATE) {
+            result.append(CopyOf(STATE))
+            return
+        }
+        for candidate in NextCandidatesOf(STATE) {
+            STATE.append(candidate)
+            backtrack(STATE)
+            STATE.removeLast()
+        }
+    }
+    var STATE = []
+    backtrack(STATE)
+*/
 
 public extension Solution {
     
