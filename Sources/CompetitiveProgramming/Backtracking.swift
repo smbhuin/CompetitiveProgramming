@@ -55,5 +55,32 @@ public extension Solution {
         backtrack(0, &combination)
         return result
     }
+    
+    /// LeetCode: 216. Combination Sum III.
+    ///
+    /// Solved using backtracking DFS.
+    ///
+    /// - Complexity: If we have to select *k* numbers from *9* numbers, the total number of combinations will be C(9, k) = 9! / (k! (9 - k)!). So the
+    /// time complexity is O(*9! / (k! (9 - k)!)*) and space complexity is O(*k*), where *k* is the count of numbers allowed to select for each combinations.
+    func combinationSum3(_ k: Int, _ n: Int) -> [[Int]] {
+        var result: [[Int]] = []
+        func backtrack(_ num: Int, _ combination: inout [Int], _ sum: Int) {
+            if combination.count == k {
+                if sum == n {
+                    result.append(Array(combination))
+                }
+                return
+            }
+            for i in (num + 1)..<10 {
+                if sum + i > n { break }
+                combination.append(i)
+                backtrack(i, &combination, sum + i)
+                combination.removeLast()
+            }
+        }
+        var combination: [Int] = []
+        backtrack(0, &combination, 0)
+        return result
+    }
 
 }
