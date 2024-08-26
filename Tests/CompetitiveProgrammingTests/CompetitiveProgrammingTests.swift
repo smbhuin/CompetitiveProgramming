@@ -760,6 +760,21 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.combinationSum3(4, 1) == [])
     }
     
+    // MARK: - Dynamic Programming
+    
+    func testTribonacci1() throws {
+        XCTAssert(sol.tribonacciII(4) == 4)
+    }
+    
+    func testTribonacci2() throws {
+        XCTAssert(sol.tribonacciII(25) == 1389537)
+    }
+    
+    func testTribonacci3() throws {
+        XCTAssert(sol.tribonacci(4) == 4)
+    }
+    
+    
 }
 
 
