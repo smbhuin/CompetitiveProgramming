@@ -1,9 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Soumen Bhuin on 26/08/24.
-//
 
 public extension Solution {
     
