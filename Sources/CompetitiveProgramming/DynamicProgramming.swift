@@ -37,5 +37,25 @@ public extension Solution {
         return tribonacciMemo[n]
     }
     
+    /// LeetCode: 746. Min Cost Climbing Stairs.
+    ///
+    /// Solved using dynamic programming (Memoization).
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of steps on a staircase.
+    func minCostClimbingStairs(_ cost: [Int]) -> Int {
+        let n = cost.count
+        var dp = Array(repeating: 0, count: n)
+        func findCost(_ index: Int) -> Int {
+            if index >= n {
+                return 0
+            }
+            if dp[index] > 0 {
+                return dp[index]
+            }
+            dp[index] = cost[index] + min(findCost(index + 1), findCost(index + 2))
+            return dp[index]
+        }
+        return min(findCost(0), findCost(1))
+    }
     
 }
