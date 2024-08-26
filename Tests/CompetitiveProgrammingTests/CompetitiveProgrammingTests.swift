@@ -774,6 +774,13 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.tribonacci(4) == 4)
     }
     
+    func testMinCostClimbingStairs1() throws {
+        XCTAssert(sol.minCostClimbingStairs([10,15,20]) == 15)
+    }
+    
+    func testMinCostClimbingStairs2() throws {
+        XCTAssert(sol.minCostClimbingStairs([1,100,1,1,1,100,1,1,100,1]) == 6)
+    }
     
 }
 
