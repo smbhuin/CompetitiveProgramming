@@ -65,6 +65,20 @@ public extension Solution {
         return max(dp[0],dp[1])
     }
     
-    
+    /// LeetCode: 790. Domino and Tromino Tiling.
+    ///
+    /// Solved using dynamic programming (Tabulation).
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of columns after tiling.
+    func numTilings(_ n: Int) -> Int {
+        var dp = Array(repeating: 0, count: n + 3)
+        dp[0] = 1
+        dp[1] = 1
+        dp[2] = 2
+        for i in stride(from: 3, through: n, by: 1) {
+            dp[i] = (dp[i-1] * 2 + dp[i-3]) % 1000000007
+        }
+        return dp[n]
+    }
         
 }
