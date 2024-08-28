@@ -21,4 +21,26 @@ public extension Solution {
         return money
     }
     
+    /// LeetCode: 790. Domino and Tromino Tiling.
+    ///
+    /// Solved using recursion.
+    ///
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(*n*), where *n* is the number of houses.
+    func numTilings_recursion(_ n: Int) -> Int {
+        var ways = 0
+        func solve(_ column: Int) {
+            if column >= n {
+                if column == n { ways += 1 }
+                return
+            }
+            solve(column + 1)
+            solve(column + 2)
+            for i in stride(from: 3, through: n, by: 1) {
+                solve(column + i)
+                solve(column + i)
+            }
+        }
+        solve(0)
+        return ways
+    }
 }
