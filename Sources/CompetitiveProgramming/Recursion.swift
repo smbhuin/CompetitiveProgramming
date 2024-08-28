@@ -25,7 +25,7 @@ public extension Solution {
     ///
     /// Solved using recursion.
     ///
-    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(*n*), where *n* is the number of houses.
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(*n*), where *n* is the number of columns after tiling.
     func numTilings_recursion(_ n: Int) -> Int {
         var ways = 0
         func solve(_ column: Int) {
