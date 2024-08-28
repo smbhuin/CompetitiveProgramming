@@ -782,6 +782,27 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.minCostClimbingStairs([1,100,1,1,1,100,1,1,100,1]) == 6)
     }
     
+    func testRob1() throws {
+        XCTAssert(sol.rob([1,2,3,1]) == 4)
+    }
+    
+    func testRob2() throws {
+        XCTAssert(sol.rob([2,7,9,3,1]) == 12)
+    }
+    
+    func testRob3() throws {
+        XCTAssert(sol.rob([2,1,1,2]) == 4)
+    }
+    
+    func testRob4() throws {
+        XCTAssert(sol.rob([1,2]) == 2)
+    }
+    
+    func testRob5() throws {
+        XCTAssert(sol.rob([1,3,1]) == 3)
+    }
+    
+    
 }
 
 
