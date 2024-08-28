@@ -802,7 +802,33 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.rob([1,3,1]) == 3)
     }
     
+    func testNumTilings1() throws {
+        XCTAssert(sol.numTilings(3) == 5)
+    }
     
+    func testNumTilings2() throws {
+        XCTAssert(sol.numTilings(1) == 1)
+    }
+    
+    func testNumTilings3() throws {
+        XCTAssert(sol.numTilings(4) == 11)
+    }
+    
+    func testNumTilings4() throws {
+        XCTAssert(sol.numTilings(5) == 24)
+    }
+    
+    func testNumTilings5() throws {
+        XCTAssert(sol.numTilings(6) == 53)
+    }
+    
+    func testNumTilings6() throws {
+        XCTAssert(sol.numTilings(7) == 117)
+    }
+    
+    func testNumTilings7() throws {
+        XCTAssert(sol.numTilings(8) == 258)
+    }
 }
 
 
