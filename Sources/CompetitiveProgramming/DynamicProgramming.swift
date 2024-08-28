@@ -52,4 +52,19 @@ public extension Solution {
         return min(findCost(0), findCost(1))
     }
     
+    /// LeetCode: 7198. House Robber.
+    ///
+    /// Solved using dynamic programming (Tabulation).
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of houses.
+    func rob(_ nums: [Int]) -> Int {
+        var dp = Array(repeating:0, count:nums.count + 3)
+        for i in stride(from: nums.count-1, through: 0, by: -1) {
+            dp[i] = max(nums[i] + dp[i+2], nums[i] + dp[i+3])
+        }
+        return max(dp[0],dp[1])
+    }
+    
+    
+        
 }
