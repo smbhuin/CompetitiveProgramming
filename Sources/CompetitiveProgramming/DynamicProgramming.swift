@@ -80,5 +80,29 @@ public extension Solution {
         }
         return dp[n]
     }
+    
+    /// LeetCode: 62. Unique Paths.
+    ///
+    /// Solved using dynamic programming (Memoization).
+    ///
+    /// - Complexity: Time complexity is O(*m*n*) and space complexity is O(*m*n*), where *m* is the number of rows and *n* is the number of columns.
+    func uniquePaths(_ m: Int, _ n: Int) -> Int {
+        var dp = Array(repeating:Array(repeating:0, count:n), count:m)
+        func move(_ r: Int, _ c: Int) -> Int {
+            if r >= m || c >= n {
+                return 0
+            }
+            if r == m-1 && c == n-1 {
+                return 1
+            }
+            if dp[r][c] > 0 {
+                return dp[r][c]
+            }
+            dp[r][c] += move(r+1,c)
+            dp[r][c] += move(r,c+1)
+            return dp[r][c]
+        }
+        return move(0,0)
+    }
         
 }
