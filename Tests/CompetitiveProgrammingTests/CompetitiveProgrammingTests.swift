@@ -829,6 +829,16 @@ final class CompetitiveProgrammingTests: XCTestCase {
     func testNumTilings7() throws {
         XCTAssert(sol.numTilings(8) == 258)
     }
+    
+    func testUniquePaths1() throws {
+        XCTAssert(sol.uniquePaths(3, 7) == 28)
+    }
+    
+    func testUniquePaths2() throws {
+        XCTAssert(sol.uniquePaths(3, 2) == 3)
+    }
+    
+    
 }
 
 
