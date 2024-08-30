@@ -838,6 +838,17 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.uniquePaths(3, 2) == 3)
     }
     
+    func testLongestCommonSubsequence1() throws {
+        XCTAssert(sol.longestCommonSubsequence("abcde", "ace") == 3)
+    }
+    
+    func testLongestCommonSubsequence2() throws {
+        XCTAssert(sol.longestCommonSubsequence("abc", "abc") == 3)
+    }
+    
+    func testLongestCommonSubsequence3() throws {
+        XCTAssert(sol.longestCommonSubsequence("abc", "def") == 0)
+    }
     
 }
 
