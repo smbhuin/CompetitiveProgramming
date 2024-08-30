@@ -104,5 +104,33 @@ public extension Solution {
         }
         return move(0,0)
     }
+    
+    /// LeetCode: 1143. Longest Common Subsequence
+    ///
+    /// Solved using dynamic programming (Memoization).
+    ///
+    /// - Complexity: Time complexity is O(*m*n*) and space complexity is O(*m*n*), where *m* is the length of `text1` and *n* is the length of `text2`.
+    func longestCommonSubsequence(_ text1: String, _ text2: String) -> Int {
+        let text1 = Array(text1)
+        let text2 = Array(text2)
+        let m = text1.count
+        let n = text2.count
+        var dp = Array(repeating:Array(repeating:-1, count:n), count:m)
+        func lcs(_ idx1: Int, _ idx2: Int) -> Int {
+            if idx1 >= m || idx2 >= n {
+                return 0
+            }
+            if dp[idx1][idx2] >= 0 {
+                return dp[idx1][idx2]
+            }
+            if text1[idx1] == text2[idx2] {
+                dp[idx1][idx2] = 1 + lcs(idx1+1,idx2+1)
+                return dp[idx1][idx2]
+            }
+            dp[idx1][idx2] = max(lcs(idx1,idx2+1), lcs(idx1+1,idx2))
+            return dp[idx1][idx2]
+        }
+        return lcs(0,0)
+    }
         
 }
