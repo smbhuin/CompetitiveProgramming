@@ -850,6 +850,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.longestCommonSubsequence("abc", "def") == 0)
     }
     
+    func testMaxProfit1() throws {
+        XCTAssert(sol.maxProfit([1,3,2,8,4,9], 2) == 8)
+    }
+    
+    func testMaxProfit2() throws {
+        XCTAssert(sol.maxProfit([1,3,7,5,10,3], 3) == 6)
+    }
+    
 }
 
 
