@@ -132,5 +132,31 @@ public extension Solution {
         }
         return lcs(0,0)
     }
+    
+    /// LeetCode: 714. Best Time to Buy and Sell Stock with Transaction Fee.
+    ///
+    /// Solved using dynamic programming (Memoization).
+    ///
+    /// - Complexity: Time complexity is O(*2^n*) without memoization and space complexity is O(*n*), where *n* is the total number of days.
+    func maxProfit(_ prices: [Int], _ fee: Int) -> Int {
+        let n = prices.count
+        var dp = Array(repeating:Array(repeating:Int.min, count:2), count:n)
+        func mp(_ day: Int, _ buy: Int) -> Int {
+            if day == n {
+                return 0
+            }
+            if dp[day][buy] != Int.min {
+                return dp[day][buy]
+            }
+            if buy == 1 {
+                dp[day][buy] = max(-prices[day] + mp(day + 1, 0), mp(day + 1, 1))
+            }
+            else {
+                dp[day][buy] = max(prices[day] - fee + mp(day + 1, 1), mp(day + 1, 0))
+            }
+            return dp[day][buy]
+        }
+        return mp(0, 1)
+    }
         
 }
