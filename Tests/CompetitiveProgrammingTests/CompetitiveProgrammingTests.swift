@@ -858,6 +858,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.maxProfit([1,3,7,5,10,3], 3) == 6)
     }
     
+    func testMinDistance1() throws {
+        XCTAssert(sol.minDistance("horse", "ros") == 3)
+    }
+    
+    func testMinDistance2() throws {
+        XCTAssert(sol.minDistance("intention", "execution") == 5)
+    }
+    
 }
 
 
