@@ -158,5 +158,67 @@ public extension Solution {
         }
         return mp(0, 1)
     }
+    
+    /// LeetCode: 72. Edit Distance.
+    ///
+    /// Solved using dynamic programming (Memoization).
+    ///
+    /// - Complexity: Time complexity is O(??) and space complexity is O(*m*n*), where *m* is the length of `word1` and  *n* is the length of `word2`.
+    func minDistance(_ word1: String, _ word2: String) -> Int {
+        let word1 = Array(word1)
+        let word2 = Array(word2)
+        let m = word1.count
+        let n = word2.count
+        var dp = Array(repeating: Array(repeating: -1, count: n), count: m)
+        func md(_ i: Int, _ j: Int) -> Int {
+            if i == m {
+                return n - j // Insert remaining characters in word2
+            }
+            else if j == n {
+                return m - i // Delete remaining characters in word1
+            }
+            if dp[i][j] != -1 {
+                return dp[i][j]
+            }
+            if word1[i] == word2[j] {
+                dp[i][j] = md(i+1, j+1) // no operation
+            }
+            else {
+                let ins = 1 + md(i, j+1) // insert operation
+                let del = 1 + md(i+1, j) // delete operation
+                let rep = 1 + md(i+1, j+1) // replace operation
+                dp[i][j] = min(ins,del,rep)
+            }
+            return dp[i][j]
+        }
+        return md(0, 0)
+    }
+    
+    /// LeetCode: 72. Edit Distance.
+    ///
+    /// Solved using dynamic programming (Tabulation).
+    ///
+    /// - Complexity: Time complexity is O(*m*n*) and space complexity is O(*m*n*), where *m* is the length of `word1` and  *n* is the length of `word2`.
+    func minDistance_tabulation(_ word1: String, _ word2: String) -> Int {
+        let word1 = Array(word1)
+        let word2 = Array(word2)
+        let m = word1.count
+        let n = word2.count
+        var dp = Array(repeating: Array(repeating: 0, count: n+1), count: m+1)
+        for i in 0...m {
+            for j in 0...n {
+                if i == 0 || j == 0 {
+                    dp[i][j] = i + j
+                }
+                else if word1[i-1] == word2[j-1] {
+                    dp[i][j] = dp[i-1][j-1]
+                }
+                else {
+                    dp[i][j] = 1 + min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1])
+                }
+            }
+        }
+        return dp[m][n]
+    }
         
 }
