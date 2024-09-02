@@ -866,6 +866,16 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.minDistance("intention", "execution") == 5)
     }
     
+    // MARK: - Bit Manipulation
+    
+    func testCountBits1() throws {
+        XCTAssert(sol.countBits(2) == [0,1,1])
+    }
+    
+    func testCountBits2() throws {
+        XCTAssert(sol.countBits(5) == [0,1,1,2,1,2])
+    }
+    
 }
 
 
