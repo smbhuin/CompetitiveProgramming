@@ -876,6 +876,19 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.countBits(5) == [0,1,1,2,1,2])
     }
     
+    func testSingleNumber1() throws {
+        XCTAssert(sol.singleNumber([2,2,1]) == 1)
+    }
+    
+    func testSingleNumber2() throws {
+        XCTAssert(sol.singleNumber([4,1,2,1,2]) == 4)
+    }
+    
+    func testSingleNumber3() throws {
+        XCTAssert(sol.singleNumber([1]) == 1)
+    }
+    
+    
 }
 
 
