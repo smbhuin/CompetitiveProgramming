@@ -19,5 +19,20 @@ public extension Solution {
         }
         return result
     }
+    
+    /// LeetCode: 136. Single Number.
+    ///
+    /// Solved using bit manipulation.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the array `nums`. Space complexity is O(1), only constant space is used.
+    func singleNumber(_ nums: [Int]) -> Int {
+        var result = 0
+        for num in nums {
+            result ^= num
+        }
+        return result
+    }
+    
+    
 
 }
