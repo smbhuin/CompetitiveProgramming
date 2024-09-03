@@ -888,6 +888,17 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.singleNumber([1]) == 1)
     }
     
+    func testMinFlips1() throws {
+        XCTAssert(sol.minFlips(2, 6, 5) == 3)
+    }
+    
+    func testMinFlips2() throws {
+        XCTAssert(sol.minFlips(4, 2, 7) == 1)
+    }
+    
+    func testMinFlips3() throws {
+        XCTAssert(sol.minFlips(1, 2, 3) == 0)
+    }
     
 }
 
