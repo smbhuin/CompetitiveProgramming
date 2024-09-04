@@ -900,6 +900,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.minFlips(1, 2, 3) == 0)
     }
     
+    // MARK: - Trie
+    
+    func testTriePrefixTree1() throws {
+        let obj = Trie()
+        obj.insert("apple")
+        XCTAssert(obj.search("apple") == true)
+        XCTAssert(obj.search("app") == false)
+        XCTAssert(obj.startsWith("app") == true)
+        obj.insert("app")
+        XCTAssert(obj.search("app") == true)
+    }
+    
 }
 
 
