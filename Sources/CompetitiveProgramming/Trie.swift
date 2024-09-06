@@ -4,16 +4,17 @@ class Trie {
     
     class Node {
         var value: Character
-        var children: Dictionary<Character,Node>
+        var children: [Node?]
         var isEnd: Bool
         init(_ value: Character) {
             self.value = value
-            self.children = [:]
+            self.children = Array(repeating: nil, count: 26)
             self.isEnd = false
         }
     }
     
     var root: Node
+    let asciiA = Character("a").asciiValue!
 
     init() {
         root = Node(Character("\0"))
@@ -25,12 +26,13 @@ class Trie {
     func insert(_ word: String) {
         var node: Node = root
         for c in word {
-            if let n = node.children[c] {
+            let index = Int(c.asciiValue! - asciiA)
+            if let n = node.children[index] {
                 node = n
             }
             else {
                 let cn = Node(c)
-                node.children[c] = cn
+                node.children[index] = cn
                 node = cn
             }
         }
@@ -43,7 +45,8 @@ class Trie {
     func search(_ word: String) -> Bool {
         var node: Node = root
         for c in word {
-            if let n = node.children[c] {
+            let index = Int(c.asciiValue! - asciiA)
+            if let n = node.children[index] {
                 node = n
             }
             else {
@@ -59,7 +62,8 @@ class Trie {
     func startsWith(_ prefix: String) -> Bool {
         var node: Node = root
         for c in prefix {
-            if let n = node.children[c] {
+            let index = Int(c.asciiValue! - asciiA)
+            if let n = node.children[index] {
                 node = n
             }
             else {
@@ -68,6 +72,7 @@ class Trie {
         }
         return true
     }
+    
 }
 
 public extension Solution {
