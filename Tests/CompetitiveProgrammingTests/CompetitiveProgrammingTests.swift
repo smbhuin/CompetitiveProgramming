@@ -912,6 +912,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(obj.search("app") == true)
     }
     
+    func testSuggestedProducts1() throws {
+        XCTAssert(sol.suggestedProducts(["mobile","mouse","moneypot","monitor","mousepad"], "mouse") == [["mobile","moneypot","monitor"],["mobile","moneypot","monitor"],["mouse","mousepad"],["mouse","mousepad"],["mouse","mousepad"]])
+    }
+    
+    func testSuggestedProducts2() throws {
+        XCTAssert(sol.suggestedProducts(["havana"], "havana") == [["havana"],["havana"],["havana"],["havana"],["havana"],["havana"]])
+    }
+    
 }
 
 
