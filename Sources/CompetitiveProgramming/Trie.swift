@@ -77,4 +77,44 @@ class Trie {
 
 public extension Solution {
     
+    /// LeetCode: 1268. Search Suggestions System
+    ///
+    /// Solved using trie.
+    ///
+    /// - Complexity: Time complexity is O(*m*), where *m* is the total number of characters in the products. Space complexity is O(*n*), where *n* is the number of nodes in the trie.
+    func suggestedProducts(_ products: [String], _ searchWord: String) -> [[String]] {
+        let trie = Trie()
+        for product in products {
+            trie.insert(product)
+        }
+        func explore(_ node: Trie.Node,_ prod: inout String, _ prods: inout [String]) {
+            prod.append(node.value)
+            if prods.count >= 3 {
+                return
+            }
+            if node.isEnd {
+                prods.append(String(prod))
+            }
+            for child in node.children {
+                if let c = child {
+                    explore(c, &prod, &prods)
+                    prod.removeLast()
+                }
+            }
+        }
+        var result: [[String]] = []
+        var root: Trie.Node? = trie.root
+        var word = ""
+        for char in searchWord {
+            let index = Int(char.asciiValue! - trie.asciiA)
+            var prods: [String] = []
+            root = root?.children[index]
+            if let node = root {
+                explore(node, &word, &prods)
+            }
+            result.append(prods)
+        }
+        return result
+    }
+    
 }
