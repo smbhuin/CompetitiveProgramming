@@ -920,6 +920,33 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.suggestedProducts(["havana"], "havana") == [["havana"],["havana"],["havana"],["havana"],["havana"],["havana"]])
     }
     
+    // MARK: - Interval
+    
+    func testEraseOverlapIntervals1() throws {
+        XCTAssert(sol.eraseOverlapIntervals([[1,2],[2,3],[3,4],[1,3]]) == 1)
+    }
+    
+    func testEraseOverlapIntervals2() throws {
+        XCTAssert(sol.eraseOverlapIntervals([[1,2],[1,2],[1,2]]) == 2)
+    }
+    
+    func testEraseOverlapIntervals3() throws {
+        XCTAssert(sol.eraseOverlapIntervals([[1,2],[2,3]]) == 0)
+    }
+    
+    func testEraseOverlapIntervals4() throws {
+        XCTAssert(sol.eraseOverlapIntervals([[1,100],[11,22],[1,11],[2,12]]) == 2)
+    }
+    
+    func testEraseOverlapIntervals5() throws {
+        XCTAssert(sol.eraseOverlapIntervals([[0,2],[1,3],[2,4],[3,5],[4,6]]) == 2)
+    }
+    
+    func testEraseOverlapIntervals6() throws {
+        XCTAssert(sol.eraseOverlapIntervals([[-52,31],[-73,-26],[82,97],[-65,-11],[-62,-49],[95,99],[58,95],[-31,49],[66,98],[-63,2],[30,47],[-40,-26]]) == 7)
+    }
+    
+    
 }
 
 
