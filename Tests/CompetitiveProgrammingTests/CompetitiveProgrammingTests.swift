@@ -946,7 +946,21 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.eraseOverlapIntervals([[-52,31],[-73,-26],[82,97],[-65,-11],[-62,-49],[95,99],[58,95],[-31,49],[66,98],[-63,2],[30,47],[-40,-26]]) == 7)
     }
     
+    func testFindMinArrowShots1() throws {
+        XCTAssert(sol.findMinArrowShots([[10,16],[2,8],[1,6],[7,12]]) == 2)
+    }
     
+    func testFindMinArrowShots2() throws {
+        XCTAssert(sol.findMinArrowShots([[1,2],[3,4],[5,6],[7,8]]) == 4)
+    }
+    
+    func testFindMinArrowShots3() throws {
+        XCTAssert(sol.findMinArrowShots([[1,2],[2,3],[3,4],[4,5]]) == 2)
+    }
+    
+    func testFindMinArrowShots4() throws {
+        XCTAssert(sol.findMinArrowShots([[3,9],[7,12],[3,8],[6,8],[9,10],[2,9],[0,9],[3,9],[0,6],[2,8]]) == 2)
+    }
 }
 
 
