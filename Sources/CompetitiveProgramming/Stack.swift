@@ -78,5 +78,25 @@ public extension Solution {
         return String(result)
     }
     
+    /// LeetCode: 739. Daily Temperatures.
+    ///
+    /// Solved using monotonic stack.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of days.
+    func dailyTemperatures(_ temperatures: [Int]) -> [Int] {
+        var ans = Array(repeating: 0, count: temperatures.count)
+        var stack: [(Int, Int)] = []
+        for index in stride(from: temperatures.count - 1, through: 0, by: -1) {
+            while let top = stack.last, top.1 <= temperatures[index] {
+                stack.removeLast()
+            }
+            if let top = stack.last {
+                ans[index] = top.0 - index
+            }
+            stack.append((index, temperatures[index]))
+        }
+        return ans
+    }
+    
 }
 
