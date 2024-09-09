@@ -961,6 +961,21 @@ final class CompetitiveProgrammingTests: XCTestCase {
     func testFindMinArrowShots4() throws {
         XCTAssert(sol.findMinArrowShots([[3,9],[7,12],[3,8],[6,8],[9,10],[2,9],[0,9],[3,9],[0,6],[2,8]]) == 2)
     }
+    
+    // MARK: - Monotonic Stack
+    
+    func testDailyTemperatures1() throws {
+        XCTAssert(sol.dailyTemperatures([73,74,75,71,69,72,76,73]) == [1,1,4,2,1,1,0,0])
+    }
+    
+    func testDailyTemperatures2() throws {
+        XCTAssert(sol.dailyTemperatures([30,40,50,60]) == [1,1,1,0])
+    }
+    
+    func testDailyTemperatures3() throws {
+        XCTAssert(sol.dailyTemperatures([30,60,90]) == [1,1,0])
+    }
+    
 }
 
 
