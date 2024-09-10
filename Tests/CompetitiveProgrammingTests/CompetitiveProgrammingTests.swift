@@ -976,6 +976,40 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.dailyTemperatures([30,60,90]) == [1,1,0])
     }
     
+    func testStockSpanner1() throws {
+        let obj = StockSpanner()
+        XCTAssert(obj.next(100) == 1)
+        XCTAssert(obj.next(80) == 1)
+        XCTAssert(obj.next(60) == 1)
+        XCTAssert(obj.next(70) == 2)
+        XCTAssert(obj.next(60) == 1)
+        XCTAssert(obj.next(75) == 4)
+        XCTAssert(obj.next(85) == 6)
+    }
+    
+    func testStockSpanner2() throws {
+        let obj = StockSpanner()
+        XCTAssert(obj.next(31) == 1)
+        XCTAssert(obj.next(41) == 2)
+        XCTAssert(obj.next(48) == 3)
+        XCTAssert(obj.next(59) == 4)
+        XCTAssert(obj.next(79) == 5)
+    }
+    
+    func testStockSpanner3() throws {
+        let obj = StockSpanner()
+        XCTAssert(obj.next(28) == 1)
+        XCTAssert(obj.next(14) == 1)
+        XCTAssert(obj.next(28) == 3)
+        XCTAssert(obj.next(35) == 4)
+        XCTAssert(obj.next(46) == 5)
+        XCTAssert(obj.next(53) == 6)
+        XCTAssert(obj.next(66) == 7)
+        XCTAssert(obj.next(80) == 8)
+        XCTAssert(obj.next(87) == 9)
+        XCTAssert(obj.next(88) == 10)
+    }
+    
 }
 
 
