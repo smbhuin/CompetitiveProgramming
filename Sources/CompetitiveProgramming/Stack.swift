@@ -100,3 +100,34 @@ public extension Solution {
     
 }
 
+/// LeetCode: 901. Online Stock Span.
+///
+/// Solved using monotonic stack.
+///
+class StockSpanner {
+    var index: Int
+    var stack: [(Int,Int)] // (index, price)
+
+    init() {
+        index = 0
+        stack = []
+    }
+    
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of days.
+    func next(_ price: Int) -> Int {
+        while let top = stack.last, top.1 <= price {
+            stack.removeLast()
+        }
+        var span = 0
+        if let top = stack.last {
+            span = index - top.0
+        }
+        else {
+            span = index + 1
+        }
+        stack.append((index, price))
+        index += 1
+        return span
+    }
+}
+
