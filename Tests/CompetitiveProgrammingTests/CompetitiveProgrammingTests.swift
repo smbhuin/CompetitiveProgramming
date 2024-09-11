@@ -736,6 +736,8 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.minEatingSpeed([30,11,23,4,20], 6) == 23)
     }
     
+    // MARK: - Backtracking
+    
     func testLetterCombinations1() throws {
         XCTAssert(sol.letterCombinations("23") == ["ad","ae","af","bd","be","bf","cd","ce","cf"])
     }
@@ -758,6 +760,10 @@ final class CompetitiveProgrammingTests: XCTestCase {
     
     func testCombinationSum33() throws {
         XCTAssert(sol.combinationSum3(4, 1) == [])
+    }
+    
+    func testSolveNQueens() throws {
+        XCTAssert(sol.solveNQueens(4) == [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]])
     }
     
     // MARK: - Dynamic Programming
