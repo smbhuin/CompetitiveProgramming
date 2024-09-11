@@ -762,7 +762,7 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.combinationSum3(4, 1) == [])
     }
     
-    func testSolveNQueens() throws {
+    func testSolveNQueens1() throws {
         XCTAssert(sol.solveNQueens(4) == [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]])
     }
     

@@ -87,7 +87,7 @@ public extension Solution {
     ///
     /// Solved using backtracking DFS.
     ///
-    /// - Complexity: Time complexity is O(*n!*) and space complexity is O(*n^2*), where *n* is the number of queens`.
+    /// - Complexity: Time complexity is O(*n!*) and space complexity is O(*n^2*), where *n* is the number of `queens`.
     func solveNQueens(_ n: Int) -> [[String]] {
         var ans: [[String]] = []
         var board: [[Character]] = Array(repeating:Array(repeating:".", count:n), count:n) // SC: O(n^2)
