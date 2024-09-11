@@ -766,6 +766,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.solveNQueens(4) == [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]])
     }
     
+    func testSubsets1() throws {
+        XCTAssert(Set(sol.subsets([1,2,3])) == [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]])
+    }
+    
+    func testSubsets2() throws {
+        XCTAssert(Set(sol.subsets([0])) == [[],[0]])
+    }
+    
     // MARK: - Dynamic Programming
     
     func testTribonacci1() throws {
