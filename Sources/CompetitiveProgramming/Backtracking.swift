@@ -82,5 +82,45 @@ public extension Solution {
         backtrack(0, &combination, 0)
         return result
     }
+    
+    /// LeetCode: 51. N-Queens.
+    ///
+    /// Solved using backtracking DFS.
+    ///
+    /// - Complexity: Time complexity is O(*n!*) and space complexity is O(*n^2*), where *n* is the number of queens`.
+    func solveNQueens(_ n: Int) -> [[String]] {
+        var ans: [[String]] = []
+        var board: [[Character]] = Array(repeating:Array(repeating:".", count:n), count:n) // SC: O(n^2)
+        func isValidPlace(_ r: Int, _ c: Int) -> Bool { // TC: O(n)
+            var i = r - 1, k = 1
+            while i >= 0 {
+                if board[i][c] == "Q" {
+                    return false
+                }
+                if c+k < n && board[i][c+k] == "Q" {
+                    return false
+                }
+                if c-k >= 0 && board[i][c-k] == "Q" {
+                    return false
+                }
+                k += 1
+                i -= 1
+            }
+            return true
+        }
+        func backtrack(_ r: Int) {
+            if r >= n {
+                ans.append(board.map { String($0) })
+                return
+            }
+            for c in 0..<n where isValidPlace(r, c) {
+                board[r][c] = "Q"
+                backtrack(r+1)
+                board[r][c] = "."
+            }
+        }
+        backtrack(0)
+        return ans
+    }
 
 }
