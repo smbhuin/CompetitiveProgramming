@@ -122,5 +122,25 @@ public extension Solution {
         backtrack(0)
         return ans
     }
+    
+    /// LeetCode: 78. Subsets.
+    ///
+    /// Solved using backtracking DFS.
+    ///
+    /// - Complexity: Time complexity is O(*2^n*) and space complexity is O(*n*), where *n* is the size of `nums`.
+    func subsets(_ nums: [Int]) -> [[Int]] {
+        var subset: [Int] = []
+        var ans: [[Int]] = []
+        func backtrack(_ index: Int) {
+            ans.append(Array(subset))
+            for i in index..<nums.count {
+                subset.append(nums[i])
+                backtrack(i+1)
+                subset.removeLast()
+            }
+        }
+        backtrack(0)
+        return ans
+    }
 
 }
