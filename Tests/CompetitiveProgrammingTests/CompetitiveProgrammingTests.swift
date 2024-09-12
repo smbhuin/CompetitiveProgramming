@@ -574,6 +574,36 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(TreeNode.isEqual(result, expected))
     }
     
+    func testInorderTraversal1() throws {
+        let root = TreeNode.buildTree([1,nil,2,3])
+        XCTAssert(sol.inorderTraversal(root) == [1,3,2])
+    }
+    
+    func testInorderTraversal2() throws {
+        let root = TreeNode.buildTree([1,2,3,4,5,nil,8,nil,nil,6,7,9])
+        XCTAssert(sol.inorderTraversal(root) == [4,2,6,5,7,1,3,9,8])
+    }
+    
+    func testInorderTraversal3() throws {
+        let root = TreeNode.buildTree([])
+        XCTAssert(sol.inorderTraversal(root) == [])
+    }
+    
+    func testInorderTraversal4() throws {
+        let root = TreeNode.buildTree([1,nil,2,3])
+        XCTAssert(sol.inorderTraversal_stack(root) == [1,3,2])
+    }
+    
+    func testInorderTraversal5() throws {
+        let root = TreeNode.buildTree([1,2,3,4,5,nil,8,nil,nil,6,7,9])
+        XCTAssert(sol.inorderTraversal_stack(root) == [4,2,6,5,7,1,3,9,8])
+    }
+    
+    func testInorderTraversal6() throws {
+        let root = TreeNode.buildTree([])
+        XCTAssert(sol.inorderTraversal_stack(root) == [])
+    }
+    
     // MARK: - Graph
     
     func testCanVisitAllRooms1() throws {
