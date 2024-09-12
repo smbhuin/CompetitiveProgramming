@@ -774,6 +774,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(Set(sol.subsets([0])) == [[],[0]])
     }
     
+    func testPartition1() throws {
+        XCTAssert(Set(sol.partition("aab")) == [["a","a","b"],["aa","b"]])
+    }
+    
+    func testPartition2() throws {
+        XCTAssert(Set(sol.partition("a")) == [["a"]])
+    }
+    
     // MARK: - Dynamic Programming
     
     func testTribonacci1() throws {
