@@ -327,4 +327,59 @@ public extension Solution {
         return root
     }
     
+    /// LeetCode: 94. Binary Tree Inorder Traversal.
+    ///
+    /// Solved using recursive tree traversal algo.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of nodes in the tree `root`.
+    func inorderTraversal(_ root: TreeNode?) -> [Int] {
+        var ans: [Int] = []
+        func visit(_ node: TreeNode?) {
+            guard let node = node else {
+                return
+            }
+            visit(node.left)
+            ans.append(node.val)
+            visit(node.right)
+        }
+        visit(root)
+        return ans
+    }
+    
+    /// LeetCode: 94. Binary Tree Inorder Traversal.
+    ///
+    /// Solved using stack iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of nodes in the tree `root`.
+    func inorderTraversal_stack(_ root: TreeNode?) -> [Int] {
+        var ans: [Int] = []
+        var stack: [TreeNode] = []
+        // 1. Add the root to the stack
+        if let root = root {
+            stack.append(root)
+        }
+        // 2. Go to the extreme left and keep adding all the nodes to the stack.
+        var node: TreeNode? = root
+        while let left =  node?.left {
+            stack.append(left)
+            node = left
+        }
+        while !stack.isEmpty {
+            // 3. Visit/Process node
+            let curr = stack.removeLast()
+            ans.append(curr.val)
+            // 4. Add the right node to the stack
+            var node = curr.right
+            if let node = node {
+                stack.append(node)
+            }
+            // 5. Go to extreme left and keep adding all the nodes to the stack.
+            while let left =  node?.left {
+                stack.append(left)
+                node = left
+            }
+        }
+        return ans
+    }
+    
 }
