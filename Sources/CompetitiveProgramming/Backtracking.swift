@@ -142,5 +142,44 @@ public extension Solution {
         backtrack(0)
         return ans
     }
+    
+    /// LeetCode: 131. Palindrome Partitioning.
+    ///
+    /// Solved using backtracking DFS.
+    ///
+    /// - Complexity: Time complexity is O(*n.2^n*) and space complexity is O(*n*), where *n* is the length of  the string `s`.
+    func partition(_ s: String) -> [[String]] {
+        var ans: [[String]] = []
+        func isPalindrome(_ str: Substring) -> Bool {
+            var i = str.startIndex, j = str.index(before: str.endIndex)
+            while i < j {
+                if str[i] != str[j] {
+                    return false
+                }
+                i = str.index(after: i)
+                j = str.index(before: j)
+            }
+            return true
+        }
+        var subset: [Substring] = []
+        let startIndex = s.startIndex
+        let endIndex = s.endIndex
+        func backtrack(_ i: String.Index) {
+            if i >= endIndex {
+                ans.append(subset.map {String($0)})
+                return
+            }
+            for j in s.indices[i..<endIndex] {
+                let ss = s[i...j]
+                if isPalindrome(ss) {
+                    subset.append(ss)
+                    backtrack(s.index(after: j))
+                    subset.removeLast()
+                }
+            }
+        }
+        backtrack(startIndex)
+        return ans
+    }
 
 }
