@@ -604,6 +604,21 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.inorderTraversal_stack(root) == [])
     }
     
+    func testDiameterOfBinaryTree1() throws {
+        let root = TreeNode.buildTree([1,2,3,4,5])
+        XCTAssert(sol.diameterOfBinaryTree(root) == 3)
+    }
+    
+    func testDiameterOfBinaryTree2() throws {
+        let root = TreeNode.buildTree([1,2])
+        XCTAssert(sol.diameterOfBinaryTree(root) == 1)
+    }
+    
+    func testDiameterOfBinaryTree3() throws {
+        let root = TreeNode.buildTree([2,1,4,3,nil,5])
+        XCTAssert(sol.diameterOfBinaryTree(root) == 4)
+    }
+    
     // MARK: - Graph
     
     func testCanVisitAllRooms1() throws {
