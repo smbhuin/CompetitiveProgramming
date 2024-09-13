@@ -382,4 +382,25 @@ public extension Solution {
         return ans
     }
     
+    /// LeetCode: 543. Diameter of Binary Tree.
+    ///
+    /// Solved using tree dfs.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of nodes in the tree `root`.
+    func diameterOfBinaryTree(_ root: TreeNode?) -> Int {
+        var ans = 0
+        @discardableResult
+        func dfs(_ node: TreeNode?) -> Int {
+            guard let node = node else {
+                return 0
+            }
+            let lmd = dfs(node.left)
+            let rmd = dfs(node.right)
+            ans = max(ans, lmd + rmd)
+            return 1 + max(lmd, rmd) // Returns height
+        }
+        dfs(root)
+        return ans
+    }
+    
 }
