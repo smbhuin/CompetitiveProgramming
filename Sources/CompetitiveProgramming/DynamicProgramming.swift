@@ -220,5 +220,26 @@ public extension Solution {
         }
         return dp[m][n]
     }
+    
+    /// LeetCode: 118. Pascal's Triangle
+    ///
+    /// Solved using dynamic programming.
+    ///
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(*n*), where *n* is `numRows`.
+    func generate(_ numRows: Int) -> [[Int]] {
+        if numRows == 1 {
+            return [[1]]
+        }
+        var ans: [[Int]] = [[1],[1,1]]
+        for r in 2..<numRows {
+            var row = Array(repeating:1, count:r+1)
+            for c in 1..<r {
+                row[c] = ans[r-1][c-1] + ans[r-1][c]
+            }
+            ans.append(row)
+        }
+        return ans
+    }
+    
         
 }
