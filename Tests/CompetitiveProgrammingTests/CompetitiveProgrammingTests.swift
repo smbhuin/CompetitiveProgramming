@@ -941,6 +941,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.generate(1) == [[1]])
     }
     
+    func testLongestValidParentheses1() throws {
+        XCTAssert(sol.longestValidParentheses("(()") == 2)
+    }
+    
+    func testLongestValidParentheses2() throws {
+        XCTAssert(sol.longestValidParentheses(")()())") == 4)
+    }
+    
+    func testLongestValidParentheses3() throws {
+        XCTAssert(sol.longestValidParentheses("") == 0)
+    }
+    
     // MARK: - Bit Manipulation
     
     func testCountBits1() throws {
