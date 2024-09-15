@@ -241,5 +241,76 @@ public extension Solution {
         return ans
     }
     
+    /// LeetCode: 32. Longest Valid Parentheses.
+    ///
+    /// Solved using dynamic programming.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the length of string `s`.
+    func longestValidParentheses(_ s: String) -> Int {
+        var n = 0
+        var dp: [(idx:Int,char:Character)] = []
+        dp.append((-1,"\0"))
+        for (index, char) in s.enumerated() {
+            if char == "(" {
+                dp.append((index,"("))
+            }
+            else {
+                if dp.last!.char == "(" {
+                    dp.removeLast()
+                }
+                else {
+                    dp.append((index,")"))
+                }
+            }
+            n = index + 1
+        }
+        dp.append((n,"\0"))
+        var ans = 0
+        for i in 1..<dp.count {
+            ans = max(ans, dp[i].idx - dp[i-1].idx - 1)
+        }
+        return ans
+    }
+    
+    /// LeetCode: 32. Longest Valid Parentheses.
+    ///
+    /// Solved using dynamic programming.
+    ///
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(*n*), where *n* is the length of string `s`.
+    func longestValidParentheses_bruteforce(_ s: String) -> Int {
+        func isValidParentheses(_ str: Substring) -> Bool {
+            var stack: [Character] = []
+            for char in str {
+                if char == "(" {
+                    stack.append("(")
+                }
+                else {
+                    if let top = stack.last, top == "(" {
+                        stack.removeLast()
+                    }
+                    else {
+                        return false
+                    }
+                }
+            }
+            return stack.isEmpty
+        }
+        let endIndex = s.endIndex
+        var left = s.startIndex
+        var right = left
+        var ans = 0
+        while left < endIndex {
+            while right < endIndex {
+                let str = s[left...right]
+                if isValidParentheses(str) {
+                    ans = max(ans, str.count)
+                }
+                right = s.index(after: right)
+            }
+            left = s.index(after: left)
+            right = left
+        }
+        return ans
+    }
         
 }
