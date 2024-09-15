@@ -933,6 +933,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.minDistance("intention", "execution") == 5)
     }
     
+    func testGenerate1() throws {
+        XCTAssert(sol.generate(5) == [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]])
+    }
+    
+    func testGenerate2() throws {
+        XCTAssert(sol.generate(1) == [[1]])
+    }
+    
     // MARK: - Bit Manipulation
     
     func testCountBits1() throws {
