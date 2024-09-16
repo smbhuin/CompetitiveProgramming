@@ -953,6 +953,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.longestValidParentheses("") == 0)
     }
     
+    func testMaxProduct1() throws {
+        XCTAssert(sol.maxProduct([2,3,-2,4]) == 6)
+    }
+    
+    func testMaxProduct2() throws {
+        XCTAssert(sol.maxProduct([-2,0,-1]) == 0)
+    }
+    
     // MARK: - Bit Manipulation
     
     func testCountBits1() throws {
