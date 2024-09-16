@@ -312,5 +312,29 @@ public extension Solution {
         }
         return ans
     }
-        
+    
+    /// LeetCode: 152. Maximum Product Subarray.
+    ///
+    /// Solved using dynamic programming.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the array `nums`.  Space complexity is O(1), only constant space is used.
+    func maxProduct(_ nums: [Int]) -> Int {
+        let n = nums.count
+        var pre = 1 // Prefix Product
+        var suf = 1 // Suffix Product
+        var ans = Int.min
+        for i in 0..<n {
+            if pre == 0 {
+                pre = 1
+            }
+            if suf == 0 {
+                suf = 1
+            }
+            pre *= nums[i]
+            suf *= nums[n-i-1]
+            ans = max(ans, pre, suf)
+        }
+        return ans
+    }
+    
 }
