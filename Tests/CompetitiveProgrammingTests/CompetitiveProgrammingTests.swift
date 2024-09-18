@@ -961,6 +961,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.maxProduct([-2,0,-1]) == 0)
     }
     
+    func testNumSquares1() throws {
+        XCTAssert(sol.numSquares(12) == 3)
+    }
+    
+    func testNumSquares2() throws {
+        XCTAssert(sol.numSquares(13) == 2)
+    }
+    
     // MARK: - Bit Manipulation
     
     func testCountBits1() throws {
