@@ -362,5 +362,36 @@ public extension Solution {
         return dfs(n)
     }
     
+    /// LeetCode: 416. Partition Equal Subset Sum.
+    ///
+    /// Solved using dynamic programming (Memoization).
+    ///
+    /// - Complexity: Time complexity is less than O(*n^2*), where *n* is the size of the array `nums`.  Space complexity is O(*n*), where *n* is the is the size of the array `nums`.
+    func canPartition(_ nums: [Int]) -> Bool {
+        let n = nums.count
+        let total = nums.reduce(0, +)
+        if total % 2 != 0 {
+            return false
+        }
+        var dp = Array(repeating: Array(repeating: -1, count: 10001), count: 201)
+        func dfs(_ index: Int, _ sum: Int) -> Bool {
+            if sum == 0 {
+                return true
+            }
+            if index >= n || sum < 0 {
+                return false
+            }
+            if dp[index][sum] != -1 {
+                return dp[index][sum] == 1
+            }
+            if dfs(index+1, sum - nums[index]) || dfs(index+1, sum) {
+                dp[index][sum] = 1
+                return true
+            }
+            dp[index][sum] = 0
+            return false
+        }
+        return dfs(0,total/2)
+    }
     
 }
