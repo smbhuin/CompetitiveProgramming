@@ -969,6 +969,22 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.numSquares(13) == 2)
     }
     
+    func testCanPartition1() throws {
+        XCTAssert(sol.canPartition([1,5,11,5]) == true)
+    }
+    
+    func testCanPartition2() throws {
+        XCTAssert(sol.canPartition([1,2,3,5]) == false)
+    }
+    
+    func testCanPartition3() throws {
+        XCTAssert(sol.canPartition([1,2,3,4,5,6,7]) == true)
+    }
+    
+    func testCanPartition4() throws {
+        XCTAssert(sol.canPartition([14,9,8,4,3,2]) == true)
+    }
+    
     // MARK: - Bit Manipulation
     
     func testCountBits1() throws {
