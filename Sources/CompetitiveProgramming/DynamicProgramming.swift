@@ -337,4 +337,30 @@ public extension Solution {
         return ans
     }
     
+    /// LeetCode: 279. Perfect Squares.
+    ///
+    /// Solved using dynamic programming (Memoization).
+    ///
+    /// - Complexity: Time complexity is less than O(*n^2*), where *n* is the provided number `n`.  Space complexity is O(*n*), where *n* is the provided number `n`.
+    func numSquares(_ n: Int) -> Int {
+        var dp: [Int:Int] = [:]
+        func dfs(_ n: Int) -> Int {
+            if n == 0 {
+                return 0
+            }
+            if let c = dp[n] {
+                return c
+            }
+            var i = 1, minCount = Int.max
+            while i * i <= n {
+                minCount = min(minCount, 1 + dfs(n - i*i))
+                i += 1
+            }
+            dp[n] = minCount
+            return minCount
+        }
+        return dfs(n)
+    }
+    
+    
 }
