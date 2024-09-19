@@ -240,6 +240,16 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.equalPairs([[11,1],[1,11]]) == 2)
     }
     
+    // MARK: - Greedy
+    
+    func testPartitionLabels1() throws {
+        XCTAssert(sol.partitionLabels("ababcbacadefegdehijhklij") == [9,7,8])
+    }
+    
+    func testPartitionLabels2() throws {
+        XCTAssert(sol.partitionLabels("eccbbbbdec") == [10])
+    }
+    
     // MARK: Stack
     
     func testRemoveStars1() throws {
