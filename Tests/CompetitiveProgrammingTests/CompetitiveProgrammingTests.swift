@@ -242,6 +242,22 @@ final class CompetitiveProgrammingTests: XCTestCase {
     func testEqualPairs4() throws {
         XCTAssert(hashingSol.equalPairs([[11,1],[1,11]]) == 2)
     }
+
+    func testSubarraySum1() throws {
+        XCTAssert(hashingSol.subarraySum([1,1,1], 2) == 2)
+    }
+    
+    func testSubarraySum2() throws {
+        XCTAssert(hashingSol.subarraySum([1,2,3], 3) == 2)
+    }
+    
+    func testSubarraySum3() throws {
+        XCTAssert(hashingSol.subarraySum([1], 0) == 0)
+    }
+    
+    func testSubarraySum4() throws {
+        XCTAssert(hashingSol.subarraySum([-1,-1,1], 0) == 1)
+    }
     
     // MARK: - Greedy
     
