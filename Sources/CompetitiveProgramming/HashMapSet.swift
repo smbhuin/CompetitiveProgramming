@@ -111,5 +111,24 @@ public class HashingSolution : Solution {
         return count
     }
     
+    /// LeetCode: 560. Subarray Sum Equals K.
+    ///
+    /// Solved using frequency HashMap.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the size of the array `nums`.
+    func subarraySum(_ nums: [Int], _ k: Int) -> Int {
+        let n = nums.count
+        var sumFreq: [Int:Int] = [0:1] // sum : count
+        var count = 0, sum = 0
+        for i in 0..<n {
+            sum += nums[i]
+            if let freq = sumFreq[sum-k] {
+                count += freq
+            }
+            sumFreq[sum] = sumFreq[sum, default: 0] + 1
+        }
+        return count
+    }
+    
 }
 
