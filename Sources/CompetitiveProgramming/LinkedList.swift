@@ -187,7 +187,7 @@ public class LinkedListSolution : Solution {
                 b = b!.next
             }
         }
-        return a;
+        return a
     }
     
 }
