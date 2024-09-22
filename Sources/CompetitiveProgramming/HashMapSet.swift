@@ -1,5 +1,5 @@
 
-public extension Solution {
+public class HashingSolution : Solution {
     
     /// LeetCode: 2215. Find the Difference of Two Arrays.
     ///

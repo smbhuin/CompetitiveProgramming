@@ -2,7 +2,10 @@ import XCTest
 @testable import CompetitiveProgramming
 
 final class CompetitiveProgrammingTests: XCTestCase {
+    
     let sol = Solution()
+    let bruteForceSol = BruteForceSolution()
+    let hashingSol = HashingSolution()
     
     // MARK: String
     
@@ -178,66 +181,66 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.pivotIndex([2,1,-1]) == 0)
     }
     
-    // MARK: HashMap & HashSet
+    // MARK: - Hashing
     
     func testFindDifference1() throws {
-        let result = sol.findDifference([1,2,3],[2,4,6])
+        let result = hashingSol.findDifference([1,2,3],[2,4,6])
         XCTAssert(Set(result[0]) == Set([1,3]))
         XCTAssert(Set(result[1]) == Set([4,6]))
     }
     
     func testFindDifference2() throws {
-        let result = sol.findDifference([1,2,3,3],[1,1,2,2])
+        let result = hashingSol.findDifference([1,2,3,3],[1,1,2,2])
         XCTAssert(Set(result[0]) == Set([3]))
         XCTAssert(Set(result[1]) == Set([]))
     }
     
     func testUniqueOccurrences1() throws {
-        XCTAssert(sol.uniqueOccurrences([1,2,2,1,1,3]) == true)
+        XCTAssert(hashingSol.uniqueOccurrences([1,2,2,1,1,3]) == true)
     }
     
     func testUniqueOccurrences2() throws {
-        XCTAssert(sol.uniqueOccurrences([1,2]) == false)
+        XCTAssert(hashingSol.uniqueOccurrences([1,2]) == false)
     }
     
     func testUniqueOccurrences3() throws {
-        XCTAssert(sol.uniqueOccurrences([-3,0,1,-3,1,1,1,-3,10,0]) == true)
+        XCTAssert(hashingSol.uniqueOccurrences([-3,0,1,-3,1,1,1,-3,10,0]) == true)
     }
     
     func testCloseStrings1() throws {
-        XCTAssert(sol.closeStrings("abc", "bca") == true)
+        XCTAssert(hashingSol.closeStrings("abc", "bca") == true)
     }
     
     func testCloseStrings2() throws {
-        XCTAssert(sol.closeStrings("a", "aa") == false)
+        XCTAssert(hashingSol.closeStrings("a", "aa") == false)
     }
     
     func testCloseStrings3() throws {
-        XCTAssert(sol.closeStrings("cabbba", "abbccc") == true)
+        XCTAssert(hashingSol.closeStrings("cabbba", "abbccc") == true)
     }
     
     func testCloseStrings4() throws {
-        XCTAssert(sol.closeStrings("uau", "ssx") == false)
+        XCTAssert(hashingSol.closeStrings("uau", "ssx") == false)
     }
     
     func testCloseStrings5() throws {
-        XCTAssert(sol.closeStrings("aaabbbbccddeeeeefffff", "aaaaabbcccdddeeeeffff") == false)
+        XCTAssert(hashingSol.closeStrings("aaabbbbccddeeeeefffff", "aaaaabbcccdddeeeeffff") == false)
     }
     
     func testEqualPairs1() throws {
-        XCTAssert(sol.equalPairs([[3,2,1],[1,7,6],[2,7,7]]) == 1)
+        XCTAssert(hashingSol.equalPairs([[3,2,1],[1,7,6],[2,7,7]]) == 1)
     }
     
     func testEqualPairs2() throws {
-        XCTAssert(sol.equalPairs([[3,1,2,2],[1,4,4,5],[2,4,2,2],[2,4,2,2]]) == 3)
+        XCTAssert(hashingSol.equalPairs([[3,1,2,2],[1,4,4,5],[2,4,2,2],[2,4,2,2]]) == 3)
     }
     
     func testEqualPairs3() throws {
-        XCTAssert(sol.equalPairs([[3,1,2,2],[1,4,4,4],[2,4,2,2],[2,5,2,2]]) == 3)
+        XCTAssert(hashingSol.equalPairs([[3,1,2,2],[1,4,4,4],[2,4,2,2],[2,5,2,2]]) == 3)
     }
     
     func testEqualPairs4() throws {
-        XCTAssert(sol.equalPairs([[11,1],[1,11]]) == 2)
+        XCTAssert(hashingSol.equalPairs([[11,1],[1,11]]) == 2)
     }
     
     // MARK: - Greedy
@@ -250,7 +253,7 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.partitionLabels("eccbbbbdec") == [10])
     }
     
-    // MARK: Stack
+    // MARK: - Stack
     
     func testRemoveStars1() throws {
         XCTAssert(sol.removeStars("leet**cod*e") == "lecoe")
