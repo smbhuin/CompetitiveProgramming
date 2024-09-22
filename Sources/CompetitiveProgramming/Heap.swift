@@ -1,11 +1,16 @@
 
-public class Heap<Element : Comparable> : CustomStringConvertible, Equatable  {
+public class Heap<Element> : CustomStringConvertible  {
     
     private var elements: [Element]
     private var condition: (Element, Element) -> Bool
     
     /// If condition is greater than (>) then it's a Max Heap other wise it's a Min Heap
-    public init(_ condition: @escaping (Element, Element) -> Bool = { $0 > $1 }) {
+    public init(_ condition: @escaping (Element, Element) -> Bool = { $0 > $1 }) where Element : Comparable {
+        self.elements = []
+        self.condition = condition
+    }
+    
+    public init(_ condition: @escaping (Element, Element) -> Bool) {
         self.elements = []
         self.condition = condition
     }
@@ -14,14 +19,14 @@ public class Heap<Element : Comparable> : CustomStringConvertible, Equatable  {
         elements.first
     }
     
-    var count: Int { elements.count }
+    public var count: Int { elements.count }
     
     public var isEmpty: Bool {
         elements.isEmpty
     }
     
     /// Utility function to balance heap after removing an element.
-    func shiftDown() {
+    private func shiftDown() {
         let len = elements.count
         guard len > 0 else { return }
         var currentIndex = 0
@@ -60,7 +65,7 @@ public class Heap<Element : Comparable> : CustomStringConvertible, Equatable  {
     }
     
     /// Utility function to balance heap after inserting an element.
-    func shiftUp() {
+    private func shiftUp() {
         var currentIndex = elements.count - 1
         while true {
             let parentIndex = (currentIndex - 1) / 2
@@ -97,14 +102,6 @@ public class Heap<Element : Comparable> : CustomStringConvertible, Equatable  {
             return first
         }
         return nil
-    }
-    
-    public static func == (lhs: Heap<Element>, rhs: Heap<Element>) -> Bool {
-        return lhs.elements == rhs.elements
-    }
-    
-    public static func != (lhs: Heap<Element>, rhs: Heap<Element>) -> Bool {
-        !(lhs == rhs)
     }
     
     public var description: String {
