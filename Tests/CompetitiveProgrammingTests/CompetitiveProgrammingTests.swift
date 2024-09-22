@@ -772,6 +772,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.totalCost([1,2,4,1], 3, 3) == 4)
     }
     
+    func testTopKFrequent1() throws {
+        XCTAssert(sol.topKFrequent([1,1,1,2,2,3], 2) == [1,2])
+    }
+    
+    func testTopKFrequent2() throws {
+        XCTAssert(sol.topKFrequent([1], 1) == [1])
+    }
+    
     // MARK: - Binary Search
     
     func testSuccessfulPairs1() throws {
