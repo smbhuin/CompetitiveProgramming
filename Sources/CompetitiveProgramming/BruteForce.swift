@@ -23,4 +23,24 @@ public class BruteForceSolution : Solution {
         return count
     }
     
+    /// LeetCode: 160. Intersection of Two Linked Lists.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n^2*), where *n* is the size of the linked list. Space complexity is O(1), only constant space is used.
+    func getIntersectionNode(_ headA: ListNode?, _ headB: ListNode?) -> ListNode? {
+        var nodeA = headA
+        while let na = nodeA {
+            var nodeB = headB
+            while let nb = nodeB {
+                if na === nb {
+                    return na
+                }
+                nodeB = nb.next
+            }
+            nodeA = na.next
+        }
+        return nil
+    }
+    
 }

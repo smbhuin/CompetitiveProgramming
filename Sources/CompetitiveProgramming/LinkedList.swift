@@ -164,4 +164,30 @@ public class LinkedListSolution : Solution {
         return maxSum
     }
     
+    /// LeetCode: 160. Intersection of Two Linked Lists.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the linked list. Space complexity is O(1), only constant space is used.
+    func getIntersectionNode(_ headA: ListNode?, _ headB: ListNode?) -> ListNode? {
+        var a = headA
+        var b = headB
+        while a !== b {
+            if a == nil && b == nil {
+                return nil
+            }
+            else if a == nil {
+                a = headB
+            }
+            else if b == nil {
+                b = headA
+            }
+            else {
+                a = a!.next
+                b = b!.next
+            }
+        }
+        return a;
+    }
+    
 }
