@@ -201,6 +201,31 @@ public extension Solution {
         return cost
     }
     
+    /// LeetCode: 347. Top K Frequent Elements.
+    ///
+    /// Solved using max heap.
+    ///
+    /// - Complexity: Time complexity is O(*nlogn*) and space complexity is O(*n*), where *n* is the size of the array `nums`.
+    func topKFrequent(_ nums: [Int], _ k: Int) -> [Int] {
+        let heap = Heap<[Int]>({$0[1] > $1[1]}) // max heap
+        var map: [Int:Int] = [:]
+        for num in nums {
+            map[num] = map[num, default: 0] + 1
+        }
+        for (k, v) in map {
+            heap.insert([k,v])
+        }
+        var k = k
+        var ans: [Int] = []
+        while k > 0 {
+            if let r = heap.remove() {
+                ans.append(r[0])
+            }
+            k -= 1
+        }
+        return ans
+    }
+    
 }
 
 /// LeetCode: 2336. Smallest Number in Infinite Set.
