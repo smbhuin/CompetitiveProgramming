@@ -34,7 +34,7 @@ public extension ListNode {
     }
 }
 
-public extension Solution {
+public class LinkedListSolution : Solution {
     
     /// LeetCode: 2095. Delete the Middle Node of a Linked List.
     ///

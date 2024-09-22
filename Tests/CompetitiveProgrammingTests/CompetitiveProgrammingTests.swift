@@ -6,6 +6,7 @@ final class CompetitiveProgrammingTests: XCTestCase {
     let sol = Solution()
     let bruteForceSol = BruteForceSolution()
     let hashingSol = HashingSolution()
+    let linkedListSol = LinkedListSolution()
     
     // MARK: String
     
@@ -349,66 +350,66 @@ final class CompetitiveProgrammingTests: XCTestCase {
     
     func testDeleteMiddle1() throws {
         let head = ListNode.buildLinkedList([1,3,4,7,1,2,6])
-        let result = sol.deleteMiddle(head)?.allElements()
+        let result = linkedListSol.deleteMiddle(head)?.allElements()
         XCTAssert(result == [1,3,4,1,2,6])
     }
     
     func testDeleteMiddle2() throws {
         let head = ListNode.buildLinkedList([1,2,3,4])
-        let result = sol.deleteMiddle(head)?.allElements()
+        let result = linkedListSol.deleteMiddle(head)?.allElements()
         XCTAssert(result == [1,2,4])
     }
     
     func testDeleteMiddle3() throws {
         let head = ListNode.buildLinkedList([2,1])
-        let result = sol.deleteMiddle(head)?.allElements()
+        let result = linkedListSol.deleteMiddle(head)?.allElements()
         XCTAssert(result == [2])
     }
     
     func testOddEvenList1() throws {
         let head = ListNode.buildLinkedList([1,2,3,4,5])
-        let result = sol.oddEvenList(head)?.allElements()
+        let result = linkedListSol.oddEvenList(head)?.allElements()
         XCTAssert(result == [1,3,5,2,4])
     }
     
     func testOddEvenList2() throws {
         let head = ListNode.buildLinkedList([2,1,3,5,6,4,7])
-        let result = sol.oddEvenList(head)?.allElements()
+        let result = linkedListSol.oddEvenList(head)?.allElements()
         XCTAssert(result == [2,3,6,7,1,5,4])
     }
     
     func testReverseList1() throws {
         let head = ListNode.buildLinkedList([1,2,3,4,5])
-        let result = sol.reverseList(head)?.allElements()
+        let result = linkedListSol.reverseList(head)?.allElements()
         XCTAssert(result == [5,4,3,2,1])
     }
     
     func testReverseList2() throws {
         let head = ListNode.buildLinkedList([1,2])
-        let result = sol.reverseList(head)?.allElements()
+        let result = linkedListSol.reverseList(head)?.allElements()
         XCTAssert(result == [2,1])
     }
     
     func testReverseList3() throws {
-        let result = sol.reverseList(nil)
+        let result = linkedListSol.reverseList(nil)
         XCTAssert(result == nil)
     }
     
     func testPairSum1() throws {
         let head = ListNode.buildLinkedList([5,4,2,1])
-        let result = sol.pairSum(head)
+        let result = linkedListSol.pairSum(head)
         XCTAssert(result == 6)
     }
     
     func testPairSum2() throws {
         let head = ListNode.buildLinkedList([4,2,2,3])
-        let result = sol.pairSum(head)
+        let result = linkedListSol.pairSum(head)
         XCTAssert(result == 7)
     }
     
     func testPairSum3() throws {
         let head = ListNode.buildLinkedList([1,100000])
-        let result = sol.pairSum(head)
+        let result = linkedListSol.pairSum(head)
         XCTAssert(result == 100001)
     }
     
