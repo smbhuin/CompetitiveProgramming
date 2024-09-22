@@ -413,6 +413,26 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result == 100001)
     }
     
+    func testGetIntersectionNode1() throws {
+        let nodeC: ListNode = ListNode(8)
+        let headA = ListNode(4)
+        headA.append(1).append(nodeC).append(contentsOf: [4,5])
+        let headB = ListNode(5)
+        headB.append(6).append(1).append(nodeC).append(contentsOf: [4,5])
+        let result = linkedListSol.getIntersectionNode(headA,headB)
+        XCTAssert(result === nodeC)
+    }
+    
+    func testGetIntersectionNode2() throws {
+        let nodeC: ListNode = ListNode(2)
+        let headA = ListNode(1)
+        headA.append(contentsOf: [9,1]).append(nodeC).append(4)
+        let headB = ListNode(3)
+        headB.append(nodeC).append(4)
+        let result = linkedListSol.getIntersectionNode(headA,headB)
+        XCTAssert(result === nodeC)
+    }
+    
     // MARK: - Binary Tree
     
     func testMaxDepth1() throws {
