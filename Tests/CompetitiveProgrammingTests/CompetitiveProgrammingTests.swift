@@ -433,6 +433,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result === nodeC)
     }
     
+    func testIsPalindrome1() throws {
+        let head = ListNode.buildLinkedList([1,2,2,1])
+        let result = linkedListSol.isPalindrome(head)
+        XCTAssert(result == true)
+    }
+    
+    func testIsPalindrome2() throws {
+        let head = ListNode.buildLinkedList([1,2])
+        let result = linkedListSol.isPalindrome(head)
+        XCTAssert(result == false)
+    }
+    
     // MARK: - Binary Tree
     
     func testMaxDepth1() throws {
