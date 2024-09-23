@@ -185,4 +185,40 @@ public class LinkedListSolution : Solution {
         return a
     }
     
+    /// LeetCode: 234. Palindrome Linked List.
+    ///
+    /// Solved by reversing the second half of the linked list.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the linked list. Space complexity is O(1), only constant space is used.
+    func isPalindrome(_ head: ListNode?) -> Bool {
+        // 1. find the mid of the linked list.
+        var slow: ListNode? = head
+        var fast: ListNode? = head?.next
+        while let s = slow, let f = fast, let fn = f.next {
+            slow = s.next
+            fast = fn.next
+        }
+        // 2. reverse the second half of linked list.
+        var prev: ListNode? = nil
+        var curr: ListNode? = slow?.next
+        while let c = curr {
+            let next: ListNode? = c.next
+            c.next = prev
+            prev = c
+            curr = next
+        }
+        slow?.next = nil
+        // 3. compare first half and reversed second half of the linked list.
+        var headA = head
+        var headB = prev
+        while let a = headA, let b = headB {
+            if a.val != b.val {
+                return false
+            }
+            headA = a.next
+            headB = b.next
+        }
+        return true
+    }
+    
 }
