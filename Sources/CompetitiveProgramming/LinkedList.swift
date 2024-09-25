@@ -243,4 +243,27 @@ public class LinkedListSolution : Solution {
         return dummy.next
     }
     
+    /// LeetCode: 142. Linked List Cycle II.
+    ///
+    /// Solved using Floyd’s Cycle-Finding Algorithm.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the linked list. Space complexity is O(1), only constant space is used.
+    func detectCycle(_ head: ListNode?) -> ListNode? {
+        var slow = head
+        var fast = head
+        while slow != nil && fast != nil && fast!.next != nil {
+            slow = slow!.next
+            fast = fast!.next!.next
+            if slow === fast { // has cycle
+                var head = head
+                while head !== slow {
+                    head = head?.next
+                    slow = slow?.next
+                }
+                return head
+            }
+        }
+        return nil
+    }
+    
 }
