@@ -452,6 +452,27 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result!.allElements() == [2,1,4,3])
     }
     
+    func testDetectCycle1() throws {
+        let head = ListNode(3)
+        let pos = ListNode(2)
+        head.append(pos).append(0).append(-4).next = pos
+        let result = linkedListSol.detectCycle(head)
+        XCTAssert(result === pos)
+    }
+    
+    func testDetectCycle2() throws {
+        let head = ListNode(1)
+        head.append(2).next = head
+        let result = linkedListSol.detectCycle(head)
+        XCTAssert(result === head)
+    }
+    
+    func testDetectCycle3() throws {
+        let head = ListNode(1)
+        let result = linkedListSol.detectCycle(head)
+        XCTAssert(result == nil)
+    }
+    
     // MARK: - Binary Tree
     
     func testMaxDepth1() throws {
