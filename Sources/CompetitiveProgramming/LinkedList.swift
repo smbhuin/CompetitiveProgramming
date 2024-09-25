@@ -221,4 +221,26 @@ public class LinkedListSolution : Solution {
         return true
     }
     
+    /// LeetCode: 24. Swap Nodes in Pairs.
+    ///
+    /// Solved by reversing the second half of the linked list.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the linked list. Space complexity is O(1), only constant space is used.
+    func swapPairs(_ head: ListNode?) -> ListNode? {
+        let dummy = ListNode(0)
+        dummy.next = head
+        var left: ListNode? = dummy
+        var mid = head
+        var right = head?.next
+        while let r = right {
+            mid?.next = r.next
+            r.next = mid
+            left?.next = r
+            left = mid
+            mid = mid?.next
+            right = mid?.next
+        }
+        return dummy.next
+    }
+    
 }
