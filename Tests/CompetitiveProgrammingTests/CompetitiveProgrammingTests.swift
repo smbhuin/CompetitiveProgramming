@@ -445,6 +445,13 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result == false)
     }
     
+    func testSwapPairs1() throws {
+        let head = ListNode.buildLinkedList([1,2,3,4])
+        let result = linkedListSol.swapPairs(head)
+        XCTAssert(result != nil)
+        XCTAssert(result!.allElements() == [2,1,4,3])
+    }
+    
     // MARK: - Binary Tree
     
     func testMaxDepth1() throws {
