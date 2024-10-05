@@ -150,5 +150,37 @@ public extension Solution {
             i += 1
         }
     }
+    
+    /// LeetCode: 31. Next Permutation.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the array `nums`. Space complexity is O(1), only constant extra space is used.
+    func nextPermutation(_ nums: inout [Int]) {
+        // Find the next smallest number from the end.
+        var nextSmallest = -1
+        for i in stride(from: nums.count-1, to: 0, by: -1) {
+            if nums[i] > nums[i-1] {
+                nextSmallest = i-1
+                break
+            }
+        }
+        // Find the next largest number after the nextSmallest.
+        var nextLargest = -1
+        if nextSmallest != -1 {
+            for i in stride(from: nums.count-1, to: nextSmallest, by: -1) {
+                if nums[i] > nums[nextSmallest] {
+                    nextLargest = i
+                    break
+                }
+            }
+        }
+        // Swap the nextSmallest and nextLargest.
+        if nextSmallest != -1 && nextLargest != -1 {
+            nums.swapAt(nextSmallest, nextLargest)
+        }
+        // Sort all the numbers after nextSmallest.
+        nums[(nextSmallest+1)...].sort()
+    }
 
 }

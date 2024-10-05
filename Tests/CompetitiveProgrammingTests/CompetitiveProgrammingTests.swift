@@ -76,6 +76,30 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(colors == [0,1,2])
     }
     
+    func testNextPermutation1() throws {
+        var nums = [1,2,3]
+        sol.nextPermutation(&nums)
+        XCTAssert(nums == [1,3,2])
+    }
+    
+    func testNextPermutation2() throws {
+        var nums = [3,2,1]
+        sol.nextPermutation(&nums)
+        XCTAssert(nums == [1,2,3])
+    }
+    
+    func testNextPermutation3() throws {
+        var nums = [1,1,5]
+        sol.nextPermutation(&nums)
+        XCTAssert(nums == [1,5,1])
+    }
+    
+    func testNextPermutation4() throws {
+        var nums = [1,3,2]
+        sol.nextPermutation(&nums)
+        XCTAssert(nums == [2,1,3])
+    }
+    
     // MARK: Two Pointers
     
     func testMoveZeroes1() throws {
