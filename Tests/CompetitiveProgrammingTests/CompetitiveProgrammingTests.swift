@@ -170,6 +170,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(slidingWinSol.findAnagrams("abab", "ab") == [0,1,2])
     }
     
+    func testMaxSlidingWindow1() throws {
+        XCTAssert(slidingWinSol.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3) == [3,3,5,5,6,7])
+    }
+    
+    func testMaxSlidingWindow2() throws {
+        XCTAssert(slidingWinSol.maxSlidingWindow([1], 1) == [1])
+    }
+    
     // MARK: Prefix Sum
     
     func testLargestAltitude1() throws {
