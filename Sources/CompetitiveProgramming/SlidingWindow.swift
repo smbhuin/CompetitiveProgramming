@@ -16,7 +16,7 @@
     return ans
 }*/
 
-public extension Solution {
+public class SlidingWindowSolution : Solution {
     
     /// LeetCode: 643. Maximum Average Subarray I.
     ///

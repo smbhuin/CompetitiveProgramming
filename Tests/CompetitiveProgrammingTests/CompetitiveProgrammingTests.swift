@@ -7,6 +7,8 @@ final class CompetitiveProgrammingTests: XCTestCase {
     let bruteForceSol = BruteForceSolution()
     let hashingSol = HashingSolution()
     let linkedListSol = LinkedListSolution()
+    let matrixSol = MatrixSolution()
+    let slidingWinSol = SlidingWindowSolution()
     
     // MARK: String
     
@@ -113,51 +115,51 @@ final class CompetitiveProgrammingTests: XCTestCase {
     // MARK: Sliding Window
     
     func testFindMaxAverage1() throws {
-        XCTAssert(sol.findMaxAverage([1,12,-5,-6,50,3], 4) == 12.75)
+        XCTAssert(slidingWinSol.findMaxAverage([1,12,-5,-6,50,3], 4) == 12.75)
     }
     
     func testFindMaxAverage2() throws {
-        XCTAssert(sol.findMaxAverage([5], 1) == 5.0)
+        XCTAssert(slidingWinSol.findMaxAverage([5], 1) == 5.0)
     }
     
     func testMaxVowels1() throws {
-        XCTAssert(sol.maxVowels("abciiidef", 3) == 3)
+        XCTAssert(slidingWinSol.maxVowels("abciiidef", 3) == 3)
     }
     
     func testMaxVowels2() throws {
-        XCTAssert(sol.maxVowels("aeiou", 2) == 2)
+        XCTAssert(slidingWinSol.maxVowels("aeiou", 2) == 2)
     }
     
     func testMaxVowels3() throws {
-        XCTAssert(sol.maxVowels("leetcode", 3) == 2)
+        XCTAssert(slidingWinSol.maxVowels("leetcode", 3) == 2)
     }
     
     func testLongestOnes1() throws {
-        XCTAssert(sol.longestOnes([1,1,1,0,0,0,1,1,1,1,0], 2) == 6)
+        XCTAssert(slidingWinSol.longestOnes([1,1,1,0,0,0,1,1,1,1,0], 2) == 6)
     }
     
     func testLongestOnes2() throws {
-        XCTAssert(sol.longestOnes([0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], 3) == 10)
+        XCTAssert(slidingWinSol.longestOnes([0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], 3) == 10)
     }
     
     func testLongestOnesOpt1() throws {
-        XCTAssert(sol.longestOnesII([1,1,1,0,0,0,1,1,1,1,0], 2) == 6)
+        XCTAssert(slidingWinSol.longestOnesII([1,1,1,0,0,0,1,1,1,1,0], 2) == 6)
     }
     
     func testLongestOnesOpt2() throws {
-        XCTAssert(sol.longestOnesII([0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], 3) == 10)
+        XCTAssert(slidingWinSol.longestOnesII([0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], 3) == 10)
     }
     
     func testLongestSubarray1() throws {
-        XCTAssert(sol.longestSubarray([1,1,0,1]) == 3)
+        XCTAssert(slidingWinSol.longestSubarray([1,1,0,1]) == 3)
     }
     
     func testLongestSubarray2() throws {
-        XCTAssert(sol.longestSubarray([0,1,1,1,0,1,1,0,1]) == 5)
+        XCTAssert(slidingWinSol.longestSubarray([0,1,1,1,0,1,1,0,1]) == 5)
     }
     
     func testLongestSubarray3() throws {
-        XCTAssert(sol.longestSubarray([1,1,1]) == 2)
+        XCTAssert(slidingWinSol.longestSubarray([1,1,1]) == 2)
     }
     
     // MARK: Prefix Sum
