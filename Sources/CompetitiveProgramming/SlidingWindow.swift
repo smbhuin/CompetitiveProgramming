@@ -128,4 +128,41 @@ public class SlidingWindowSolution : Solution {
         }
         return maxWin
     }
+    
+    /// LeetCode: 438. Find All Anagrams in a String.
+    ///
+    /// Solved by iteration using sliding window.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the length of the string `s`.  Space complexity is O(1), only constant space is used.
+    func findAnagrams(_ s: String, _ p: String) -> [Int] {
+        let sarr = Array(s)
+        let parr = Array(p)
+        guard sarr.count >= parr.count else {
+            return []
+        }
+        var sCount: [Character:Int] = [:]
+        var pCount: [Character:Int] = [:]
+        for i in 0..<parr.count {
+            pCount[parr[i]] = pCount[parr[i], default:0] + 1
+            sCount[sarr[i]] = sCount[sarr[i], default:0] + 1
+        }
+        var ans: [Int] = []
+        if sCount == pCount {
+            ans.append(0)
+        }
+        var l = 0
+        for r in parr.count..<sarr.count {
+            sCount[sarr[r]] = sCount[sarr[r], default: 0] + 1
+            sCount[sarr[l]] = sCount[sarr[l], default: 0] - 1
+            if sCount[sarr[l], default: 0] == 0 {
+                sCount.removeValue(forKey: sarr[l])
+            }
+            l += 1
+            if sCount == pCount {
+                ans.append(l)
+            }
+        }
+        return ans
+    }
+    
 }
