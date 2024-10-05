@@ -62,4 +62,19 @@ public class BruteForceSolution : Solution {
         return ans
     }
     
+    /// LeetCode: 41. First Missing Positive.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the size of the array `nums`.
+    func firstMissingPositive(_ nums: [Int]) -> Int {
+        let numSet = Set(nums)
+        for i in 1...Int.max {
+            if !numSet.contains(i) {
+                return i
+            }
+        }
+        return 1
+    }
+    
 }

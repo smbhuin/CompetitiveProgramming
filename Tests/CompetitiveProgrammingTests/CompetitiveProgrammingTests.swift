@@ -100,6 +100,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(nums == [2,1,3])
     }
     
+    func testFirstMissingPositive1() throws {
+        XCTAssert(bruteForceSol.firstMissingPositive([1,2,0]) == 3)
+    }
+    
+    func testFirstMissingPositive2() throws {
+        XCTAssert(bruteForceSol.firstMissingPositive([7,8,9,11,12]) == 1)
+    }
+    
     // MARK: Two Pointers
     
     func testMoveZeroes1() throws {
