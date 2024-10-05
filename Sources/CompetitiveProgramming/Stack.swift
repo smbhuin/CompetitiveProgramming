@@ -98,6 +98,37 @@ public extension Solution {
         return ans
     }
     
+    /// LeetCode: 84. Largest Rectangle in Histogram.
+    ///
+    /// Solved using stack.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the number of `heights`.
+    func largestRectangleArea(_ heights: [Int]) -> Int {
+        let n = heights.count
+        var stack: [(index:Int,value:Int)] = []
+        var maxArea = Int.min
+        for (i,v) in heights.enumerated() {
+            if let top = stack.last, top.value > v {
+                var lastIndex = i
+                // remove all values in stack that is greater than v.
+                while let t = stack.last, t.value >= v {
+                    maxArea = max(maxArea, (i - t.index) * t.value)
+                    stack.removeLast()
+                    lastIndex = t.index
+                }
+                stack.append((lastIndex,v))
+            }
+            else {
+                stack.append((i,v))
+            }
+        }
+        while let t = stack.last {
+            maxArea = max(maxArea, (n - t.index) * t.value)
+            stack.removeLast()
+        }
+        return maxArea
+    }
+    
 }
 
 /// LeetCode: 901. Online Stock Span.

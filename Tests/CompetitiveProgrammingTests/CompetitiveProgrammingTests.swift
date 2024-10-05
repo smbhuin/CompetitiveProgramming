@@ -338,6 +338,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.decodeString("3[z]2[2[y]pq4[2[jk]e1[f]]]ef") == "zzzyypqjkjkefjkjkefjkjkefjkjkefyypqjkjkefjkjkefjkjkefjkjkefef")
     }
     
+    func testLargestRectangleArea1() throws {
+        XCTAssert(sol.largestRectangleArea([2,1,5,6,2,3]) == 10)
+    }
+    
+    func testLargestRectangleArea2() throws {
+        XCTAssert(sol.largestRectangleArea([2,4]) == 4)
+    }
+    
     // MARK: - Queue
     
     func testRecentCounter1() throws {
