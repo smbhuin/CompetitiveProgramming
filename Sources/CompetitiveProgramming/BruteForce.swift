@@ -43,4 +43,23 @@ public class BruteForceSolution : Solution {
         return nil
     }
     
+    /// LeetCode: 239. Sliding Window Maximum.
+    ///
+    /// Solved by iteration using sliding window.
+    ///
+    /// - Complexity: Time complexity is O(*k*(n-k)*), where *n* is the size of the array `nums` and *k* is the window size.  Space complexity is O(1), only constant space is used.
+    func maxSlidingWindow(_ nums: [Int], _ k: Int) -> [Int] {
+        var ans: [Int] = []
+        var left = 0
+        for right in (k-1)..<nums.count {
+            var maxNum = Int.min
+            for i in left...right {
+                maxNum = max(maxNum, nums[i])
+            }
+            ans.append(maxNum)
+            left += 1
+        }
+        return ans
+    }
+    
 }
