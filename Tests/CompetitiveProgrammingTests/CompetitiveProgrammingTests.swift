@@ -1229,6 +1229,16 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(obj.next(88) == 10)
     }
     
+    // MARK: - Matrix
+    
+    func testSearchMatrix1() throws {
+        XCTAssert(matrixSol.searchMatrix([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24]], 5) == true)
+    }
+    
+    func testSearchMatrix2() throws {
+        XCTAssert(matrixSol.searchMatrix([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24]], 20) == false)
+    }
+    
 }
 
 
