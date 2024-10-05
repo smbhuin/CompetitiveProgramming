@@ -116,5 +116,39 @@ public extension Solution {
             return "Dire"
         }
     }
+    
+    /// LeetCode: 75. Sort Colors.
+    ///
+    /// Solved by counting color counts.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the array `nums`. Space complexity is O(1), only constant extra space is used.
+    func sortColors(_ nums: inout [Int]) {
+        var red = 0
+        var white = 0
+        var blue = 0
+        for num in nums {
+            switch num {
+                case 0:
+                red += 1
+                case 1:
+                white += 1
+                default:
+                blue += 1
+            }
+        }
+        var i = 0
+        for _ in 0..<red {
+            nums[i] = 0
+            i += 1
+        }
+        for _ in 0..<white {
+            nums[i] = 1
+            i += 1
+        }
+        for _ in 0..<blue {
+            nums[i] = 2
+            i += 1
+        }
+    }
 
 }

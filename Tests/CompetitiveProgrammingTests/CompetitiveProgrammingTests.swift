@@ -64,6 +64,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(Array(chars[0..<4]) == ["a","b","1","2"])
     }
     
+    func testSortColors1() throws {
+        var colors = [2,0,2,1,1,0]
+        sol.sortColors(&colors)
+        XCTAssert(colors == [0,0,1,1,2,2])
+    }
+    
+    func testSortColors2() throws {
+        var colors = [2,0,1]
+        sol.sortColors(&colors)
+        XCTAssert(colors == [0,1,2])
+    }
+    
     // MARK: Two Pointers
     
     func testMoveZeroes1() throws {
