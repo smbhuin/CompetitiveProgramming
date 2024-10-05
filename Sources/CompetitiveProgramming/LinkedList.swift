@@ -266,4 +266,27 @@ public class LinkedListSolution : Solution {
         return nil
     }
     
+    /// LeetCode: 287. Find the Duplicate Number.
+    ///
+    /// Solved using Floyd’s Cycle-Finding Algorithm.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the array `nums`. Space complexity is O(1), only constant space is used.
+    func findDuplicate(_ nums: [Int]) -> Int {
+        var slow = 0
+        var fast = 0
+        while true {
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if slow == fast { // has cycle
+                var start = 0
+                while start != slow { // finding cycle position
+                    start = nums[start]
+                    slow = nums[slow]
+                }
+                return start
+            }
+        }
+        return slow
+    }
+    
 }

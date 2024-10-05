@@ -491,6 +491,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(result == nil)
     }
     
+    func testFindDuplicate1() throws {
+        XCTAssert(linkedListSol.findDuplicate([1,3,4,2,2]) == 2)
+    }
+    
+    func testFindDuplicate2() throws {
+        XCTAssert(linkedListSol.findDuplicate([3,1,3,4,2]) == 3)
+    }
+    
+    func testFindDuplicate3() throws {
+        XCTAssert(linkedListSol.findDuplicate([3,3,3,3,3]) == 3)
+    }
+    
     // MARK: - Binary Tree
     
     func testMaxDepth1() throws {
