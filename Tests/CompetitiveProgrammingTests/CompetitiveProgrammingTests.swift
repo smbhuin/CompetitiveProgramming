@@ -162,6 +162,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(slidingWinSol.longestSubarray([1,1,1]) == 2)
     }
     
+    func testFindAnagrams1() throws {
+        XCTAssert(slidingWinSol.findAnagrams("cbaebabacd", "abc") == [0,6])
+    }
+    
+    func testFindAnagrams2() throws {
+        XCTAssert(slidingWinSol.findAnagrams("abab", "ab") == [0,1,2])
+    }
+    
     // MARK: Prefix Sum
     
     func testLargestAltitude1() throws {
