@@ -4,6 +4,7 @@ import XCTest
 final class CompetitiveProgrammingTests: XCTestCase {
     
     let sol = Solution()
+    let arraySol = ArraySolution()
     let bruteForceSol = BruteForceSolution()
     let hashingSol = HashingSolution()
     let linkedListSol = LinkedListSolution()
@@ -23,80 +24,80 @@ final class CompetitiveProgrammingTests: XCTestCase {
     // MARK: Array
     
     func testProductExceptSelf1() throws {
-        XCTAssert(sol.productExceptSelf([1,2,3,4]) == [24,12,8,6])
+        XCTAssert(arraySol.productExceptSelf([1,2,3,4]) == [24,12,8,6])
     }
     
     func testProductExceptSelf2() throws {
-        XCTAssert(sol.productExceptSelf([-1,1,0,-3,3]) == [0,0,9,0,0])
+        XCTAssert(arraySol.productExceptSelf([-1,1,0,-3,3]) == [0,0,9,0,0])
     }
     
     func testIncreasingTriplet1() throws {
-        XCTAssert(sol.increasingTriplet([1,2,3,4,5]) == true)
+        XCTAssert(arraySol.increasingTriplet([1,2,3,4,5]) == true)
     }
     
     func testIncreasingTriplet2() throws {
-        XCTAssert(sol.increasingTriplet([5,4,3,2,1]) == false)
+        XCTAssert(arraySol.increasingTriplet([5,4,3,2,1]) == false)
     }
     
     func testIncreasingTriplet3() throws {
-        XCTAssert(sol.increasingTriplet([2,1,5,0,4,6]) == true)
+        XCTAssert(arraySol.increasingTriplet([2,1,5,0,4,6]) == true)
     }
     
     func testIncreasingTriplet4() throws {
-        XCTAssert(sol.increasingTriplet([20,100,10,12,5,13]) == true)
+        XCTAssert(arraySol.increasingTriplet([20,100,10,12,5,13]) == true)
     }
     
     func testCompress1() throws {
         var chars: [Character] = ["a","a","b","b","c","c","c"]
-        XCTAssert(sol.compress(&chars) == 6)
+        XCTAssert(arraySol.compress(&chars) == 6)
         XCTAssert(Array(chars[0..<6]) == ["a","2","b","2","c","3"])
     }
     
     func testCompress() throws {
         var chars: [Character] = ["a"]
-        XCTAssert(sol.compress(&chars) == 1)
+        XCTAssert(arraySol.compress(&chars) == 1)
         XCTAssert(Array(chars[0..<1]) == ["a"])
     }
     
     func testCompress3() throws {
         var chars: [Character] = ["a","b","b","b","b","b","b","b","b","b","b","b","b"]
-        XCTAssert(sol.compress(&chars) == 4)
+        XCTAssert(arraySol.compress(&chars) == 4)
         XCTAssert(Array(chars[0..<4]) == ["a","b","1","2"])
     }
     
     func testSortColors1() throws {
         var colors = [2,0,2,1,1,0]
-        sol.sortColors(&colors)
+        arraySol.sortColors(&colors)
         XCTAssert(colors == [0,0,1,1,2,2])
     }
     
     func testSortColors2() throws {
         var colors = [2,0,1]
-        sol.sortColors(&colors)
+        arraySol.sortColors(&colors)
         XCTAssert(colors == [0,1,2])
     }
     
     func testNextPermutation1() throws {
         var nums = [1,2,3]
-        sol.nextPermutation(&nums)
+        arraySol.nextPermutation(&nums)
         XCTAssert(nums == [1,3,2])
     }
     
     func testNextPermutation2() throws {
         var nums = [3,2,1]
-        sol.nextPermutation(&nums)
+        arraySol.nextPermutation(&nums)
         XCTAssert(nums == [1,2,3])
     }
     
     func testNextPermutation3() throws {
         var nums = [1,1,5]
-        sol.nextPermutation(&nums)
+        arraySol.nextPermutation(&nums)
         XCTAssert(nums == [1,5,1])
     }
     
     func testNextPermutation4() throws {
         var nums = [1,3,2]
-        sol.nextPermutation(&nums)
+        arraySol.nextPermutation(&nums)
         XCTAssert(nums == [2,1,3])
     }
     

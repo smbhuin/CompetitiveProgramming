@@ -1,5 +1,5 @@
 
-public extension Solution {
+public class ArraySolution : Solution {
     
     /// LeetCode: 238. Product of Array Except Self
     ///
