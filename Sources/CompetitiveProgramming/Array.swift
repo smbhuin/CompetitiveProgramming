@@ -182,5 +182,36 @@ public class ArraySolution : Solution {
         // Sort all the numbers after nextSmallest.
         nums[(nextSmallest+1)...].sort()
     }
+    
+    /// LeetCode: 41. First Missing Positive.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the array `nums`. Space complexity is O(1), only constant extra space is used.
+    func firstMissingPositive(_ nums: [Int]) -> Int {
+        var nums = nums
+        for i in 0..<nums.count {
+            if nums[i] < 0 {
+                nums[i] = 0
+            }
+        }
+        for i in 0..<nums.count {
+            let val = abs(nums[i])
+            if val > 0 && val <= nums.count {
+                if nums[val-1] > 0 {
+                    nums[val-1] *= -1
+                }
+                else if nums[val-1] == 0 {
+                    nums[val-1] = -1 * (nums.count + 1)
+                }
+            }
+        }
+        for i in 1...nums.count {
+            if nums[i-1] >= 0 {
+                return i
+            }
+        }
+        return nums.count + 1
+    }
 
 }

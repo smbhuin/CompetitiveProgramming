@@ -109,6 +109,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(bruteForceSol.firstMissingPositive([7,8,9,11,12]) == 1)
     }
     
+    func testFirstMissingPositive3() throws {
+        XCTAssert(arraySol.firstMissingPositive([1,2,0]) == 3)
+    }
+    
+    func testFirstMissingPositive4() throws {
+        XCTAssert(arraySol.firstMissingPositive([7,8,9,11,12]) == 1)
+    }
+    
     // MARK: Two Pointers
     
     func testMoveZeroes1() throws {
