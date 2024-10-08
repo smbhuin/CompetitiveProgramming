@@ -970,6 +970,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.minEatingSpeed([30,11,23,4,20], 6) == 23)
     }
     
+    func testSearch1() throws {
+        XCTAssert(sol.search([-1,0,3,5,9,12], 9) == 4)
+    }
+    
+    func testSearch2() throws {
+        XCTAssert(sol.search([-1,0,3,5,9,12], 2) == -1)
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {

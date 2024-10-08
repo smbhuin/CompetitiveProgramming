@@ -74,4 +74,26 @@ public extension Solution {
         return speed
     }
     
+    /// LeetCode: 704. Binary Search.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*logn*), where *n* is the size of the array `nums`. Space complexity is O(1), only constant extra space is used.
+    func search(_ nums: [Int], _ target: Int) -> Int {
+        var left = 0, right = nums.count - 1
+        while left <= right {
+            let mid = (left + right) / 2
+            if nums[mid] < target {
+                left = mid + 1
+            }
+            else if nums[mid] > target {
+                right = mid - 1
+            }
+            else {
+                return mid
+            }
+        }
+        return -1
+    }
+    
 }
