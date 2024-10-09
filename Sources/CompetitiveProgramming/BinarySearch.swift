@@ -96,4 +96,24 @@ public extension Solution {
         return -1
     }
     
+    /// LeetCode: 744. Find Smallest Letter Greater Than Target.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*logn*), where *n* is the size of the array `letters`. Space complexity is O(1), only constant extra space is used.
+    func nextGreatestLetter(_ letters: [Character], _ target: Character) -> Character {
+        var left = 0, right = letters.count - 1, ans = letters[0]
+        while left <= right {
+            let mid = (left + right) / 2
+            if letters[mid] > target {
+                ans = letters[mid]
+                right = mid - 1
+            }
+            else {
+                left = mid + 1
+            }
+        }
+        return ans
+    }
+    
 }

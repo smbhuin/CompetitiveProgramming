@@ -978,6 +978,22 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(sol.search([-1,0,3,5,9,12], 2) == -1)
     }
     
+    func testNextGreatestLetter1() throws {
+        XCTAssert(sol.nextGreatestLetter(["c","f","j"], "a") == "c")
+    }
+    
+    func testNextGreatestLetter2() throws {
+        XCTAssert(sol.nextGreatestLetter(["c","f","j"], "c") == "f")
+    }
+    
+    func testNextGreatestLetter3() throws {
+        XCTAssert(sol.nextGreatestLetter(["x","x","y","y"], "z") == "x")
+    }
+    
+    func testNextGreatestLetter4() throws {
+        XCTAssert(sol.nextGreatestLetter(["e","e","e","k","q","q","q","v","v","y"], "q") == "v")
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {
