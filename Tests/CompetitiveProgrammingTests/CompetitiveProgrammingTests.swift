@@ -996,6 +996,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(binarySearchSol.nextGreatestLetter(["e","e","e","k","q","q","q","v","v","y"], "q") == "v")
     }
     
+    func testCountNegatives1() throws {
+        XCTAssert(binarySearchSol.countNegatives([[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]) == 8)
+    }
+    
+    func testCountNegatives2() throws {
+        XCTAssert(binarySearchSol.countNegatives([[3,2],[1,0]]) == 0)
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {

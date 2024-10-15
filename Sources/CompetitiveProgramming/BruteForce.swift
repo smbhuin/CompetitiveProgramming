@@ -77,4 +77,25 @@ public class BruteForceSolution : Solution {
         return 1
     }
     
+    /// LeetCode: 1351. Count Negative Numbers in a Sorted Matrix.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*m*n*), where *m* and *n* is the number of rows & columns in the matrix `grid` respectively. Space complexity is O(1), only constant extra space is used.
+    func countNegatives(_ grid: [[Int]]) -> Int {
+        let m = grid.count, n = grid[0].count
+        var i = 0, j = 0, c = 0
+        while i < m {
+            j = 0
+            while j < n {
+                if grid[i][j] < 0 {
+                    c += 1
+                }
+                j += 1
+            }
+            i += 1
+        }
+        return c
+    }
+    
 }

@@ -116,4 +116,31 @@ public class BinarySearchSolution : Solution {
         return ans
     }
     
+    /// LeetCode: 1351. Count Negative Numbers in a Sorted Matrix.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*m+n*), where *m* and *n* is the number of rows & columns in the matrix `grid` respectively. Space complexity is O(1), only constant extra space is used.
+    func countNegatives(_ grid: [[Int]]) -> Int {
+        let m = grid.count, n = grid[0].count
+        var r = 0, ans = 0
+        while r < m {
+            // Find first negative number in the row using binary search.
+            var left = 0, right = n - 1, c = 0
+            while left <= right {
+                let mid = (left + right) / 2
+                if grid[r][mid] < 0 {
+                    c = n - mid // negative count
+                    right = mid - 1
+                }
+                else {
+                    left = mid + 1
+                }
+            }
+            ans += c
+            r += 1
+        }
+        return ans
+    }
+    
 }
