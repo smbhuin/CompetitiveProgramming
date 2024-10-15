@@ -10,6 +10,8 @@ final class CompetitiveProgrammingTests: XCTestCase {
     let linkedListSol = LinkedListSolution()
     let matrixSol = MatrixSolution()
     let slidingWinSol = SlidingWindowSolution()
+    let backtrackingSol = BacktrackingSolution()
+    let binarySearchSol = BinarySearchSolution()
     
     // MARK: String
     
@@ -935,109 +937,109 @@ final class CompetitiveProgrammingTests: XCTestCase {
     // MARK: - Binary Search
     
     func testSuccessfulPairs1() throws {
-        XCTAssert(sol.successfulPairs([5,1,3], [1,2,3,4,5], 7) == [4,0,3])
+        XCTAssert(binarySearchSol.successfulPairs([5,1,3], [1,2,3,4,5], 7) == [4,0,3])
     }
     
     func testSuccessfulPairs2() throws {
-        XCTAssert(sol.successfulPairs([3,1,2], [8,5,8], 16) == [2,0,2])
+        XCTAssert(binarySearchSol.successfulPairs([3,1,2], [8,5,8], 16) == [2,0,2])
     }
     
     func testSuccessfulPairs3() throws {
-        XCTAssert(sol.successfulPairs([15,8,19], [38,36,23], 328) == [3,0,3])
+        XCTAssert(binarySearchSol.successfulPairs([15,8,19], [38,36,23], 328) == [3,0,3])
     }
     
     func testFindPeakElement1() throws {
-        XCTAssert(sol.findPeakElement([1,2,3,1]) == 2)
+        XCTAssert(binarySearchSol.findPeakElement([1,2,3,1]) == 2)
     }
     
     func testFindPeakElement2() throws {
-        XCTAssert([2, 5].contains(sol.findPeakElement([1,2,1,3,5,6,4])))
+        XCTAssert([2, 5].contains(binarySearchSol.findPeakElement([1,2,1,3,5,6,4])))
     }
     
     func testFindPeakElement3() throws {
-        XCTAssert([1, 3, 5].contains(sol.findPeakElement([1,2,1,2,1,2,1])))
+        XCTAssert([1, 3, 5].contains(binarySearchSol.findPeakElement([1,2,1,2,1,2,1])))
     }
     
     func testMinEatingSpeed1() throws {
-        XCTAssert(sol.minEatingSpeed([3,6,7,11], 8) == 4)
+        XCTAssert(binarySearchSol.minEatingSpeed([3,6,7,11], 8) == 4)
     }
     
     func testMinEatingSpeed2() throws {
-        XCTAssert(sol.minEatingSpeed([30,11,23,4,20], 5) == 30)
+        XCTAssert(binarySearchSol.minEatingSpeed([30,11,23,4,20], 5) == 30)
     }
     
     func testMinEatingSpeed3() throws {
-        XCTAssert(sol.minEatingSpeed([30,11,23,4,20], 6) == 23)
+        XCTAssert(binarySearchSol.minEatingSpeed([30,11,23,4,20], 6) == 23)
     }
     
     func testSearch1() throws {
-        XCTAssert(sol.search([-1,0,3,5,9,12], 9) == 4)
+        XCTAssert(binarySearchSol.search([-1,0,3,5,9,12], 9) == 4)
     }
     
     func testSearch2() throws {
-        XCTAssert(sol.search([-1,0,3,5,9,12], 2) == -1)
+        XCTAssert(binarySearchSol.search([-1,0,3,5,9,12], 2) == -1)
     }
     
     func testNextGreatestLetter1() throws {
-        XCTAssert(sol.nextGreatestLetter(["c","f","j"], "a") == "c")
+        XCTAssert(binarySearchSol.nextGreatestLetter(["c","f","j"], "a") == "c")
     }
     
     func testNextGreatestLetter2() throws {
-        XCTAssert(sol.nextGreatestLetter(["c","f","j"], "c") == "f")
+        XCTAssert(binarySearchSol.nextGreatestLetter(["c","f","j"], "c") == "f")
     }
     
     func testNextGreatestLetter3() throws {
-        XCTAssert(sol.nextGreatestLetter(["x","x","y","y"], "z") == "x")
+        XCTAssert(binarySearchSol.nextGreatestLetter(["x","x","y","y"], "z") == "x")
     }
     
     func testNextGreatestLetter4() throws {
-        XCTAssert(sol.nextGreatestLetter(["e","e","e","k","q","q","q","v","v","y"], "q") == "v")
+        XCTAssert(binarySearchSol.nextGreatestLetter(["e","e","e","k","q","q","q","v","v","y"], "q") == "v")
     }
     
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {
-        XCTAssert(sol.letterCombinations("23") == ["ad","ae","af","bd","be","bf","cd","ce","cf"])
+        XCTAssert(backtrackingSol.letterCombinations("23") == ["ad","ae","af","bd","be","bf","cd","ce","cf"])
     }
     
     func testLetterCombinations2() throws {
-        XCTAssert(sol.letterCombinations("") == [])
+        XCTAssert(backtrackingSol.letterCombinations("") == [])
     }
     
     func testLetterCombinations3() throws {
-        XCTAssert(sol.letterCombinations("2") == ["a","b","c"])
+        XCTAssert(backtrackingSol.letterCombinations("2") == ["a","b","c"])
     }
     
     func testCombinationSum31() throws {
-        XCTAssert(sol.combinationSum3(3, 7) == [[1,2,4]])
+        XCTAssert(backtrackingSol.combinationSum3(3, 7) == [[1,2,4]])
     }
     
     func testCombinationSum32() throws {
-        XCTAssert(sol.combinationSum3(3, 9) == [[1,2,6],[1,3,5],[2,3,4]])
+        XCTAssert(backtrackingSol.combinationSum3(3, 9) == [[1,2,6],[1,3,5],[2,3,4]])
     }
     
     func testCombinationSum33() throws {
-        XCTAssert(sol.combinationSum3(4, 1) == [])
+        XCTAssert(backtrackingSol.combinationSum3(4, 1) == [])
     }
     
     func testSolveNQueens1() throws {
-        XCTAssert(sol.solveNQueens(4) == [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]])
+        XCTAssert(backtrackingSol.solveNQueens(4) == [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]])
     }
     
     func testSubsets1() throws {
-        XCTAssert(Set(sol.subsets([1,2,3])) == [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]])
+        XCTAssert(Set(backtrackingSol.subsets([1,2,3])) == [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]])
     }
     
     func testSubsets2() throws {
-        XCTAssert(Set(sol.subsets([0])) == [[],[0]])
+        XCTAssert(Set(backtrackingSol.subsets([0])) == [[],[0]])
     }
     
     func testPartition1() throws {
-        XCTAssert(Set(sol.partition("aab")) == [["a","a","b"],["aa","b"]])
+        XCTAssert(Set(backtrackingSol.partition("aab")) == [["a","a","b"],["aa","b"]])
     }
     
     func testPartition2() throws {
-        XCTAssert(Set(sol.partition("a")) == [["a"]])
+        XCTAssert(Set(backtrackingSol.partition("a")) == [["a"]])
     }
     
     // MARK: - Dynamic Programming

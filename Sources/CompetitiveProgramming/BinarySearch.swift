@@ -1,6 +1,6 @@
 import Foundation
 
-public extension Solution {
+public class BinarySearchSolution : Solution {
     
     /// LeetCode: 2300. Successful Pairs of Spells and Potions.
     ///

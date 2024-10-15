@@ -16,7 +16,7 @@
     backtrack(STATE)
 */
 
-public extension Solution {
+public class BacktrackingSolution : Solution {
     
     /// LeetCode: 17. Letter Combinations of a Phone Number.
     ///
