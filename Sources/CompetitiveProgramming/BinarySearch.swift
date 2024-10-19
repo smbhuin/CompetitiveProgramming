@@ -143,4 +143,31 @@ public class BinarySearchSolution : Solution {
         return ans
     }
     
+    /// LeetCode: 436. Find Right Interval.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*nlogn*) and space complexity is O(*n*), where *n* is the number of intervals.
+    func findRightInterval(_ intervals: [[Int]]) -> [Int] {
+        let n = intervals.count
+        var indexedIntervals = intervals.enumerated().map { [$1[0],$1[1],$0] } // [start_i, end_i, i]
+        indexedIntervals.sort(by: { $0[0] < $1[0] })
+        var ans = Array(repeating: -1, count: n)
+        for i in 0..<n {
+            var left = 0, right = n - 1, idx = -1
+            while left <= right {
+                let mid = (left + right) / 2
+                if indexedIntervals[mid][0] >= intervals[i][1] {
+                    idx = indexedIntervals[mid][2]
+                    right = mid - 1
+                }
+                else {
+                    left = mid + 1
+                }
+            }
+            ans[i] = idx
+        }
+        return ans
+    }
+    
 }

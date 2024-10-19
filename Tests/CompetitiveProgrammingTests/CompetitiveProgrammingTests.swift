@@ -1004,6 +1004,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(binarySearchSol.countNegatives([[3,2],[1,0]]) == 0)
     }
     
+    func testFindRightInterval1() throws {
+        XCTAssert(binarySearchSol.findRightInterval([[3,4],[2,3],[1,2]]) == [-1,0,1])
+    }
+    
+    func testFindRightInterval2() throws {
+        XCTAssert(binarySearchSol.findRightInterval([[1,4],[2,3],[3,4]]) == [-1,2,-1])
+    }
+    
+    func testFindRightInterval3() throws {
+        XCTAssert(binarySearchSol.findRightInterval([[1,2]]) == [-1])
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {
