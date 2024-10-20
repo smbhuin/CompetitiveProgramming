@@ -1016,6 +1016,16 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(binarySearchSol.findRightInterval([[1,2]]) == [-1])
     }
     
+    func testTimeStamp1() throws {
+        let obj = TimeMap()
+        obj.set("foo", "bar", 1)
+        XCTAssert(obj.get("foo", 1) == "bar")
+        XCTAssert(obj.get("foo", 3) == "bar")
+        obj.set("foo", "bar2", 4)
+        XCTAssert(obj.get("foo", 4) == "bar2")
+        XCTAssert(obj.get("foo", 5) == "bar2")
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {

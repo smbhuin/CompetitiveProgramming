@@ -171,3 +171,48 @@ public class BinarySearchSolution : Solution {
     }
     
 }
+
+/// LeetCode: 981. Time Based Key-Value Store.
+///
+/// Solved using binary search.
+///
+class TimeMap {
+
+    var dict: [String:[(Int,String)]]
+    
+    init() {
+        dict = [:]
+    }
+    
+    /// - Complexity: Time complexity is O(*logn*), where *n* is the number of values. Space complexity is O(1), only constant extra space is used.
+    func findIndex(_ values: [(Int,String)], _ timestamp: Int) -> Int {
+        var left = 0, right = values.count - 1, idx = -1
+        while left <= right {
+            let mid = (left + right) / 2
+            if values[mid].0 <= timestamp {
+                idx = mid
+                left = mid + 1
+            }
+            else {
+                right = mid - 1
+            }
+        }
+        return idx
+    }
+    
+    /// - Complexity: Time complexity is O(1) and space complexity is O(1), only constant extra space is used.
+    func set(_ key: String, _ value: String, _ timestamp: Int) {
+        dict[key, default: []].append((timestamp,value))
+    }
+    
+    /// - Complexity: Time complexity is O(*logn*), where *n* is the number of stored values for a particular key. Space complexity is O(1), only constant extra space is used.
+    func get(_ key: String, _ timestamp: Int) -> String {
+        if let vals = dict[key] {
+            let idx = findIndex(vals, timestamp)
+            if idx != -1 {
+                return vals[idx].1
+            }
+        }
+        return ""
+    }
+}
