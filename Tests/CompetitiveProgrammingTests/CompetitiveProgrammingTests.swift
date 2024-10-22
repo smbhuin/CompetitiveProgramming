@@ -1026,6 +1026,27 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(obj.get("foo", 5) == "bar2")
     }
     
+    func testSnapshotArray1() throws {
+        let obj = SnapshotArray(3)
+        obj.set(0, 5)
+        _ = obj.snap()
+        obj.set(0, 6)
+        XCTAssert(obj.get(0, 0) == 5)
+    }
+    
+    func testSnapshotArray2() throws {
+        let obj = SnapshotArray(1)
+        obj.snap()
+        obj.snap()
+        obj.set(0, 4)
+        obj.snap()
+        XCTAssert(obj.get(0, 1) == 0)
+        obj.set(0, 12)
+        XCTAssert(obj.get(0, 1) == 0)
+        obj.snap()
+        XCTAssert(obj.get(0, 3) == 12)
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {

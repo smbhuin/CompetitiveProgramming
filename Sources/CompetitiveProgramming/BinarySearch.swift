@@ -216,3 +216,48 @@ class TimeMap {
         return ""
     }
 }
+
+/// LeetCode: 1146. Snapshot Array.
+///
+/// Solved using binary search.
+///
+class SnapshotArray {
+
+    var arr: [[(Int,Int)]] // [[(snapId,value)]]
+    var snapId: Int
+
+    init(_ length: Int) {
+        arr = Array(repeating: [(0,0)], count: length) // SC: O(length * snaps)
+        snapId = 0
+    }
+    
+    /// - Complexity: Time complexity and space complexity is O(1).
+    func set(_ index: Int, _ val: Int) {
+        arr[index].append((snapId,val))
+    }
+    
+    /// - Complexity: Time complexity and space complexity is O(1).
+    @discardableResult
+    func snap() -> Int {
+        snapId += 1
+        return snapId - 1
+    }
+    
+    /// - Complexity: Time complexity is O(*logn*), where *n* is the number of snap Ids. Space complexity is O(1), only constant extra space is used.
+    func get(_ index: Int, _ snap_id: Int) -> Int {
+        let snaps = arr[index]
+        var left = 0, right = snaps.count - 1, val = 0
+        while left <= right {
+            let mid = (left + right) / 2
+            if snaps[mid].0 <= snap_id {
+                val = snaps[mid].1
+                left = mid + 1
+            }
+            else {
+                right = mid - 1
+            }
+        }
+        return val
+    }
+    
+}
