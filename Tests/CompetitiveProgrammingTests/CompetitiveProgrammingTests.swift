@@ -1063,6 +1063,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(binarySearchSol.findMinII([2,2,2,0,1]) == 0)
     }
     
+    func testIsPerfectSquare1() throws {
+        XCTAssert(binarySearchSol.isPerfectSquare(16) == true)
+    }
+    
+    func testIsPerfectSquare2() throws {
+        XCTAssert(binarySearchSol.isPerfectSquare(14) == false)
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {

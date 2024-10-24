@@ -213,6 +213,28 @@ public class BinarySearchSolution : Solution {
         return nums[end]
     }
     
+    /// LeetCode: 367. Valid Perfect Square.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*log n*), where *n* is the `num`. Space complexity is O(1), only constant extra space is used.
+    func isPerfectSquare(_ num: Int) -> Bool {
+        var start = 0, end = num
+        while start <= end {
+            let mid = (start + end) / 2
+            if mid * mid == num {
+                return true
+            }
+            else if mid * mid < num {
+                start = mid + 1
+            }
+            else {
+                end = mid - 1
+            }
+        }
+        return false
+    }
+    
 }
 
 /// LeetCode: 981. Time Based Key-Value Store.
