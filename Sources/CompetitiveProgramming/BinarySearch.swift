@@ -170,6 +170,49 @@ public class BinarySearchSolution : Solution {
         return ans
     }
     
+    /// LeetCode: 153. Find Minimum in Rotated Sorted Array.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*log n*), where *n* is the length of nums array. Space complexity is O(1), only constant extra space is used.
+    func findMin(_ nums: [Int]) -> Int {
+        var start = 0
+        var end = nums.count - 1
+        while start < end  {
+            let mid = (start + end) / 2
+            if nums[mid] > nums[end] {
+                start = mid + 1
+            }
+            else {
+                end = mid
+            }
+        }
+        return nums[end]
+    }
+    
+    /// LeetCode: 154. Find Minimum in Rotated Sorted Array II.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*log n*), where *n* is the length of nums array. Space complexity is O(1), only constant extra space is used.
+    func findMinII(_ nums: [Int]) -> Int {
+        var start = 0
+        var end = nums.count - 1
+        while start < end  {
+            let mid = (start + end) / 2
+            if nums[mid] > nums[end] {
+                start = mid + 1
+            }
+            else if nums[mid] == nums[end] {
+                end -= 1
+            }
+            else {
+                end = mid
+            }
+        }
+        return nums[end]
+    }
+    
 }
 
 /// LeetCode: 981. Time Based Key-Value Store.

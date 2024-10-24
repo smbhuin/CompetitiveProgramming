@@ -1047,6 +1047,22 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(obj.get(0, 3) == 12)
     }
     
+    func testFindMin1() throws {
+        XCTAssert(binarySearchSol.findMin([1,3,5]) == 1)
+    }
+    
+    func testFindMin2() throws {
+        XCTAssert(binarySearchSol.findMin([2,0,1]) == 0)
+    }
+    
+    func testFindMinII1() throws {
+        XCTAssert(binarySearchSol.findMinII([1,3,5]) == 1)
+    }
+    
+    func testFindMinII2() throws {
+        XCTAssert(binarySearchSol.findMinII([2,2,2,0,1]) == 0)
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {
