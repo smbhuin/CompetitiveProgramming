@@ -1071,6 +1071,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(binarySearchSol.isPerfectSquare(14) == false)
     }
     
+    func testarrangeCoins1() throws {
+        XCTAssert(binarySearchSol.arrangeCoins(5) == 2)
+    }
+    
+    func testarrangeCoins2() throws {
+        XCTAssert(binarySearchSol.arrangeCoins(8) == 3)
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {

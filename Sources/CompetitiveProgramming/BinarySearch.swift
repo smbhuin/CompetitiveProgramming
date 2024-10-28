@@ -235,6 +235,26 @@ public class BinarySearchSolution : Solution {
         return false
     }
     
+    /// LeetCode: 441. Arranging Coins.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*log n*), where *n* is the number of coins given. Space complexity is O(1), only constant extra space is used.
+    func arrangeCoins(_ n: Int) -> Int {
+        var start = 0, end = n
+        while start <= end {
+            let mid = (start + end) / 2
+            let coins = mid * (mid + 1) / 2
+            if coins <= n {
+                start = mid + 1
+            }
+            else {
+                end = mid - 1
+            }
+        }
+        return start - 1
+    }
+    
 }
 
 /// LeetCode: 981. Time Based Key-Value Store.
