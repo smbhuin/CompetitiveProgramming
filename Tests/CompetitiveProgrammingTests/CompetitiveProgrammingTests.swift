@@ -1079,6 +1079,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(binarySearchSol.arrangeCoins(8) == 3)
     }
     
+    func testHIndex1() throws {
+        XCTAssert(binarySearchSol.hIndex([0,1,3,5,6]) == 3)
+    }
+    
+    func testHIndex2() throws {
+        XCTAssert(binarySearchSol.hIndex([1,2,100]) == 2)
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {

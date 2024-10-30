@@ -255,6 +255,27 @@ public class BinarySearchSolution : Solution {
         return start - 1
     }
     
+    /// LeetCode: 275. H-Index II.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*log n*), where *n* is the number of papers. Space complexity is O(1), only constant extra space is used.
+    func hIndex(_ citations: [Int]) -> Int {
+        var low = 0, high = citations.count - 1, hidx = 0
+        while low <= high {
+            let mid = (low + high) / 2
+            let topPapers = citations.count - mid
+            if citations[mid] >= topPapers {
+                hidx = topPapers
+                high = mid - 1
+            }
+            else {
+                low = mid + 1
+            }
+        }
+        return hidx
+    }
+    
 }
 
 /// LeetCode: 981. Time Based Key-Value Store.
