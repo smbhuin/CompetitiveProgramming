@@ -276,6 +276,37 @@ public class BinarySearchSolution : Solution {
         return hidx
     }
     
+    /// LeetCode: 540. Single Element in a Sorted Array.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*log n*), where *n* is the size of `nums`. Space complexity is O(1), only constant extra space is used.
+    func singleNonDuplicate(_ nums: [Int]) -> Int {
+        let n = nums.count
+        var left = 0, right = n - 1
+        while left < right {
+            let mid = (left + right) / 2
+            let isRightEven = (right - mid) % 2 == 0
+            if nums[mid] == nums[mid + 1] {
+                if isRightEven {
+                    left = mid + 2
+                }
+                else {
+                    right = mid - 1
+                }
+            }
+            else {
+                if isRightEven {
+                    right = mid
+                }
+                else {
+                    left = mid + 1
+                }
+            }
+        }
+        return nums[right]
+    }
+    
 }
 
 /// LeetCode: 981. Time Based Key-Value Store.

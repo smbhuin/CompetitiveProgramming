@@ -1099,6 +1099,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(binarySearchSol.hIndex([1,2,100]) == 2)
     }
     
+    func testSingleNonDuplicate1() throws {
+        XCTAssert(binarySearchSol.singleNonDuplicate([1,1,2,3,3,4,4,8,8]) == 2)
+    }
+    
+    func testSingleNonDuplicate2() throws {
+        XCTAssert(binarySearchSol.singleNonDuplicate([3,3,7,7,10,11,11]) == 10)
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {
