@@ -214,4 +214,23 @@ public class ArraySolution : Solution {
         return nums.count + 1
     }
 
+    /// LeetCode: 1539. Kth Missing Positive Number.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(1), it will take maximum `Int.max` time. Space complexity is O(*n*), where *n* is the size of the array `arr`.
+    func findKthPositive(_ arr: [Int], _ k: Int) -> Int {
+        let arrSet = Set(arr)
+        var count = 0
+        for i in 1...Int.max {
+            if !arrSet.contains(i) {
+                count += 1
+                if count == k {
+                    return i
+                }
+            }
+        }
+        return 0
+    }
+    
 }

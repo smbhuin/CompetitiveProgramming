@@ -119,6 +119,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(arraySol.firstMissingPositive([7,8,9,11,12]) == 1)
     }
     
+    func testFindKthPositive1() throws {
+        XCTAssert(arraySol.findKthPositive([2,3,4,7,11], 5) == 9)
+    }
+    
+    func testFindKthPositive2() throws {
+        XCTAssert(arraySol.findKthPositive([1,2,3,4], 2) == 6)
+    }
+    
+    func testFindKthPositive3() throws {
+        XCTAssert(arraySol.findKthPositive([5,6,7,8,9], 9) == 14)
+    }
+    
     // MARK: Two Pointers
     
     func testMoveZeroes1() throws {
