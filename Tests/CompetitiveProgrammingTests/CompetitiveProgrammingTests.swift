@@ -1107,6 +1107,22 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(binarySearchSol.singleNonDuplicate([3,3,7,7,10,11,11]) == 10)
     }
     
+    func testPeakIndexInMountainArray1() throws {
+        XCTAssert(binarySearchSol.peakIndexInMountainArray([0,1,0]) == 1)
+    }
+    
+    func testPeakIndexInMountainArray2() throws {
+        XCTAssert(binarySearchSol.peakIndexInMountainArray([0,2,1,0]) == 1)
+    }
+    
+    func testPeakIndexInMountainArray3() throws {
+        XCTAssert(binarySearchSol.peakIndexInMountainArray([0,10,5,2]) == 1)
+    }
+    
+    func testPeakIndexInMountainArray4() throws {
+        XCTAssert(binarySearchSol.peakIndexInMountainArray([3,5,3,2,0]) == 1)
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {

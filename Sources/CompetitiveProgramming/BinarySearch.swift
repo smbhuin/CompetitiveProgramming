@@ -307,6 +307,25 @@ public class BinarySearchSolution : Solution {
         return nums[right]
     }
     
+    /// LeetCode: 852. Peak Index in a Mountain Array.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*log n*), where *n* is the size of `arr`. Space complexity is O(1), only constant extra space is used.
+    func peakIndexInMountainArray(_ arr: [Int]) -> Int {
+        var low = 0, high = arr.count - 1
+        while low < high {
+            let mid = (low + high) / 2
+            if arr[mid] < arr[mid+1] {
+                low = mid + 1
+            }
+            else {
+                high = mid
+            }
+        }
+        return high
+    }
+    
 }
 
 /// LeetCode: 981. Time Based Key-Value Store.
