@@ -1123,6 +1123,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(binarySearchSol.peakIndexInMountainArray([3,5,3,2,0]) == 1)
     }
     
+    func testFindClosestElements1() throws {
+        XCTAssert(binarySearchSol.findClosestElements([1,2,3,4,5], 4, 3) == [1,2,3,4])
+    }
+    
+    func testFindClosestElements2() throws {
+        XCTAssert(binarySearchSol.findClosestElements([1,1,2,3,4,5], 4, -1) == [1,1,2,3])
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {

@@ -326,6 +326,25 @@ public class BinarySearchSolution : Solution {
         return high
     }
     
+    /// LeetCode: 658. Find K Closest Elements.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*log(n) + k*), where *n* is the size of the array `arr`. Space complexity is O(1), only constant extra space is used.
+    func findClosestElements(_ arr: [Int], _ k: Int, _ x: Int) -> [Int] {
+        var left  = 0, right = arr.count - k
+        while left < right {
+            let mid = (left + right) / 2
+            if x - arr[mid] > arr[mid+k] - x {
+                left = mid + 1
+            }
+            else {
+                right = mid
+            }
+        }
+        return Array(arr[left..<left+k])
+    }
+    
 }
 
 /// LeetCode: 981. Time Based Key-Value Store.
