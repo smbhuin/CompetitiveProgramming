@@ -131,6 +131,16 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(arraySol.findKthPositive([5,6,7,8,9], 9) == 14)
     }
     
+    // MARK: - Bruteforce
+    
+    func testTriangleNumber1() throws {
+        XCTAssert(bruteForceSol.triangleNumber([2,2,3,4]) == 3)
+    }
+    
+    func testTriangleNumber2() throws {
+        XCTAssert(bruteForceSol.triangleNumber([4,2,3,4]) == 4)
+    }
+    
     // MARK: Two Pointers
     
     func testMoveZeroes1() throws {
@@ -1129,6 +1139,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
     
     func testFindClosestElements2() throws {
         XCTAssert(binarySearchSol.findClosestElements([1,1,2,3,4,5], 4, -1) == [1,1,2,3])
+    }
+    
+    func testTriangleNumber3() throws {
+        XCTAssert(binarySearchSol.triangleNumber([2,2,3,4]) == 3)
+    }
+    
+    func testTriangleNumber4() throws {
+        XCTAssert(binarySearchSol.triangleNumber([4,2,3,4]) == 4)
     }
     
     // MARK: - Backtracking

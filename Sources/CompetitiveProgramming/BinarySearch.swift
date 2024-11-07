@@ -345,6 +345,32 @@ public class BinarySearchSolution : Solution {
         return Array(arr[left..<left+k])
     }
     
+    /// LeetCode: 611. Valid Triangle Number.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(*n*), where *n* is the size of the array `nums`.
+    func triangleNumber(_ nums: [Int]) -> Int {
+        guard nums.count >= 3 else { return 0 }
+        let nums = nums.sorted()
+        var count = 0
+        for k in 2..<nums.count {
+            var left = 0, right = k - 1
+            while left < right {
+                if nums[left] + nums[right] > nums[k] {
+                    count += right - left
+                    right -= 1
+                }
+                else {
+                    left += 1
+                }
+            }
+        }
+        return count
+    }
+    
+    
+    
 }
 
 /// LeetCode: 981. Time Based Key-Value Store.

@@ -98,4 +98,25 @@ public class BruteForceSolution : Solution {
         return c
     }
     
+    /// LeetCode: 611. Valid Triangle Number.
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Complexity: Time complexity is O(*n^3*) and space complexity is O(*n*), where *n* is the size of the array `nums`.
+    func triangleNumber(_ nums: [Int]) -> Int {
+        let nums = nums.sorted()
+        let n = nums.count
+        var c = 0
+        for i in 0..<n {
+            for j in i+1..<n {
+                for k in j+1..<n {
+                    if nums[i] + nums[j] > nums[k] {
+                        c += 1
+                    }
+                }
+            }
+        }
+        return c
+    }
+    
 }
