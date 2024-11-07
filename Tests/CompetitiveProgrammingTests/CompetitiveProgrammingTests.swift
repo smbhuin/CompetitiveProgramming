@@ -12,6 +12,7 @@ final class CompetitiveProgrammingTests: XCTestCase {
     let slidingWinSol = SlidingWindowSolution()
     let backtrackingSol = BacktrackingSolution()
     let binarySearchSol = BinarySearchSolution()
+    let twoPointerSol = TwoPointerSolution()
     
     // MARK: String
     
@@ -145,48 +146,48 @@ final class CompetitiveProgrammingTests: XCTestCase {
     
     func testMoveZeroes1() throws {
         var nums: [Int] = [0,1,0,3,12]
-        sol.moveZeroesIII(&nums)
+        twoPointerSol.moveZeroesIII(&nums)
         XCTAssert(nums == [1,3,12,0,0])
     }
     
     func testMoveZeroes2() throws {
         var nums: [Int] = [0]
-        sol.moveZeroesIII(&nums)
+        twoPointerSol.moveZeroesIII(&nums)
         XCTAssert(nums == [0])
     }
     
     func testMoveZeroes3() throws {
         var nums: [Int] = [-4,1,-34,0,1]
-        sol.moveZeroesIII(&nums)
+        twoPointerSol.moveZeroesIII(&nums)
         XCTAssert(nums == [-4,1,-34,1,0])
     }
     
     func testIsSubsequence1() throws {
-        XCTAssert(sol.isSubsequence("abc","ahbgdc") == true)
+        XCTAssert(twoPointerSol.isSubsequence("abc","ahbgdc") == true)
     }
     
     func testIsSubsequence2() throws {
-        XCTAssert(sol.isSubsequence("axc","ahbgdc") == false)
+        XCTAssert(twoPointerSol.isSubsequence("axc","ahbgdc") == false)
     }
     
     func testMaxArea1() throws {
-        XCTAssert(sol.maxArea([1,8,6,2,5,4,8,3,7]) == 49)
+        XCTAssert(twoPointerSol.maxArea([1,8,6,2,5,4,8,3,7]) == 49)
     }
     
     func testMaxArea2() throws {
-        XCTAssert(sol.maxArea([1,1]) == 1)
+        XCTAssert(twoPointerSol.maxArea([1,1]) == 1)
     }
     
     func testMaxOperations1() throws {
-        XCTAssert(sol.maxOperationsI([1,2,3,4], 5) == 2)
+        XCTAssert(twoPointerSol.maxOperationsI([1,2,3,4], 5) == 2)
     }
     
     func testMaxOperations2() throws {
-        XCTAssert(sol.maxOperationsI([3,1,3,4,3], 6) == 1)
+        XCTAssert(twoPointerSol.maxOperationsI([3,1,3,4,3], 6) == 1)
     }
     
     func testMaxOperations3() throws {
-        XCTAssert(sol.maxOperationsII([7,5,9,4,10], 13) == 1)
+        XCTAssert(twoPointerSol.maxOperationsII([7,5,9,4,10], 13) == 1)
     }
     
     // MARK: Sliding Window

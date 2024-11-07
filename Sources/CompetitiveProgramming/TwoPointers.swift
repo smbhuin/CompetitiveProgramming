@@ -42,7 +42,7 @@
  }
 */
 
-public extension Solution {
+public class TwoPointerSolution : Solution {
     
     /// LeetCode: 283. Move Zeroes.
     ///
