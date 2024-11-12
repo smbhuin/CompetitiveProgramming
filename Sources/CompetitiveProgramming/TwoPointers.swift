@@ -42,6 +42,8 @@
  }
 */
 
+import Foundation
+
 public class TwoPointerSolution : Solution {
     
     /// LeetCode: 283. Move Zeroes.
