@@ -200,6 +200,31 @@ public class TwoPointerSolution : Solution {
         }
         return count
     }
-
+    
+    /// LeetCode: 1498. Number of Subsequences That Satisfy the Given Sum Condition.
+    ///
+    /// Solved using sorting and two pointers.
+    ///
+    /// - Complexity: Time complexity is O(*nlogn*) and space complexity is O(*n*), where *n* is the size of the array `nums`.
+    func numSubseq(_ nums: [Int], _ target: Int) -> Int {
+        let m = 1_000_000_007
+        let nums = nums.sorted()
+        var count = 0, l = 0, r = nums.count - 1
+        var pows: [Int] = [1]
+        for i in 1..<nums.count {
+            pows.append((pows[i-1] * 2) % m)
+        }
+        while l <= r {
+            if nums[l] + nums[r] <= target {
+                count += pows[r - l]
+                count %= m
+                l += 1
+            }
+            else {
+                r -= 1
+            }
+        }
+        return count
+    }
 }
 
