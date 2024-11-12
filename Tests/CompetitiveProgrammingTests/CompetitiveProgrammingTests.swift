@@ -1170,6 +1170,17 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(binarySearchSol.triangleNumber([4,2,3,4]) == 4)
     }
     
+    func testRandomWeightedPick1() throws {
+        let w = [1, 3]
+        let obj = RandomWeightedPick(w)
+        var arr = Array(repeating: 0, count: w.count)
+        for _ in 0..<4000 {
+            arr[obj.pickIndex()] += 1
+        }
+        XCTAssert(arr[0] > 950 && arr[0] < 1050)
+        XCTAssert(arr[1] > 2950 && arr[1] < 3050)
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {

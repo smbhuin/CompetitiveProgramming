@@ -462,3 +462,36 @@ class SnapshotArray {
     }
     
 }
+
+/// LeetCode: 528. Random Pick with Weight.
+///
+/// Solved using sorting and two pointers.
+///
+class RandomWeightedPick {
+    var prefixSum: [Int]
+    
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*n*), where *n* is the size of the array `w`.
+    init(_ w: [Int]) {
+        prefixSum = Array(repeating: 0, count: w.count)
+        prefixSum[0] = w[0]
+        for i in 1..<w.count {
+            prefixSum[i] += prefixSum[i-1] + w[i]
+        }
+    }
+    
+    /// - Complexity: Time complexity is O(*logn*), where *n* is the size of the array `prefixSum`. Space complexity is O(1).
+    func pickIndex() -> Int {
+        let randWeight = Int.random(in: 1...prefixSum.last!)
+        var left = 0, right = prefixSum.count - 1
+        while left < right {
+            let mid = (left + right) / 2
+            if prefixSum[mid] < randWeight {
+                left = mid + 1
+            }
+            else {
+                right = mid
+            }
+        }
+        return left
+    }
+}
