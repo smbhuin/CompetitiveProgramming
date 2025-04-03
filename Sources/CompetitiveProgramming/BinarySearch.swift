@@ -369,7 +369,44 @@ public class BinarySearchSolution : Solution {
         return count
     }
     
-    
+    /// Longest Increasing Subsequence
+    ///
+    /// Solved using binary search.
+    ///
+    /// - Seealso: [Leetcode 300](https://leetcode.com/problems/longest-increasing-subsequence/description/)
+    ///
+    /// - Seealso: [cp-algorithms](https://cp-algorithms.com/sequences/longest_increasing_subsequence.html)
+    ///
+    /// - Complexity: Time complexity is O(*nlogn*) and space complexity is O(*n*), where *n* is the size of the array `nums`.
+    func lengthOfLIS(_ nums: [Int]) -> Int {
+        func nextInsertionIndex(_ nums: [Int], _ val: Int) -> Int {
+            // find the greatest index < nums.
+            var l = 0;
+            var r = nums.count - 1;
+            var res = nums.count;
+            while l <= r {
+                let mid = l + (r - l) / 2;
+                if nums[mid] < val {
+                    res = mid;
+                    l = mid + 1;
+                } else {
+                    r = mid - 1;
+                }
+            }
+            return res + 1;
+        }
+        var res = 0;
+        let n = nums.count;
+        var seq = Array(repeating: Int.max, count: n + 1)
+        seq[0] = Int.min;
+        for i in 0..<n {
+            let cur = nums[i];
+            let insertIndex = nextInsertionIndex(seq, cur);
+            res = max(res, insertIndex);
+            seq[insertIndex] = cur;
+        }
+        return res;
+    }
     
 }
 

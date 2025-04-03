@@ -1181,6 +1181,21 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(arr[1] > 2950 && arr[1] < 3050)
     }
     
+    func testLengthOfLIS7() throws {
+        let result = binarySearchSol.lengthOfLIS([0,1,0,3,2,3])
+        XCTAssert(result == 4)
+    }
+    
+    func testLengthOfLIS8() throws {
+        let result = binarySearchSol.lengthOfLIS([10,9,2,5,3,7,101,18])
+        XCTAssert(result == 4)
+    }
+    
+    func testLengthOfLIS9() throws {
+        let result = binarySearchSol.lengthOfLIS([7,7,7,7,7,7,7])
+        XCTAssert(result == 1)
+    }
+    
     // MARK: - Backtracking
     
     func testLetterCombinations1() throws {
