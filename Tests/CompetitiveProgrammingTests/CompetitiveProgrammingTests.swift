@@ -13,15 +13,48 @@ final class CompetitiveProgrammingTests: XCTestCase {
     let backtrackingSol = BacktrackingSolution()
     let binarySearchSol = BinarySearchSolution()
     let twoPointerSol = TwoPointerSolution()
+    let dpSol = DynamicProgrammingSolution()
+    let iterSol = IterativeSolution()
+    let strSol = StringSolution()
     
-    // MARK: String
+    // MARK: - Math
+    
+    func testReverseInteger1() throws {
+        XCTAssert(iterSol.reverse(123) == 321)
+    }
+    
+    func testReverseInteger2() throws {
+        XCTAssert(iterSol.reverse(1534236469) == 0)
+    }
+    
+    // MARK: - String
     
     func testReverseVowels1() throws {
-        XCTAssert(sol.reverseVowels("Hello") == "Holle")
+        XCTAssert(strSol.reverseVowels("Hello") == "Holle")
     }
     
     func testReverseVowels2() throws {
-        XCTAssert(sol.reverseVowels("leetcode") == "leotcede")
+        XCTAssert(strSol.reverseVowels("leetcode") == "leotcede")
+    }
+    
+    func testMyAtoi1() throws {
+        XCTAssert(strSol.myAtoi("42") == 42)
+    }
+    
+    func testMyAtoi2() throws {
+        XCTAssert(strSol.myAtoi("   -042") == -42)
+    }
+    
+    func testMyAtoi3() throws {
+        XCTAssert(strSol.myAtoi("1337c0d3") == 1337)
+    }
+    
+    func testMyAtoi4() throws {
+        XCTAssert(strSol.myAtoi("0-1") == 0)
+    }
+    
+    func testMyAtoi5() throws {
+        XCTAssert(strSol.myAtoi("words and 987") == 0)
     }
     
     // MARK: Array
@@ -1245,159 +1278,197 @@ final class CompetitiveProgrammingTests: XCTestCase {
     // MARK: - Dynamic Programming
     
     func testTribonacci1() throws {
-        XCTAssert(sol.tribonacciII(4) == 4)
+        XCTAssert(dpSol.tribonacciII(4) == 4)
     }
     
     func testTribonacci2() throws {
-        XCTAssert(sol.tribonacciII(25) == 1389537)
+        XCTAssert(dpSol.tribonacciII(25) == 1389537)
     }
     
     func testTribonacci3() throws {
-        XCTAssert(sol.tribonacci(4) == 4)
+        XCTAssert(dpSol.tribonacci(4) == 4)
     }
     
     func testMinCostClimbingStairs1() throws {
-        XCTAssert(sol.minCostClimbingStairs([10,15,20]) == 15)
+        XCTAssert(dpSol.minCostClimbingStairs([10,15,20]) == 15)
     }
     
     func testMinCostClimbingStairs2() throws {
-        XCTAssert(sol.minCostClimbingStairs([1,100,1,1,1,100,1,1,100,1]) == 6)
+        XCTAssert(dpSol.minCostClimbingStairs([1,100,1,1,1,100,1,1,100,1]) == 6)
     }
     
     func testRob1() throws {
-        XCTAssert(sol.rob([1,2,3,1]) == 4)
+        XCTAssert(dpSol.rob([1,2,3,1]) == 4)
     }
     
     func testRob2() throws {
-        XCTAssert(sol.rob([2,7,9,3,1]) == 12)
+        XCTAssert(dpSol.rob([2,7,9,3,1]) == 12)
     }
     
     func testRob3() throws {
-        XCTAssert(sol.rob([2,1,1,2]) == 4)
+        XCTAssert(dpSol.rob([2,1,1,2]) == 4)
     }
     
     func testRob4() throws {
-        XCTAssert(sol.rob([1,2]) == 2)
+        XCTAssert(dpSol.rob([1,2]) == 2)
     }
     
     func testRob5() throws {
-        XCTAssert(sol.rob([1,3,1]) == 3)
+        XCTAssert(dpSol.rob([1,3,1]) == 3)
     }
     
     func testNumTilings1() throws {
-        XCTAssert(sol.numTilings(3) == 5)
+        XCTAssert(dpSol.numTilings(3) == 5)
     }
     
     func testNumTilings2() throws {
-        XCTAssert(sol.numTilings(1) == 1)
+        XCTAssert(dpSol.numTilings(1) == 1)
     }
     
     func testNumTilings3() throws {
-        XCTAssert(sol.numTilings(4) == 11)
+        XCTAssert(dpSol.numTilings(4) == 11)
     }
     
     func testNumTilings4() throws {
-        XCTAssert(sol.numTilings(5) == 24)
+        XCTAssert(dpSol.numTilings(5) == 24)
     }
     
     func testNumTilings5() throws {
-        XCTAssert(sol.numTilings(6) == 53)
+        XCTAssert(dpSol.numTilings(6) == 53)
     }
     
     func testNumTilings6() throws {
-        XCTAssert(sol.numTilings(7) == 117)
+        XCTAssert(dpSol.numTilings(7) == 117)
     }
     
     func testNumTilings7() throws {
-        XCTAssert(sol.numTilings(8) == 258)
+        XCTAssert(dpSol.numTilings(8) == 258)
     }
     
     func testUniquePaths1() throws {
-        XCTAssert(sol.uniquePaths(3, 7) == 28)
+        XCTAssert(dpSol.uniquePaths(3, 7) == 28)
     }
     
     func testUniquePaths2() throws {
-        XCTAssert(sol.uniquePaths(3, 2) == 3)
+        XCTAssert(dpSol.uniquePaths(3, 2) == 3)
     }
     
     func testLongestCommonSubsequence1() throws {
-        XCTAssert(sol.longestCommonSubsequence("abcde", "ace") == 3)
+        XCTAssert(dpSol.longestCommonSubsequence("abcde", "ace") == 3)
     }
     
     func testLongestCommonSubsequence2() throws {
-        XCTAssert(sol.longestCommonSubsequence("abc", "abc") == 3)
+        XCTAssert(dpSol.longestCommonSubsequence("abc", "abc") == 3)
     }
     
     func testLongestCommonSubsequence3() throws {
-        XCTAssert(sol.longestCommonSubsequence("abc", "def") == 0)
+        XCTAssert(dpSol.longestCommonSubsequence("abc", "def") == 0)
     }
     
     func testMaxProfit1() throws {
-        XCTAssert(sol.maxProfit([1,3,2,8,4,9], 2) == 8)
+        XCTAssert(dpSol.maxProfit([1,3,2,8,4,9], 2) == 8)
     }
     
     func testMaxProfit2() throws {
-        XCTAssert(sol.maxProfit([1,3,7,5,10,3], 3) == 6)
+        XCTAssert(dpSol.maxProfit([1,3,7,5,10,3], 3) == 6)
     }
     
     func testMinDistance1() throws {
-        XCTAssert(sol.minDistance("horse", "ros") == 3)
+        XCTAssert(dpSol.minDistance("horse", "ros") == 3)
     }
     
     func testMinDistance2() throws {
-        XCTAssert(sol.minDistance("intention", "execution") == 5)
+        XCTAssert(dpSol.minDistance("intention", "execution") == 5)
     }
     
     func testGenerate1() throws {
-        XCTAssert(sol.generate(5) == [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]])
+        XCTAssert(dpSol.generate(5) == [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]])
     }
     
     func testGenerate2() throws {
-        XCTAssert(sol.generate(1) == [[1]])
+        XCTAssert(dpSol.generate(1) == [[1]])
     }
     
     func testLongestValidParentheses1() throws {
-        XCTAssert(sol.longestValidParentheses("(()") == 2)
+        XCTAssert(dpSol.longestValidParentheses("(()") == 2)
     }
     
     func testLongestValidParentheses2() throws {
-        XCTAssert(sol.longestValidParentheses(")()())") == 4)
+        XCTAssert(dpSol.longestValidParentheses(")()())") == 4)
     }
     
     func testLongestValidParentheses3() throws {
-        XCTAssert(sol.longestValidParentheses("") == 0)
+        XCTAssert(dpSol.longestValidParentheses("") == 0)
     }
     
     func testMaxProduct1() throws {
-        XCTAssert(sol.maxProduct([2,3,-2,4]) == 6)
+        XCTAssert(dpSol.maxProduct([2,3,-2,4]) == 6)
     }
     
     func testMaxProduct2() throws {
-        XCTAssert(sol.maxProduct([-2,0,-1]) == 0)
+        XCTAssert(dpSol.maxProduct([-2,0,-1]) == 0)
     }
     
     func testNumSquares1() throws {
-        XCTAssert(sol.numSquares(12) == 3)
+        XCTAssert(dpSol.numSquares(12) == 3)
     }
     
     func testNumSquares2() throws {
-        XCTAssert(sol.numSquares(13) == 2)
+        XCTAssert(dpSol.numSquares(13) == 2)
     }
     
     func testCanPartition1() throws {
-        XCTAssert(sol.canPartition([1,5,11,5]) == true)
+        XCTAssert(dpSol.canPartition([1,5,11,5]) == true)
     }
     
     func testCanPartition2() throws {
-        XCTAssert(sol.canPartition([1,2,3,5]) == false)
+        XCTAssert(dpSol.canPartition([1,2,3,5]) == false)
     }
     
     func testCanPartition3() throws {
-        XCTAssert(sol.canPartition([1,2,3,4,5,6,7]) == true)
+        XCTAssert(dpSol.canPartition([1,2,3,4,5,6,7]) == true)
     }
     
     func testCanPartition4() throws {
-        XCTAssert(sol.canPartition([14,9,8,4,3,2]) == true)
+        XCTAssert(dpSol.canPartition([14,9,8,4,3,2]) == true)
+    }
+    
+    func testLengthOfLIS1() throws {
+        let result = dpSol.lengthOfLIS([0,1,0,3,2,3])
+        XCTAssert(result == 4)
+    }
+    
+    func testLengthOfLIS2() throws {
+        let result = dpSol.lengthOfLIS([10,9,2,5,3,7,101,18])
+        XCTAssert(result == 4)
+    }
+    
+    func testLengthOfLIS3() throws {
+        let result = dpSol.lengthOfLIS([7,7,7,7,7,7,7])
+        XCTAssert(result == 1)
+    }
+    
+    func testLengthOfLIS4() throws {
+        let result = dpSol.lengthOfLIS2([0,1,0,3,2,3])
+        XCTAssert(result == 4)
+    }
+    
+    func testLengthOfLIS5() throws {
+        let result = dpSol.lengthOfLIS2([10,9,2,5,3,7,101,18])
+        XCTAssert(result == 4)
+    }
+    
+    func testLengthOfLIS6() throws {
+        let result = dpSol.lengthOfLIS2([7,7,7,7,7,7,7])
+        XCTAssert(result == 1)
+    }
+    
+    func testMaxEnvelopes1() throws {
+        XCTAssert(dpSol.maxEnvelopes([[5,4],[6,4],[6,7],[2,3]]) == 3)
+    }
+    
+    func testMaxEnvelopes2() throws {
+        XCTAssert(dpSol.maxEnvelopes([[1,1],[1,1],[1,1]]) == 1)
     }
     
     // MARK: - Bit Manipulation

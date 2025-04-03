@@ -1,5 +1,5 @@
 
-public extension Solution {
+public class DynamicProgrammingSolution : Solution {
     
     /// LeetCode: 1137. N-th Tribonacci Number.
     ///
@@ -392,6 +392,77 @@ public extension Solution {
             return false
         }
         return dfs(0,total/2)
+    }
+    
+    /// Longest Increasing Subsequence
+    ///
+    /// Solved using dynamic programming (Memoization/Top-down).
+    ///
+    /// - Seealso: [Leetcode 300](https://leetcode.com/problems/longest-increasing-subsequence/description/)
+    ///
+    /// - Seealso: [cp-algorithms](https://cp-algorithms.com/sequences/longest_increasing_subsequence.html)
+    ///
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(*n*), where *n* is the size of the array `nums`.
+    func lengthOfLIS(_ nums: [Int]) -> Int {
+        var dp: [Int:Int] = [:] // Index:Count
+        func travel(_ index: Int) -> Int {
+            if let x = dp[index] {
+                return x
+            }
+            var count = 0
+            for nextIndex in (index+1)..<nums.count {
+                if index == -1 || nums[nextIndex] > nums[index] {
+                    count = max(count, travel(nextIndex))
+                }
+            }
+            dp[index] = 1 + count
+            return 1 + count
+        }
+        return travel(-1) - 1
+    }
+    
+    /// Longest Increasing Subsequence
+    ///
+    /// Solved using dynamic programming (Tabulation/Bottom-up).
+    ///
+    /// - Seealso: [Leetcode 300](https://leetcode.com/problems/longest-increasing-subsequence/description)
+    ///
+    /// - Seealso: [cp-algorithms](https://cp-algorithms.com/sequences/longest_increasing_subsequence.html)
+    ///
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(*n*), where *n* is the size of the array `nums`.
+    func lengthOfLIS2(_ nums: [Int]) -> Int {
+        var dp = Array(repeating: 1, count: nums.count)
+        var maxLength = 1
+        for i in 1..<nums.count {
+            for j in 0..<i where nums[j] < nums[i] {
+                dp[i] = max(dp[i], dp[j] + 1)
+            }
+            maxLength = max(maxLength, dp[i])
+        }
+        return maxLength
+    }
+    
+    /// Russian Doll Envelopes.
+    ///
+    /// Solved using dynamic programming (Tabulation/Bottom-up).
+    ///
+    /// - Seealso: [Leetcode 354](https://leetcode.com/problems/russian-doll-envelopes/description)
+    ///
+    /// - Complexity: Time complexity is less than O(*n^2*), where *n* is the number of `envelopes`.  Space complexity is O(*n*), where *n* is the number of `envelopes`.
+    func maxEnvelopes(_ envelopes: [[Int]]) -> Int {
+        let envs = envelopes.sorted { a, b in
+            if a[0] == b[0] { return a[1] < b[1] }
+            return a[0] < b[0]
+        }
+        var dp: [Int] = Array(repeating: 1, count: envs.count)
+        for i in 1..<dp.count {
+            for j in 0..<i {
+                if envs[i][0] > envs[j][0] && envs[i][1] > envs[j][1] {
+                    dp[i] = max(dp[i], dp[j] + 1)
+                }
+            }
+        }
+        return dp.max() ?? 0
     }
     
 }

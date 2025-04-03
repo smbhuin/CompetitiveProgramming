@@ -1,6 +1,6 @@
 
-public extension Solution {
-    
+public class StringSolution : Solution {
+
     /// LeetCode: 345. Reverse Vowels of a String.
     ///
     /// Solved by iteration using two pointers.
@@ -30,7 +30,45 @@ public extension Solution {
         return String(arr)
     }
     
-    
+    /// String to Integer (atoi).
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Seealso: [Leetcode 8](https://leetcode.com/problems/string-to-integer-atoi/description/)
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(1), where *n* is the number of chars in the string `s`.
+    func myAtoi(_ s: String) -> Int {
+        var res = 0
+        var foundDigitOrChar = false
+        var sign = 1
+        let intMax = 2_147_483_647, intMin = -2_147_483_648
+        for c in s {
+            if c == " " && foundDigitOrChar == false {
+                continue
+            }
+            if c.isNumber {
+                foundDigitOrChar = true
+                let value = c.wholeNumberValue!
+                if res*sign > intMax / 10 || res*sign == intMax / 10 && value*sign > 7 {
+                    return intMax
+                }
+                if res*sign < intMin / 10 || res*sign == intMin / 10 && value*sign < -8 {
+                    return intMin
+                }
+                res = res * 10 + value
+            }
+            else {
+                if foundDigitOrChar {
+                    break
+                }
+                if c == "-" {
+                    sign = -1
+                }
+                foundDigitOrChar = true
+            }
+        }
+        return res * sign
+    }
 
 }
 
