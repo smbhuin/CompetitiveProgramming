@@ -57,7 +57,7 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(strSol.myAtoi("words and 987") == 0)
     }
     
-    // MARK: Array
+    // MARK: - Array
     
     func testProductExceptSelf1() throws {
         XCTAssert(arraySol.productExceptSelf([1,2,3,4]) == [24,12,8,6])
@@ -175,7 +175,7 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(bruteForceSol.triangleNumber([4,2,3,4]) == 4)
     }
     
-    // MARK: Two Pointers
+    // MARK: - Two Pointers
     
     func testMoveZeroes1() throws {
         var nums: [Int] = [0,1,0,3,12]
@@ -243,7 +243,7 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(twoPointerSol.numSubseq([27,21,14,2,15,1,19,8,12,24,21,8,12,10,11,30,15,18,28,14,26,9,2,24,23,11,7,12,9,17,30,9,28,2,14,22,19,19,27,6,15,12,29,2,30,11,20,30,21,20,2,22,6,14,13,19,21,10,18,30,2,20,28,22], 31) == 688052206)
     }
     
-    // MARK: Sliding Window
+    // MARK: - Sliding Window
     
     func testFindMaxAverage1() throws {
         XCTAssert(slidingWinSol.findMaxAverage([1,12,-5,-6,50,3], 4) == 12.75)
@@ -309,7 +309,7 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(slidingWinSol.maxSlidingWindow([1], 1) == [1])
     }
     
-    // MARK: Prefix Sum
+    // MARK: - Prefix Sum
     
     func testLargestAltitude1() throws {
         XCTAssert(sol.largestAltitude([-5,1,5,0,-7]) == 1)
