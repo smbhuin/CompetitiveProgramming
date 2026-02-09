@@ -403,4 +403,22 @@ public extension Solution {
         return ans
     }
     
+    /// LeetCode: 110. Balanced Binary Tree.
+    ///
+    /// Solved using recursion.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(*h*), where *n* is the number of nodes in the tree `root` and *h* is the height of the tree.
+    func isBalanced(_ root: TreeNode?) -> Bool {
+        func dfs(_ root: TreeNode?) -> (Bool, Int) { // (Balanced?, Height)
+            guard let root = root else {
+                return (true, 0)
+            }
+            var left = dfs(root.left)
+            var right = dfs(root.right)
+            let balanced = left.0 && right.0 && abs(left.1 - right.1) <= 1
+            return (balanced, 1 + max(left.1, right.1))
+        }
+        return dfs(root).0
+    }
+    
 }
