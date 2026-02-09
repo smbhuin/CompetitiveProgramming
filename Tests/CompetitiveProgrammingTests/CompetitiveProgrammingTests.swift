@@ -57,6 +57,15 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(strSol.myAtoi("words and 987") == 0)
     }
     
+    func testCommonChild1() throws {
+        XCTAssert(strSol.commonChild(s1: "HARRY", s2: "SALLY") == 2)
+    }
+    
+    func testCommonChild2() throws {
+        XCTAssert(strSol.commonChild(s1: "WEWOUCUIDGCGTRMEZEPXZFEJWISRSBBSYXAYDFEJJDLEBVHHKS", s2: "FDAGCXGKCTKWNECHMRXZWMLRYUCOCZHJRRJBOAJOQJZZVUYXIC") == 15)
+    }
+    
+    
     // MARK: - Array
     
     func testProductExceptSelf1() throws {
@@ -1493,6 +1502,14 @@ final class CompetitiveProgrammingTests: XCTestCase {
     
     func testMaxEnvelopes2() throws {
         XCTAssert(dpSol.maxEnvelopes([[1,1],[1,1],[1,1]]) == 1)
+    }
+    
+    func testCommonChild3() throws {
+        XCTAssert(dpSol.commonChild(s1: "HARRY", s2: "SALLY") == 2)
+    }
+    
+    func testCommonChild4() throws {
+        XCTAssert(dpSol.commonChild(s1: "WEWOUCUIDGCGTRMEZEPXZFEJWISRSBBSYXAYDFEJJDLEBVHHKS", s2: "FDAGCXGKCTKWNECHMRXZWMLRYUCOCZHJRRJBOAJOQJZZVUYXIC") == 15)
     }
     
     // MARK: - Bit Manipulation

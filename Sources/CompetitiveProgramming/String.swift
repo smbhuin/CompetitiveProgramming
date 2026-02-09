@@ -70,5 +70,35 @@ public class StringSolution : Solution {
         return res * sign
     }
 
+    /// HackerRank: Common Child.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n^3*) and space complexity is O(n), where *n* is the number of chars in the string `s1`.
+    func commonChild(s1: String, s2: String) -> Int {
+        let s1Arr = Array(s1)
+        let s2Arr = Array(s2)
+        let s1Len = s1Arr.count
+        let s2Len = s2Arr.count
+        var maxLen = 0
+        func solve(_ s1Idx: Int, _ s2Idx: Int, _ count: Int) {
+            if s1Idx >= s1Len || s2Idx >= s2Len {
+                maxLen = max(maxLen, count)
+                return
+            }
+            for s2p in s2Idx..<s2Len {
+                if s1Arr[s1Idx] == s2Arr[s2p] {
+                    solve(s1Idx + 1, s2p + 1, count + 1)
+                    break
+                }
+            }
+            solve(s1Idx + 1, s2Idx, count)
+        }
+        solve(0, 0, 0)
+        return maxLen
+    }
+    
+    
 }
+
 

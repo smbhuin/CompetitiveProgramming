@@ -465,4 +465,28 @@ public class DynamicProgrammingSolution : Solution {
         return dp.max() ?? 0
     }
     
+    /// HackerRank: Common Child.
+    ///
+    /// Solved using tabulation.
+    ///
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(n^2), where *n* is the number of chars in the string `s1`.
+    func commonChild(s1: String, s2: String) -> Int {
+        let s1Arr = Array(s1)
+        let s2Arr = Array(s2)
+        let s1Len = s1Arr.count
+        let s2Len = s2Arr.count
+        var table = Array(repeating: Array(repeating: 0, count: s2Len+1), count: s1Len+1)
+        for i in 1..<s1Len+1 {
+            for j in 1..<s2Len+1 {
+                if s1Arr[i-1] == s2Arr[j-1] {
+                    table[i][j] = table[i-1][j-1] + 1
+                }
+                else {
+                    table[i][j] = max(table[i-1][j], table[i][j-1])
+                }
+            }
+        }
+        return table[s1Len][s2Len]
+    }
+    
 }
