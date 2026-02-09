@@ -675,6 +675,21 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(linkedListSol.findDuplicate([3,3,3,3,3]) == 3)
     }
     
+    func testDeleteDuplicates1() throws {
+        let head = ListNode.buildLinkedList([1,1,2])
+        XCTAssert(linkedListSol.deleteDuplicates(head)!.allElements() == [1,2])
+    }
+    
+    func testDeleteDuplicates2() throws {
+        let head = ListNode.buildLinkedList([1,1,2,3,3])
+        XCTAssert(linkedListSol.deleteDuplicates(head)!.allElements() == [1,2,3])
+    }
+    
+    func testDeleteDuplicates3() throws {
+        let head = ListNode.buildLinkedList([1,1,1])
+        XCTAssert(linkedListSol.deleteDuplicates(head)!.allElements() == [1])
+    }
+    
     // MARK: - Binary Tree
     
     func testMaxDepth1() throws {

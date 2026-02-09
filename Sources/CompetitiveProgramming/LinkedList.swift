@@ -289,4 +289,24 @@ public class LinkedListSolution : Solution {
         return slow
     }
     
+    /// LeetCode: 83. Remove Duplicates from Sorted List.
+    ///
+    /// Solved using iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the size of the linked list `head`. Space complexity is O(1), only constant space is used.
+    func deleteDuplicates(_ head: ListNode?) -> ListNode? {
+        var prev: ListNode = ListNode(-200)
+        var curr = head
+        while let temp = curr {
+            if prev.val != temp.val {
+                prev = temp
+            }
+            else {
+                prev.next = temp.next
+            }
+            curr = temp.next
+        }
+        return head
+    }
+    
 }
