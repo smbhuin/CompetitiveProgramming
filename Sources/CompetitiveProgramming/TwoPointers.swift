@@ -228,5 +228,40 @@ public class TwoPointerSolution : Solution {
         }
         return count
     }
+    
+    /// LeetCode: 16. 3Sum Closest
+    ///
+    /// Solved using sorting and two pointers.
+    ///
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(*n*), where *n* is the length of  the array `nums`.
+    func threeSumClosest(_ nums: [Int], _ target: Int) -> Int {
+        let nums = nums.sorted()
+        let len = nums.count
+        var threeSum = Int.max
+        for k in 0..<len-2 {
+            var i = k + 1
+            var j = len - 1
+            while i < j {
+                let sum = nums[k] + nums[i] + nums[j]
+                if sum == target {
+                    return sum
+                }
+                if abs(target - sum) < abs(target &- threeSum) {
+                    threeSum = sum
+                }
+                if sum < target {
+                    i += 1
+                }
+                else {
+                    j -= 1
+                }
+            }
+        }
+        return threeSum
+    }
+    
+    
+    
+    
 }
 

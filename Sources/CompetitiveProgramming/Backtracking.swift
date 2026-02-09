@@ -181,5 +181,55 @@ public class BacktrackingSolution : Solution {
         backtrack(startIndex)
         return ans
     }
+    
+    /// HackerRank: Mini-Max Sum.
+    ///
+    /// Solved using backtracking.
+    ///
+    /// - Complexity: Time complexity is O(*2^n*) and space complexity is O(*n*), where *n* is the size of `arr`.
+    func miniMaxSum(arr: [Int]) -> (Int, Int) {
+        var maxSum = Int.min
+        var minSum = Int.max
+        func solve(_ index: Int, _ sum: Int, _ count: Int) {
+            if count == 4 {
+                maxSum = max(maxSum, sum)
+                minSum = min(minSum, sum)
+                return
+            }
+            if index >= arr.count {
+                return
+            }
+            solve(index+1, sum + arr[index], count + 1)
+            solve(index+1, sum, count)
+        }
+        solve(0,0,0)
+        return (minSum, maxSum)
+    }
+    
+    /// LeetCode: 16. 3Sum Closest
+    ///
+    /// Solved using backtracking.
+    ///
+    /// - Complexity: Time complexity is O(*n^3*) and space complexity is O(*n*), where *n* is the length of  the array `nums`.
+    func threeSumClosest(_ nums: [Int], _ target: Int) -> Int {
+        var threeSum = 0
+        var minDiff = Int.max
+        func solve(_ index: Int, _ sum: Int, _ count: Int) {
+            if count == 3 {
+                if abs(target - sum) < minDiff {
+                    minDiff = abs(target - sum)
+                    threeSum = sum
+                }
+                return
+            }
+            if index >= nums.count {
+                return
+            }
+            solve(index+1, sum + nums[index], count+1)
+            solve(index+1, sum, count)
+        }
+        solve(0, 0, 0)
+        return threeSum
+    }
 
 }
