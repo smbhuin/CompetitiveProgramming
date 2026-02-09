@@ -165,6 +165,18 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(arraySol.findKthPositive([5,6,7,8,9], 9) == 14)
     }
     
+    func testMaxSubarraySum1() throws {
+        XCTAssert(arraySol.maxSubarraySum([1,2], 1) == 3)
+    }
+    
+    func testMaxSubarraySum2() throws {
+        XCTAssert(arraySol.maxSubarraySum([-1,-2,-3,-4,-5], 4) == -10)
+    }
+    
+    func testMaxSubarraySum3() throws {
+        XCTAssert(arraySol.maxSubarraySum([-5,1,2,-3,4], 2) == 4)
+    }
+    
     // MARK: - Bruteforce
     
     func testTriangleNumber1() throws {

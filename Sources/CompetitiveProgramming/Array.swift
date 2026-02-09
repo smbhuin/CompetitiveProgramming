@@ -233,4 +233,46 @@ public class ArraySolution : Solution {
         return 0
     }
     
+    /// LeetCode: 3381. Maximum Subarray Sum With Length Divisible by K.
+    ///
+    /// Solved by iteration and pre calculating prefix sum.
+    ///
+    /// - Complexity: Time complexity is O(*(n^2)/k*).  Space complexity is O(*n*), where *n* is the size of the array `nums`.
+    func maxSubarraySum1(_ nums: [Int], _ k: Int) -> Int {
+        var prefixSum = Array(repeating: 0, count: nums.count+1)
+        var sum = Int.min
+        for i in 0..<nums.count {
+            prefixSum[i+1] = prefixSum[i] + nums[i]
+        }
+        for i in 1..<prefixSum.count {
+            var j = i - k
+            while j >= 0 {
+                sum = max(sum, prefixSum[i] - prefixSum[j])
+                j -= k
+            }
+        }
+        return sum
+    }
+    
+    /// LeetCode: 3381. Maximum Subarray Sum With Length Divisible by K.
+    ///
+    /// Solved by iteration and calculating minimum prefix sum.
+    ///
+    /// - Complexity: Time complexity is O(*n*).  Space complexity is O(*k*), where *n* is the size of the array `nums`.
+    func maxSubarraySum(_ nums: [Int], _ k: Int) -> Int {
+        var minPrefixSum = Array(repeating: Int.max, count: k)
+        minPrefixSum[0] = 0
+        var sum = Int.min
+        var currSum = 0
+        for i in 0..<nums.count {
+            currSum += nums[i]
+            let prefix_len = (i+1) % k
+            if minPrefixSum[prefix_len] != Int.max {
+                sum = max(sum, currSum - minPrefixSum[prefix_len])
+            }
+            minPrefixSum[prefix_len] = min(minPrefixSum[prefix_len], currSum)
+        }
+        return sum
+    }
+    
 }
