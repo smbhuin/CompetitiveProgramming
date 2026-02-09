@@ -1,3 +1,4 @@
+import Foundation
 
 /// LeetCode: 208. Implement Trie (Prefix Tree)
 class Trie {
