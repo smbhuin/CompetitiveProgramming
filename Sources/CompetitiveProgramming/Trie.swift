@@ -117,4 +117,76 @@ public extension Solution {
         return result
     }
     
+    /// HackerRank: Two Two.
+    ///
+    /// Solved using trie.
+    ///
+    /// - Complexity: Time complexity is O(*n^3* ?? ) and space complexity is O(n), where *n* is the number of chars in the string `a`.
+    func twoTwo(a: String) -> Int {
+        let root = DigitTrieNode(255)
+        root.children[1] = DigitTrieNode(1, isEnd: true)
+        var tmp: [UInt8] = Array(repeating: 0, count: 242)
+        tmp[0] = 1
+        var numLen = 1
+        for _ in 1...800 {
+            var p = 0
+            var carry: UInt8 = 0
+            while p < numLen {
+                tmp[p] = (tmp[p] * 2) + carry
+                carry = tmp[p] / 10
+                tmp[p] = tmp[p] % 10
+                p += 1
+            }
+            if carry != 0 {
+                tmp[p] = carry
+                p += 1
+            }
+            numLen = p
+            p -= 1
+            // Insert into Trie
+            var node = root
+            while p >= 0 {
+                let index = Int(tmp[p])
+                var n = node.children[index]
+                if n == nil {
+                    n = DigitTrieNode(tmp[p])
+                    node.children[index] = n
+                }
+                node = n!
+                p -= 1
+            }
+            node.isEnd = true
+        }
+        
+        let indices = a.indices
+        var counter = 0
+        for i in indices {
+            var node: DigitTrieNode = root
+            for c in a[i...] {
+                let index = c.wholeNumberValue!
+                if let cn = node.children[index] {
+                    node = cn
+                    if cn.isEnd {
+                        counter += 1
+                    }
+                }
+                else {
+                    break
+                }
+            }
+        }
+        return counter
+    }
+    
+}
+
+class DigitTrieNode {
+    var value: UInt8
+    var children: [DigitTrieNode?]
+    var isEnd: Bool
+    init(_ value: UInt8, isEnd: Bool = false) {
+        self.value = value
+        self.children = Array(repeating: nil, count: 10)
+        self.isEnd = isEnd
+    }
 }
