@@ -49,6 +49,30 @@ class IterativeSolution : Solution {
         }
         return res
     }
+    
+    /// HackerRank: Breaking the Records.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*).  Space complexity is O(1), where *n* is the size of the array `scores`.
+    func breakingRecords(_ scores: [Int]) -> [Int] {
+        var high = scores[0]
+        var low = scores[0]
+        var highCount = 0
+        var lowCount = 0
+        for score in scores[1...] {
+            if score > high {
+                highCount += 1
+                high = score
+            }
+            else if score < low {
+                lowCount += 1
+                low = score
+            }
+        }
+        return [highCount, lowCount]
+    }
+    
 }
 
 
