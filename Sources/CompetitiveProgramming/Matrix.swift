@@ -29,4 +29,59 @@ public class MatrixSolution : Solution {
         return false
     }
     
+    /// HackerRank: Matrix Rotation.
+    ///
+    /// Solved using layer by layer iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(n), where *n* is the number of elements in the matrix.
+    func matrixRotation(_ matrix: [[Int]], _ r: Int) -> [[Int]] {
+        let m = matrix.count
+        let n = matrix[0].count
+        let layerCount = min(m, n) / 2
+        var layers: [[Int]] = []
+        
+        // Create list of layers (read all elements from matrix)
+        for l in 0..<layerCount {
+            var layer: [Int] = []
+            for i in l..<n-1-l {
+                layer.append(matrix[l][i])
+            }
+            for i in l..<m-1-l {
+                layer.append(matrix[i][n-1-l])
+            }
+            for i in stride(from: n-1-l, to: l, by: -1) {
+                layer.append(matrix[m-1-l][i])
+            }
+            for i in stride(from: m-1-l, to: l, by: -1) {
+                layer.append(matrix[i][l])
+            }
+            layers.append(layer)
+        }
+        
+        // Rotate and update the matrix
+        var rotated = matrix
+        for l in 0..<layerCount {
+            let layer = layers[l]
+            var idx = r % layer.count
+            for i in l..<n-1-l {
+                rotated[l][i] = layer[idx]
+                idx = (idx + 1) % layer.count
+            }
+            for i in l..<m-1-l {
+                rotated[i][n-1-l] = layer[idx]
+                idx = (idx + 1) % layer.count
+            }
+            for i in stride(from: n-1-l, to: l, by: -1) {
+                rotated[m-1-l][i] = layer[idx]
+                idx = (idx + 1) % layer.count
+            }
+            for i in stride(from: m-1-l, to: l, by: -1) {
+                rotated[i][l] = layer[idx]
+                idx = (idx + 1) % layer.count
+            }
+        }
+        
+        return rotated
+    }
+    
 }

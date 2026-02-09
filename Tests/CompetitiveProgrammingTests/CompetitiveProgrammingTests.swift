@@ -1681,6 +1681,9 @@ final class CompetitiveProgrammingTests: XCTestCase {
         XCTAssert(matrixSol.searchMatrix([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24]], 20) == false)
     }
     
+    func testMatrixRotation1() throws {
+        XCTAssert(matrixSol.matrixRotation([[1, 2, 3, 4], [12, 1, 2, 5], [11, 4, 3, 6], [10, 9, 8, 7]], 2) == [[3, 4, 5, 6], [2, 3, 4, 7], [1, 2, 1, 8], [12, 11, 10, 9]])
+    }
 }
 
 
