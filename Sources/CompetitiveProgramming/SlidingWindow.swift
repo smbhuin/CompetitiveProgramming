@@ -193,4 +193,96 @@ public class SlidingWindowSolution : Solution {
         return ans
     }
     
+    /// HackerRank: Bear and Steady Gene.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(n), where *n* is the number of chars in the string `gene`.
+    func steadyGene(_ gene: String) -> Int {
+        var geneArr: [Character] = []
+        var counts: [Character:Int] = [:]
+        for c in gene {
+            geneArr.append(c)
+            counts[c, default: 0] += 1
+        }
+        let expLen = geneArr.count / 4
+        if counts.allSatisfy({$0.value <= expLen}) {
+            return 0
+        }
+        var minSub = Int.max
+        var left = 0
+        for right in 0..<geneArr.count {
+            counts[geneArr[right], default: 0] -= 1
+            while counts.allSatisfy({$0.value <= expLen}) && left <= right {
+                minSub = min(minSub, right - left + 1)
+                counts[geneArr[left], default: 0] += 1
+                left += 1
+            }
+        }
+        return minSub
+    }
+    
+    /// LeetCode: 187. Repeated DNA Sequences.
+    ///
+    /// Solved by iteration using sliding window of fixed width 10.
+    ///
+    /// - Complexity: Time complexity is O(*n*), where *n* is the length of the string `s`.  Space complexity is O(*n*), where *n* is the size of the string `s`.
+    func findRepeatedDnaSequences(_ s: String) -> [String] {
+        let len = s.count
+        if len < 10 {
+            return []
+        }
+        var left = s.startIndex, right = s.index(s.startIndex, offsetBy: 9)
+        let end = s.index(before: s.endIndex)
+        var counts: [Substring: Int] = [:]
+        while right <= end {
+            counts[s[left...right], default: 0] += 1
+            left = s.index(after: left)
+            right = s.index(after: right)
+        }
+        let result: [String] = counts.compactMap({ $0.value > 1 ? String($0.key) : nil })
+        return result
+    }
+    
+    /// LeetCode: 220. Contains Duplicate III.
+    ///
+    /// Solved by iteration using sliding window.
+    ///
+    /// - Complexity: ??
+    func containsNearbyAlmostDuplicate(_ nums: [Int], _ indexDiff: Int, _ valueDiff: Int) -> Bool {
+        for left in 0..<nums.count-1{
+            var right = left + 1
+            while right < nums.count && abs(left - right) <= indexDiff {
+                if abs(nums[left] - nums[right]) <= valueDiff {
+                    return true
+                }
+                right += 1
+            }
+        }
+        return false
+    }
+    
+    /// HackerRank: Subarray Division.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*).  Space complexity is O(1), where *n* is the size of the array `scores`.
+    func birthday(_ s: [Int], _ d: Int, _ m: Int) -> Int {
+        var counter = 0
+        var sum = 0
+        for i in 0..<m-1 {
+            sum += s[i]
+        }
+        var left = 0
+        for right in (m-1)..<s.count {
+            sum += s[right]
+            if sum == d {
+                counter += 1
+            }
+            sum -= s[left]
+            left += 1
+        }
+        return counter
+    }
+    
 }

@@ -69,6 +69,69 @@ public class StringSolution : Solution {
         }
         return res * sign
     }
+    
+    /// HackerRank: Separate the Numbers.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n*) and space complexity is O(1), where *n* is the number of chars in the string `s`.
+    func separateNumbers(_ s: String) -> Int {
+        let half = s.count / 2
+        var res = 0
+        if half >= 1 {
+            loop1: for i in 1...half {
+                var arr = Array(s)
+                let start = Int(s.prefix(i))!
+                var num = start
+                var numArr = Array(String(num))
+                loop2: while !arr.isEmpty {
+                    if arr.count >= numArr.count {
+                        for d in numArr {
+                            if d == arr[0] {
+                                arr.remove(at: 0)
+                            }
+                            else {
+                                break loop2
+                            }
+                        }
+                    }
+                    else {
+                        break loop2
+                    }
+                    if arr.isEmpty {
+                        res = start
+                        break loop1
+                    }
+                    num += 1
+                    numArr = Array(String(num))
+                }
+            }
+        }
+        return res
+    }
+    
+    /// HackerRank: Morgan and a String.
+    ///
+    /// Solved by iteration.
+    ///
+    /// - Complexity: Time complexity is O(*n^2*) and space complexity is O(n), where *n* is the number of chars in the string `a+b`.
+    func morganAndString(a: String, b: String) -> String {
+        let totalLen = a.count + b.count
+        var a = a + "z"
+        var b = b + "z"
+        var chars: [Character] = []
+        for _ in 0..<totalLen {
+            if a < b {
+                chars.append(a.first!)
+                a.removeFirst()
+            }
+            else {
+                chars.append(b.first!)
+                b.removeFirst()
+            }
+        }
+        return String(chars)
+    }
 
     /// HackerRank: Common Child.
     ///
