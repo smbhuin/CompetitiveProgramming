@@ -30,7 +30,7 @@ public class StringSolution : Solution {
         return String(arr)
     }
     
-    /// String to Integer (atoi).
+    /// LeetCode: 8. String to Integer (atoi).
     ///
     /// Solved by iteration.
     ///
