@@ -413,8 +413,8 @@ public extension Solution {
             guard let root = root else {
                 return (true, 0)
             }
-            var left = dfs(root.left)
-            var right = dfs(root.right)
+            let left = dfs(root.left)
+            let right = dfs(root.right)
             let balanced = left.0 && right.0 && abs(left.1 - right.1) <= 1
             return (balanced, 1 + max(left.1, right.1))
         }
